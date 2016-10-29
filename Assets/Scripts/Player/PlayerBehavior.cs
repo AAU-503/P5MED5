@@ -25,12 +25,12 @@ public class PlayerBehavior : MonoBehaviour {
         print(other.gameObject);
         
         if (other.gameObject.CompareTag("Coin")) {
-            other.gameObject.SetActive(false);
-            scoreManager.ChangeScore(1);
+			Destroy(other.gameObject);
+            ScoreManager.ChangeScore(10);
         }
 
         if (other.gameObject.tag == "Enemy") {
-            scoreManager.ChangeScore(-10);
+            ScoreManager.ChangeScore(-10);
 
         }
     }

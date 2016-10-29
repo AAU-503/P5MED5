@@ -21,7 +21,7 @@ public class HazardCollision : MonoBehaviour {
         if (Physics.Raycast(transform.position, dwn, out hit)) {
             if (hit.collider.gameObject.tag == "Lava" && hit.distance < 0.5f && isLava == false) {
                 isLava = true;
-				scoreManager.ChangeScore (-10);
+				ScoreManager.ChangeScore (-10);
 
                 print("lava");
             } else if (hit.collider.gameObject.tag != "Lava") {
