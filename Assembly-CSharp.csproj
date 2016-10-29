@@ -70,7 +70,6 @@
      <Compile Include="Assets\Scripts\LevelGenerator\TileManager.cs" />
      <Compile Include="Assets\Scripts\Player\AttackTrigger.cs" />
      <Compile Include="Assets\Scripts\Player\HazardCollision.cs" />
-     <Compile Include="Assets\Scripts\Player\Jump.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerBehavior.cs" />
      <None Include="Assets\Asset Store\2D Platformer Controller\Readme.txt" />

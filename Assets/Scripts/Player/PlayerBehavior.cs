@@ -6,7 +6,6 @@ public class PlayerBehavior : MonoBehaviour
 {
 
 	public CameraController cameraController;
-	public ScoreManager scoreManager;
 	private CharacterController controller;
 
 	private Vector3 moveDirection = Vector3.zero;
