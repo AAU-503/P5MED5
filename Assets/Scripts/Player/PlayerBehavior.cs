@@ -46,7 +46,7 @@ public class PlayerBehavior : MonoBehaviour
 
 	void Movement ()
 	{
-		transform.Translate (cameraController.speed, 0, 0);
+		transform.Translate (CameraController.speed, 0, 0);
 	}
 
 	void Jump ()
