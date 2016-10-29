@@ -17,7 +17,7 @@ public class Jump : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void FixedUpdate() {
+    void Update() {
 
         if (controller.isGrounded) {
 
@@ -29,6 +29,6 @@ public class Jump : MonoBehaviour {
             moveDirection.y -= gravity;
         }
 
-        controller.Move(moveDirection * Time.deltaTime);
+		controller.Move(moveDirection * Time.fixedDeltaTime);
     }
 }
