@@ -2,12 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [ExecuteInEditMode]
 public class SnapToGridInEditor : MonoBehaviour {
+
+
     public float snapValue = 1;
     public float depth = 0;
 
+
     void Update() {
+
+        if(!Application.isPlaying) {
+
         float snapInverse = 1 / snapValue;
 
         float x, y, z;
@@ -19,5 +26,10 @@ public class SnapToGridInEditor : MonoBehaviour {
         z = depth;  // depth from camera
 
         transform.position = new Vector3(x, y, z);
+
+       } 
     }
+
+
 }
+
