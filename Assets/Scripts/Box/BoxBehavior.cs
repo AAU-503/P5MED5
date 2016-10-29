@@ -36,6 +36,7 @@ public class BoxBehavior : MonoBehaviour {
     }
 
     public void OnBadCollision() {
+		CameraController.setShake ();
 
         if (!isDestroyed) {
             particle.Play();
