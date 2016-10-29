@@ -6,18 +6,25 @@ public class PlayerBehavior : MonoBehaviour {
 
     public CameraController cameraController;
     public ScoreManager scoreManager;
+	private CharacterController controller;
+
+	private Vector3 moveDirection = Vector3.zero;
+	public float jumpSpeed = 20.0f;
+	public float gravity = 2.0f;
 
     private bool attacked = true;
 
     // Use this for initialization
     void Start() {
         cameraController = GameObject.Find("Main Camera").GetComponent<CameraController>();
-        scoreManager = GameObject.Find("Main Camera").GetComponent<ScoreManager>();
+		controller = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
     void Update() {
-        transform.Translate(cameraController.speed, 0, 0);
+		
+		Jump ();
+		Movement ();
     }
 
     void OnTriggerEnter(Collider other) { // Ability to pick up coins adding to score in ScoreManager and attacking boxes
@@ -26,12 +33,30 @@ public class PlayerBehavior : MonoBehaviour {
         
         if (other.gameObject.CompareTag("Coin")) {
 			Destroy(other.gameObject);
-            ScoreManager.ChangeScore(10);
+			ScoreManager.ChangeScore(ScoreManager.coinsScore);
         }
 
         if (other.gameObject.tag == "Enemy") {
-            ScoreManager.ChangeScore(-10);
-
+			ScoreManager.ChangeScore(ScoreManager.enemyFailScore);
         }
     }
+
+	void Movement() {
+		transform.Translate(cameraController.speed, 0, 0);
+	}
+
+	void Jump() {
+		if (controller.isGrounded) {
+
+			if (Input.GetKeyDown(KeyCode.Space)) {
+				moveDirection.y = jumpSpeed;
+			}
+
+		} else {
+			moveDirection.y -= gravity;
+		}
+
+		controller.Move(moveDirection * Time.fixedDeltaTime);
+		}
+	}
 }
