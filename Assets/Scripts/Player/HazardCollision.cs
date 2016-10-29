@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 public class HazardCollision : MonoBehaviour {
 
+	ScoreManager scoreManager;
+
     bool isLava = false;
+
+	void Start() {
+		scoreManager = GameObject.Find ("Main Camera").GetComponent<ScoreManager> ();
+	}
+		
 
     void FixedUpdate() {
 
@@ -16,14 +21,15 @@ public class HazardCollision : MonoBehaviour {
         if (Physics.Raycast(transform.position, dwn, out hit)) {
             if (hit.collider.gameObject.tag == "Lava" && hit.distance < 0.5f && isLava == false) {
                 isLava = true;
-                //print("lava");
+				scoreManager.ChangeScore (-10);
+
+                print("lava");
             } else if (hit.collider.gameObject.tag != "Lava") {
                 isLava = false;
             }
         }
 
         if (Physics.Raycast(transform.position, Vector3.right, out hit)) {
-			print (hit.distance);
 
 			if (hit.collider.gameObject.tag == "Box" && hit.distance < 0.2f) {
                 //print("box");
@@ -52,11 +58,6 @@ public class HazardCollision : MonoBehaviour {
         if (col.gameObject.tag == "Box") {
             //Debug.Log("BOX");
         }
-    }
-
-    // Use this for initialization
-    void Start() {
-
     }
 
     // Update is called once per frame
