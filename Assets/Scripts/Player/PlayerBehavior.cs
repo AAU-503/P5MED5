@@ -21,13 +21,17 @@ public class PlayerBehavior : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider other) { // Ability to pick up coins adding to score in ScoreManager and attacking boxes
+        
+        print(other.gameObject);
+        
         if (other.gameObject.CompareTag("Coin")) {
             other.gameObject.SetActive(false);
             scoreManager.ChangeScore(1);
         }
-        if (other.isTrigger != true && other.CompareTag("Box")) {
-            print(other.gameObject);
-            other.SendMessageUpwards("Attacked", attacked);
+
+        if (other.gameObject.tag == "Enemy") {
+            scoreManager.ChangeScore(-10);
+
         }
     }
 }
