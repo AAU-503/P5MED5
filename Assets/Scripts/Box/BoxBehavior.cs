@@ -29,6 +29,7 @@ public class BoxBehavior : MonoBehaviour {
     }
 
     public void Attacked() {
+        ScoreManager.ChangeScore(+ScoreManager.boxHitScore);
 		if (!isDestroyed) {
 			particle.Play();
 			isDestroyed = true;
@@ -36,7 +37,7 @@ public class BoxBehavior : MonoBehaviour {
     }
 
     public void OnBadCollision() {
-
+        ScoreManager.ChangeScore(+ScoreManager.boxFailScore);
         if (!isDestroyed) {
             particle.Play();
             isDestroyed = true;
