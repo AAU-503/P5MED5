@@ -95,7 +95,7 @@ public class TileManager : MonoBehaviour {
         calculating level range (so that for level 1 only level 1 chunks would be spawn,
         but for levels 2 and 3 we could get chenks from lower levels as well)
         */
-        int chosenLevel = Random.Range(1,level+1);
+        int chosenLevel = Random.Range(1, level+1);
 
         switch (chosenLevel) {
             case 3:
