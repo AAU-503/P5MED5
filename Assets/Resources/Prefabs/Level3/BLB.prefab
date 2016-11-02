@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 54884196879459994}
   - component: {fileID: 64527012116704846}
   - component: {fileID: 114716585488421256}
+  - component: {fileID: 114842232112005356}
   m_Layer: 0
   m_Name: BLB
   m_TagString: Ground
@@ -823,6 +824,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snapValue: 0.5
   depth: 0
+--- !u!114 &114842232112005356
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1212156647752340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72558b4c8318646a98c64f3a980b1258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  length: 3
+  spacingMax: 8
+  spacingMin: 4
 --- !u!114 &114869178381128798
 MonoBehaviour:
   m_ObjectHideFlags: 1
