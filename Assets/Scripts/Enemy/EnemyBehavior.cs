@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour {
     //speed can be adjusted to make them harder or easier
-    public float speed = 1;
+    public float speedY = 1;
+    public float speedX = 1;
     public float flyHeight = 2;
 
     public bool isMovingX;
@@ -18,17 +19,17 @@ public class EnemyBehavior : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (isMovingX) {
-            transform.Translate(new Vector3(-speed * Time.deltaTime, Mathf.Cos(Time.time * 10) / 100, 0));
+            transform.Translate(new Vector3(-speedX * Time.deltaTime, Mathf.Cos(Time.time * 10) / 100, 0));
         }
         if (isMovingY)
         {
             if (isMovingUp)
             {
-                transform.Translate(new Vector3(0, +speed * Time.deltaTime, 0));
+                transform.Translate(new Vector3(0, +speedY * Time.deltaTime, 0));
             }
             if (!isMovingUp)
             {
-                transform.Translate(new Vector3(0, -speed * Time.deltaTime, 0));
+                transform.Translate(new Vector3(0, -speedY * Time.deltaTime, 0));
             }
             if (!isMovingX && !isMovingY)
             {
