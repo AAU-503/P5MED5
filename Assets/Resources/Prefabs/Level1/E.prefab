@@ -305,4 +305,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   length: 1
-  spacing: 4
+  spacingMax: 6
+  spacingMin: 2

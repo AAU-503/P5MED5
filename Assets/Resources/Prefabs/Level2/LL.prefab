@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 54675847252760048}
   - component: {fileID: 114596086684773610}
   - component: {fileID: 114897762106451982}
+  - component: {fileID: 114307563850085116}
   m_Layer: 0
   m_Name: LL
   m_TagString: Lava
@@ -530,6 +531,20 @@ Light:
   m_BounceIntensity: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114307563850085116
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1951355708411438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72558b4c8318646a98c64f3a980b1258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  length: 2
+  spacingMax: 7
+  spacingMin: 4
 --- !u!114 &114506407351182712
 MonoBehaviour:
   m_ObjectHideFlags: 1

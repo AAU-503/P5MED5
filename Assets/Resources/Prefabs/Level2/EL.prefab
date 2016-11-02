@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 54026412462784330}
   - component: {fileID: 64732597068886540}
   - component: {fileID: 114213082224806774}
+  - component: {fileID: 114799927318746748}
   m_Layer: 0
   m_Name: EL
   m_TagString: Ground
@@ -565,6 +566,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uvAnimationRate: {x: 0, y: 0}
   textureName: _MainTex
+--- !u!114 &114799927318746748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1989392374732780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72558b4c8318646a98c64f3a980b1258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  length: 2
+  spacingMax: 7
+  spacingMin: 4
 --- !u!114 &114858109886230090
 MonoBehaviour:
   m_ObjectHideFlags: 1

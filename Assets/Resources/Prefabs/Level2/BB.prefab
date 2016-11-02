@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 54228905138832490}
   - component: {fileID: 64151274862168526}
   - component: {fileID: 114468873393045746}
+  - component: {fileID: 114808048595631914}
   m_Layer: 0
   m_Name: BB
   m_TagString: Ground
@@ -563,6 +564,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snapValue: 0.5
   depth: 0
+--- !u!114 &114808048595631914
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1799383784265344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72558b4c8318646a98c64f3a980b1258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  length: 2
+  spacingMax: 7
+  spacingMin: 4
 --- !u!114 &114891656681362206
 MonoBehaviour:
   m_ObjectHideFlags: 1
