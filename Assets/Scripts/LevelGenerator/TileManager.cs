@@ -38,9 +38,9 @@ public class TileManager : MonoBehaviour {
 
     // Use this for initialization
     void Update() {
-        if(ScoreManager.playerScore > 500){
+        if(ScoreManager.playerScore > 200){
             level = 2;
-        } else if (ScoreManager.playerScore > 1500){
+        } else if (200 <= ScoreManager.playerScore && ScoreManager.playerScore > 500){
             level = 3;
         } else {
             level = 1;
