@@ -10,15 +10,20 @@ public class PlayerBehavior : MonoBehaviour
 
 	private Vector3 moveDirection = Vector3.zero;
 	public float jumpSpeed = 20.0f;
+    public float airTime = 2f;
 	public float gravity = 2.0f;
+    public float gravityForce = 3.0f;
 
 	private bool attacked = true;
+    private float forceY = 0;
+    private float invertGravity;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
 	{
 		cameraController = GameObject.Find ("Main Camera").GetComponent<CameraController> ();
 		controller = GetComponent<CharacterController> ();
+        invertGravity = gravity * airTime;
 	}
 
 	// Update is called once per frame
@@ -27,7 +32,10 @@ public class PlayerBehavior : MonoBehaviour
 		
 		Jump ();
 		Movement ();
-	}
+        forceY -= gravity * Time.deltaTime * gravityForce;
+        moveDirection.y = forceY;
+        controller.Move(moveDirection * Time.deltaTime);
+    }
 
 	void OnTriggerEnter (Collider other)
 	{ // Ability to pick up coins adding to score in ScoreManager and attacking boxes
@@ -52,16 +60,19 @@ public class PlayerBehavior : MonoBehaviour
 	void Jump ()
 	{
 		if (controller.isGrounded) {
-
+            forceY = 0;
+            invertGravity = gravity * airTime;
 			if (Input.GetKeyDown (KeyCode.Space)) {
-				moveDirection.y = jumpSpeed;
+				forceY = jumpSpeed;
 			}
 
-		} else {
-			moveDirection.y -= gravity;
 		}
-
-		controller.Move (moveDirection * Time.fixedDeltaTime);
+        if(Input.GetKey(KeyCode.Space) && forceY != 0)
+        {
+            invertGravity -= Time.deltaTime;
+            forceY += invertGravity * Time.deltaTime;
+        }
+       
 	}
 
 }
