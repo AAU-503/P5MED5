@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class HazardCollision : MonoBehaviour {
 
-	ScoreManager scoreManager;
+
 
     bool isLava = false;
 
 	void Start() {
-		scoreManager = GameObject.Find ("Main Camera").GetComponent<ScoreManager> ();
 	}
 		
 
@@ -21,7 +20,7 @@ public class HazardCollision : MonoBehaviour {
         if (Physics.Raycast(transform.position, dwn, out hit)) {
             if (hit.collider.gameObject.tag == "Lava" && hit.distance < 0.5f && isLava == false) {
                 isLava = true;
-				ScoreManager.ChangeScore (-10);
+				ScoreManager.ChangeScore (+ScoreManager.lavaScore);
 
                 print("lava");
             } else if (hit.collider.gameObject.tag != "Lava") {
