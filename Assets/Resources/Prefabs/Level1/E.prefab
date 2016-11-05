@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 65544556821666294}
   - component: {fileID: 23834721503717694}
   - component: {fileID: 54814893216668774}
-  - component: {fileID: 64253798339624884}
   - component: {fileID: 114570939342181450}
   - component: {fileID: 114510924163059314}
   - component: {fileID: 114008988884571498}
@@ -46,7 +45,6 @@ GameObject:
   - component: {fileID: 65406875260143636}
   - component: {fileID: 23557040103398524}
   - component: {fileID: 54798294758975808}
-  - component: {fileID: 64832851779427508}
   - component: {fileID: 114734679710891994}
   - component: {fileID: 114962763234554870}
   m_Layer: 0
@@ -189,34 +187,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!64 &64253798339624884
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1222502261375800}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64832851779427508
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1779286448676468}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!65 &65406875260143636
 BoxCollider:
   m_ObjectHideFlags: 1

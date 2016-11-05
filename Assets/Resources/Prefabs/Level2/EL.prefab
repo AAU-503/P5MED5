@@ -39,7 +39,6 @@ GameObject:
   - component: {fileID: 65753709032491390}
   - component: {fileID: 23850705485911492}
   - component: {fileID: 54134030211345718}
-  - component: {fileID: 64389630491430200}
   - component: {fileID: 114858109886230090}
   - component: {fileID: 114177545144123534}
   - component: {fileID: 114595041789286404}
@@ -117,7 +116,6 @@ GameObject:
   - component: {fileID: 65162373802675606}
   - component: {fileID: 23035145851434448}
   - component: {fileID: 54026412462784330}
-  - component: {fileID: 64732597068886540}
   - component: {fileID: 114213082224806774}
   - component: {fileID: 114799927318746748}
   m_Layer: 0
@@ -369,34 +367,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!64 &64389630491430200
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1527575945479874}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64732597068886540
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1989392374732780}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!65 &65162373802675606
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1167,6 +1137,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
+    m_CombineMode: 0
     cnt0: 30
     cnt1: 30
     cnt2: 30
