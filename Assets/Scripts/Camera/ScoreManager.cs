@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ScoreManager : MonoBehaviour {
 
-    static float playerScore = 0;
+    static public float playerScore = 0;
 
 	static public int coinsScore = 10;
 	static public int boxHitScore = 2;
