@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 65522834696081110}
   - component: {fileID: 23953676491282754}
   - component: {fileID: 54130235231331522}
-  - component: {fileID: 64199293330155634}
   - component: {fileID: 114242961405103054}
   m_Layer: 0
   m_Name: Tile_Ground (1)
@@ -44,7 +43,6 @@ GameObject:
   - component: {fileID: 65673688577361314}
   - component: {fileID: 23294575717439862}
   - component: {fileID: 54585087384104066}
-  - component: {fileID: 64102245900776390}
   - component: {fileID: 114010428120829216}
   - component: {fileID: 114726101237316752}
   - component: {fileID: 114792208928952906}
@@ -67,7 +65,6 @@ GameObject:
   - component: {fileID: 65309702274656320}
   - component: {fileID: 23438900659321712}
   - component: {fileID: 54007527298028754}
-  - component: {fileID: 64522447509808030}
   - component: {fileID: 114987305494443128}
   - component: {fileID: 114477525390158700}
   m_Layer: 0
@@ -396,48 +393,6 @@ Rigidbody:
   m_Interpolate: 2
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &64102245900776390
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1112943982578822}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64199293330155634
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1032527502380248}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64522447509808030
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1545932231600680}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!65 &65163833775182608
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1121,6 +1076,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
+    m_CombineMode: 0
     cnt0: 30
     cnt1: 30
     cnt2: 30

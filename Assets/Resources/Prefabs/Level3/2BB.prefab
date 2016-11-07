@@ -121,7 +121,6 @@ GameObject:
   - component: {fileID: 65220298629710872}
   - component: {fileID: 23520535202871796}
   - component: {fileID: 54024368378792278}
-  - component: {fileID: 64619592591977788}
   - component: {fileID: 114519386583979348}
   m_Layer: 0
   m_Name: Tile_Ground (1)
@@ -163,7 +162,6 @@ GameObject:
   - component: {fileID: 65567814342523664}
   - component: {fileID: 23011696984024940}
   - component: {fileID: 54507206108885436}
-  - component: {fileID: 64267393849376156}
   - component: {fileID: 114734287261161936}
   m_Layer: 0
   m_Name: Tile_Ground (2)
@@ -632,34 +630,6 @@ Rigidbody:
   m_Interpolate: 2
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &64267393849376156
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1929998842149458}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64619592591977788
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1812786925741642}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!64 &64764374562650104
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -1405,6 +1375,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
+    m_CombineMode: 0
     cnt0: 30
     cnt1: 30
     cnt2: 30
@@ -3896,6 +3867,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
+    m_CombineMode: 0
     cnt0: 30
     cnt1: 30
     cnt2: 30
@@ -6387,6 +6359,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
+    m_CombineMode: 0
     cnt0: 30
     cnt1: 30
     cnt2: 30
