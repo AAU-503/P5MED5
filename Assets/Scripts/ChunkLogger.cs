@@ -13,7 +13,7 @@ public class ChunkLogger : MonoBehaviour {
 
     private const float detectionThreshold = 0.2f;
     private const float margin = 0.01f;
-    private const float resolution = 4.0f;
+    private const float resolution = 7.0f;
 
     // Use this for initialization
     void Start() {
@@ -52,7 +52,7 @@ public class ChunkLogger : MonoBehaviour {
                 for (int i = 0; i < chunkWidth * resolution; i += 1) {
                     if (posMem[i, j].transform.position.x < player.transform.position.x + detectionThreshold && posMem[i, j].transform.position.x > player.transform.position.x - detectionThreshold
                         && posMem[i, j].transform.position.y < player.transform.position.y + detectionThreshold && posMem[i, j].transform.position.y > player.transform.position.y - detectionThreshold) {
-                        posMem[i, j].GetComponent<Renderer>().material.color = new Vector4(0f, 255f, 0f, 0.1f);
+                        posMem[i, j].GetComponent<Renderer>().material.color = new Vector4(0f, 2f, 0f, 0.1f);
                     }
                 }
             }
