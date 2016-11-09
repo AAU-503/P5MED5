@@ -885,6 +885,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
+    m_CombineMode: 0
     cnt0: 30
     cnt1: 30
     cnt2: 30

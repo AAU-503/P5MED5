@@ -13,7 +13,7 @@ public class PlayerAttack : MonoBehaviour {
 
     public Collider attackTriggerGround;
     public Collider attackTriggerAir;
-    public Animator animator; 
+    public Animator animator;
 
     void Start() {
         animator = GetComponentInChildren<Animator>();
