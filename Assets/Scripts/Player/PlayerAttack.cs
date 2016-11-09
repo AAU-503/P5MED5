@@ -13,6 +13,11 @@ public class PlayerAttack : MonoBehaviour {
 
     public Collider attackTriggerGround;
     public Collider attackTriggerAir;
+    public Animator animator; 
+
+    void Start() {
+        animator = GetComponentInChildren<Animator>();
+    }
 
     void Awake()
     {
@@ -25,6 +30,8 @@ public class PlayerAttack : MonoBehaviour {
         {
         if (Input.GetKeyDown("w") && !attacking && controller.isGrounded)//Change attack key input here
             {
+            animator.SetTrigger("Attack_Ground");
+
             attacking = true;
             attackTimer = attackCooldown;
 

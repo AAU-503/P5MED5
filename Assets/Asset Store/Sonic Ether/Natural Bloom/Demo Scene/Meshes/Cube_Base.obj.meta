@@ -6,15 +6,25 @@ ModelImporter:
     100000: Cube2_pCube26_Cube2_polySurface2 Cube2_polySurface3 polySurface57 polySurface1
     100002: Cube2_polySurface3_Cube_pCube26 polySurface2 polySurface57 polySurface1
     100004: //RootNode
+    100006: Cube2_pCube26_Cube2_polySurface2_Cube2_polySurface3_polySurface57_polySurface1
+    100008: Cube2_polySurface3_Cube_pCube26_polySurface2_polySurface57_polySurface1
     400000: Cube2_pCube26_Cube2_polySurface2 Cube2_polySurface3 polySurface57 polySurface1
     400002: Cube2_polySurface3_Cube_pCube26 polySurface2 polySurface57 polySurface1
     400004: //RootNode
+    400006: Cube2_pCube26_Cube2_polySurface2_Cube2_polySurface3_polySurface57_polySurface1
+    400008: Cube2_polySurface3_Cube_pCube26_polySurface2_polySurface57_polySurface1
     2300000: Cube2_pCube26_Cube2_polySurface2 Cube2_polySurface3 polySurface57 polySurface1
     2300002: Cube2_polySurface3_Cube_pCube26 polySurface2 polySurface57 polySurface1
+    2300004: Cube2_pCube26_Cube2_polySurface2_Cube2_polySurface3_polySurface57_polySurface1
+    2300006: Cube2_polySurface3_Cube_pCube26_polySurface2_polySurface57_polySurface1
     3300000: Cube2_pCube26_Cube2_polySurface2 Cube2_polySurface3 polySurface57 polySurface1
     3300002: Cube2_polySurface3_Cube_pCube26 polySurface2 polySurface57 polySurface1
+    3300004: Cube2_pCube26_Cube2_polySurface2_Cube2_polySurface3_polySurface57_polySurface1
+    3300006: Cube2_polySurface3_Cube_pCube26_polySurface2_polySurface57_polySurface1
     4300000: Cube2_pCube26_Cube2_polySurface2 Cube2_polySurface3 polySurface57 polySurface1
     4300002: Cube2_polySurface3_Cube_pCube26 polySurface2 polySurface57 polySurface1
+    4300004: Cube2_pCube26_Cube2_polySurface2_Cube2_polySurface3_polySurface57_polySurface1
+    4300006: Cube2_polySurface3_Cube_pCube26_polySurface2_polySurface57_polySurface1
     9500000: //RootNode
   materials:
     importMaterials: 1
