@@ -5,11 +5,16 @@ ModelImporter:
   fileIDToRecycleName:
     100000: Cube2_polySurface3_Cube_pCube26 polySurface2 polySurface3
     100002: //RootNode
+    100004: Cube2_polySurface3_Cube_pCube26_polySurface2_polySurface3
     400000: Cube2_polySurface3_Cube_pCube26 polySurface2 polySurface3
     400002: //RootNode
+    400004: Cube2_polySurface3_Cube_pCube26_polySurface2_polySurface3
     2300000: Cube2_polySurface3_Cube_pCube26 polySurface2 polySurface3
+    2300002: Cube2_polySurface3_Cube_pCube26_polySurface2_polySurface3
     3300000: Cube2_polySurface3_Cube_pCube26 polySurface2 polySurface3
+    3300002: Cube2_polySurface3_Cube_pCube26_polySurface2_polySurface3
     4300000: Cube2_polySurface3_Cube_pCube26 polySurface2 polySurface3
+    4300002: Cube2_polySurface3_Cube_pCube26_polySurface2_polySurface3
     9500000: //RootNode
   materials:
     importMaterials: 1

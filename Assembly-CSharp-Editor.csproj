@@ -59,6 +59,7 @@
      <None Include="Assets\Asset Store\2D Platformer Controller\LICENSE02.txt" />
      <None Include="Assets\Asset Store\2D Platformer Controller\LICENSE.txt" />
      <None Include="Assets\Asset Store\Lava_Flowing_Shader\ReadMe.txt" />
+     <None Include="Assets\Shaders\See_through.shader" />
      <None Include="Assets\Asset Store\FXAA\Shaders\Fxaa3_9.cginc" />
      <None Include="Assets\Asset Store\Sonic Ether\Natural Bloom\Shaders\SEEmissiveTextured.shader" />
  <Reference Include="UnityEngine.Advertisements">

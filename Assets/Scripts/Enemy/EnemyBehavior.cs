@@ -38,6 +38,7 @@ public class EnemyBehavior : MonoBehaviour {
         }
         if (isDestroyed)
         {
+            GetComponent<AudioSource>().Play(); 
             Destroy(gameObject);
         }
         if (isMovingUp && transform.position.y >= flyHeight)
