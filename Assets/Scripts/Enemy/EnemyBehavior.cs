@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour {
     //speed can be adjusted to make them harder or easier
-    public float speedY = 1;
+    public float speedY = 2;
     public float speedX = 1;
     public float flyHeight = 2;
+    public float revertHeight = -1.5f;
 
     public bool isMovingX;
     public bool isMovingY;
@@ -44,7 +45,7 @@ public class EnemyBehavior : MonoBehaviour {
         if (isMovingUp && transform.position.y >= flyHeight)
         {
             isMovingUp = false;
-        }else if (!isMovingUp && transform.position.y <= 0)
+        }else if (!isMovingUp && transform.position.y <= revertHeight)
         {
             isMovingUp = true;
         }
