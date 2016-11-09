@@ -18,7 +18,6 @@ public class EnemyBehavior : MonoBehaviour {
 
         if (isDestroyed)
         {
-            GetComponent<AudioSource>().Play(); 
             Destroy(gameObject);
         }
     }
