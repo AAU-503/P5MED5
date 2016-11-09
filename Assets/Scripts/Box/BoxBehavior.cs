@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BoxBehavior : MonoBehaviour {
 
+    public AudioClip boxBreak;
+
     private Renderer rend;
     private ParticleSystem particle;
 
@@ -14,6 +16,7 @@ public class BoxBehavior : MonoBehaviour {
         particle = GetComponentInChildren<ParticleSystem>();
 
         rend.enabled = true;
+        
     }
 
     // Update is called once per frame
@@ -31,8 +34,10 @@ public class BoxBehavior : MonoBehaviour {
     public void Attacked() {
         ScoreManager.ChangeScore(+ScoreManager.boxHitScore);
 		if (!isDestroyed) {
+            GetComponent<AudioSource>().Play();
 			particle.Play();
 			isDestroyed = true;
+            
 		}
     }
 
@@ -41,6 +46,7 @@ public class BoxBehavior : MonoBehaviour {
 
         ScoreManager.ChangeScore(+ScoreManager.boxFailScore);
         if (!isDestroyed) {
+            GetComponent<AudioSource>().Play();
             particle.Play();
             isDestroyed = true;
             }
