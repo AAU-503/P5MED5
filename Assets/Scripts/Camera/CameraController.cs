@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
 
 	public Transform player;
 
-	public static float speed = 0.1f;
+	public static float speed = 8f;
 	public static float xAdd;
 
 	private static float setTime;
@@ -17,20 +17,66 @@ public class CameraController : MonoBehaviour
 	private Vector3 startPosition;
 	private Vector3 shakeVector;
 
+    bool realtime = true;
+    int state = 1;
+    float sTime;
+
 
 	void Start () {
 		startPosition = transform.position;
-	}
+        Time.timeScale = 1f;
 
-	void Update (){
+    }
+
+    void Update (){
 		
-		xAdd += speed;
+		xAdd += speed * Time.deltaTime;
 
 		transform.position = startPosition + Movement() + Shake();
 
-	}
+            StartCoroutine("SlowTime");
+            StartCoroutine("SpeedTime");
 
-	Vector3 Movement() {
+
+    }
+
+    IEnumerator SlowTime() {
+        if (Input.GetKeyDown(KeyCode.E)) {
+            realtime = false;
+            state = 1; 
+        }
+
+        switch (state) {
+            case 1:
+
+                if (realtime == false && Time.timeScale > 0.2f) {
+                    Time.timeScale -= (3f) * Time.deltaTime;
+                } else {
+                    sTime = Time.unscaledTime + 3;
+                    state = 2;
+                }
+
+                break;
+             
+            case 2:
+
+                if (Time.unscaledTime > sTime) {
+                    if (realtime == false && Time.timeScale < 1.0f) {
+                        Time.timeScale += (1 - Time.timeScale) * Time.deltaTime;
+                    } else {
+                        state = 0;
+                    }
+                }
+
+                break;
+    }
+
+        yield return null;
+    }
+
+
+
+    Vector3 Movement() {
 		return new Vector3 (xAdd, 0, 0);
 	}
 

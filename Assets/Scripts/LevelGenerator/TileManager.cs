@@ -24,6 +24,7 @@ public class TileManager : MonoBehaviour {
 
 
     void Start() {
+
         //load to array
       level1Chunks = Resources.LoadAll<GameObject>("Prefabs/Level1");
       level2Chunks = Resources.LoadAll<GameObject>("Prefabs/Level2");
@@ -55,10 +56,13 @@ public class TileManager : MonoBehaviour {
             px = (int)transform.position.x;
         }
         x = (int)transform.position.x;
+
     }
 
     void Spawn() {
-         if (currentTile == null){
+        print("here");
+
+         if (currentTile == null) {
              //when player in level 1
 
              if (level == 1)
@@ -81,10 +85,11 @@ public class TileManager : MonoBehaviour {
          spacing = Random.Range(prefabDescription.spacingMin,prefabDescription.spacingMax);
          //calculates the tiles possition on prefab location
          target = (int)currentTile.GetComponent<Transform>().position.x + prefabDescription.length;
+
         }
-     
-// if current tile x position is in the range of spacing, spawn ground tile
-    if (x >= (int)currentTile.GetComponent<Transform>().position.x + prefabDescription.length && x < target + spacing ){
+
+        // if current tile x position is in the range of spacing, spawn ground tile
+        if (x >= (int)currentTile.GetComponent<Transform>().position.x + prefabDescription.length && x < target + spacing ){
         //spawn ground   tiles
         tiles.Add(Instantiate(groundTile, transform.position, Quaternion.identity));
         
@@ -125,7 +130,7 @@ public class TileManager : MonoBehaviour {
         
         target = (int)currentTile.GetComponent<Transform>().position.x + prefabDescription.length;
     } 
-        if (tiles.Count > 50) {
+        if (tiles.Count > 40) {
             Destroy(tiles[0]);
             tiles.RemoveAt(0);
         }

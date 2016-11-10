@@ -58,7 +58,6 @@ GameObject:
   - component: {fileID: 23531116111622074}
   - component: {fileID: 54148952612397222}
   - component: {fileID: 114513890447831130}
-  - component: {fileID: 114599879663687768}
   m_Layer: 0
   m_Name: Lava_lvl_1
   m_TagString: Lava
@@ -89,7 +88,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1396790873299228}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.5, y: -2.5, z: 0}
+  m_LocalPosition: {x: -5, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4305573473228020}
@@ -150,7 +149,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: c5b6432eb5c5ecd41a1c5065d2686911, type: 2}
+  - {fileID: 2100000, guid: 1e1a9afa1f94bff43bf8f9d7e70e7689, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -213,7 +212,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 0.8068966, b: 0, a: 1}
   m_Intensity: 8
-  m_Range: 1.9411049
+  m_Range: 0.97
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -247,7 +246,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 0.8068966, b: 0, a: 1}
   m_Intensity: 8
-  m_Range: 1.9411049
+  m_Range: 0.97
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -296,19 +295,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snapValue: 0.5
   depth: 0
---- !u!114 &114599879663687768
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1396790873299228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3d28cb150ad86f4a8100312a4aea7a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uvAnimationRate: {x: 0.3, y: 0}
-  textureName: _MainTex
 --- !u!198 &198324997844623702
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -870,6 +856,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
+    m_CombineMode: 0
     cnt0: 30
     cnt1: 30
     cnt2: 30
