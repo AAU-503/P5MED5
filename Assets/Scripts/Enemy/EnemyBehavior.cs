@@ -21,14 +21,22 @@ public class EnemyBehavior : MonoBehaviour {
     float x;
     float y;
 
+    float x_speed;
+    float y_speed;
+
 
     void Start() {
         startPos = transform.position;
         horizontalOffset = 3.0f;
         verticalOffset = 3.0f;
 
-        y = Random.Range(0.0f, 1.0f);        
-            print(y);
+        x = Random.Range(0.0f, 1.0f);
+        y = Random.Range(0.0f, 1.0f);
+        x_speed = Random.Range(1.0f, 3.0f);
+        y_speed = Random.Range(1.0f, 3.0f);
+
+
+        print(y);
 
     }
 
@@ -37,25 +45,25 @@ public class EnemyBehavior : MonoBehaviour {
 
 
         if (y < 1.0f && isMovingUp) {
-            y += (1.05f - y) * 2.5f * Time.deltaTime;
+            y += (1.05f - y) * y_speed * Time.deltaTime;
         } else if (y >= 1.0f) {
             isMovingUp = !isMovingUp;
         }
 
         if (y > 0.0f && !isMovingUp) {
-            y -= (y - -0.05f) * 3f * Time.deltaTime;
+            y -= (y - -0.05f) * y_speed * Time.deltaTime;
         } else if (y <= 0.0f) {
             isMovingUp = !isMovingUp;
         }
 
         if (x < 1.0f && isMovingX) {
-            x += (1.05f - x) * 2.5f * Time.deltaTime;
+            x += (1.05f - x) * x_speed * Time.deltaTime;
         } else if (x >= 1.0f) {
             isMovingX = !isMovingX;
         }
 
         if (x > 0.0f && !isMovingX) {
-            x -= (x - -0.05f) * 3f * Time.deltaTime;
+            x -= (x - -0.05f) * x_speed * Time.deltaTime;
         } else if (x <= 0.0f) {
             isMovingX = !isMovingX;
         }
