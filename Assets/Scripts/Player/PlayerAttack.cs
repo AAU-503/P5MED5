@@ -15,9 +15,13 @@ public class PlayerAttack : MonoBehaviour {
     public Collider attackTriggerAir;
     public Animator animator_ground;
     public Animator animator_air;
+    
+    public AudioClip airAttack; 
+    
+    public AudioSource audioSource;
 
     void Start() {
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Awake()
@@ -41,11 +45,16 @@ public class PlayerAttack : MonoBehaviour {
         else if (Input.GetKeyDown("w") && !attacking && !controller.isGrounded)//Change attack key input here
         {
             animator_air.SetTrigger("Attack_Air");
+           
 
             attacking = true;
             attackTimer = attackCooldown;
 
             attackTriggerAir.enabled = true;
+            
+            audioSource.clip = airAttack;
+            audioSource.Play();
+            
         }
         if (attacking)
             {

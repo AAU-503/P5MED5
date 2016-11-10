@@ -15,8 +15,10 @@ public class EnemyBehavior : MonoBehaviour {
     public bool isDestroyed = false;
 
     void Start() {
+        GetComponent<AudioSource>().Play(); 
+        
     }
-
+ 
     // Update is called once per frame
     void Update() {
         if (isMovingX) {
@@ -39,7 +41,7 @@ public class EnemyBehavior : MonoBehaviour {
         }
         if (isDestroyed)
         {
-            GetComponent<AudioSource>().Play(); 
+            GetComponent<AudioSource>().Stop();
             Destroy(this.gameObject);
         }
         if (isMovingUp && transform.position.y >= flyHeight)
