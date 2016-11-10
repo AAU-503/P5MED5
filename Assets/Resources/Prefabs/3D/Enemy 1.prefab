@@ -150,7 +150,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d0892952af115c44b19aaea00ab58d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speedY: 2
+  speedX: 1
+  flyHeight: 2
+  revertHeight: -1.5
+  isMovingX: 0
+  isMovingY: 0
   isDestroyed: 0
 --- !u!114 &114885674756022690
 MonoBehaviour:
@@ -164,4 +169,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uvAnimationRate: {x: 0, y: 0}
-  textureName: _MainTex
+  textureName: 5f4d61696e546578
+  uvOffset: {x: 0, y: 0}

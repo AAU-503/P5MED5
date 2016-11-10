@@ -17,6 +17,8 @@ public class PlayerAttack : MonoBehaviour {
     public Animator animator_air;
     
     public AudioClip airAttack; 
+     
+    public AudioClip groundAttack; 
     
     public AudioSource audioSource;
 
@@ -41,6 +43,8 @@ public class PlayerAttack : MonoBehaviour {
             attackTimer = attackCooldown;
 
             attackTriggerGround.enabled = true;
+            audioSource.clip = groundAttack;
+            audioSource.Play();
             }
         else if (Input.GetKeyDown("w") && !attacking && !controller.isGrounded)//Change attack key input here
         {
