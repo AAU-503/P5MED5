@@ -35,8 +35,6 @@ public class CameraController : MonoBehaviour
 		transform.position = startPosition + Movement() + Shake();
 
             StartCoroutine("SlowTime");
-            StartCoroutine("SpeedTime");
-
 
     }
 

@@ -25,11 +25,11 @@ public class SnapToGridInParent : MonoBehaviour {
 
         // If snapValue = .5, x = 1.45 -> snapInverse = 2 -> x*2 => 2.90 -> round 2.90 => 3 -> 3/2 => 1.5
         // so 1.45 to nearest .5 is 1.5
-        x = (Mathf.Round(startPosX + camera.transform.position.x * snapInverse) / snapInverse) - 0.5f;
+        //x = (Mathf.Round(startPosX + camera.transform.position.x * snapInverse) / snapInverse) - 0.5f;
         y = (Mathf.Round(transform.position.y * snapInverse) / snapInverse) - 0.5f;
         z = depth;  
 
-        transform.position = new Vector3(x, y, z);
+        transform.position = new Vector3(startPosX + camera.transform.position.x, y, z);
 
     }
 }
