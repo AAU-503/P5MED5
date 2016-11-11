@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour {
     //speed can be adjusted to make them harder or easier
+    public GameObject Bullet;
+
     public float speedY = 2;
     public float speedX = 1;
     public float flyHeight = 2;
@@ -24,6 +26,8 @@ public class EnemyBehavior : MonoBehaviour {
     float x_speed;
     float y_speed;
 
+    public float offsetPos = 3.0f;
+
     void Start() {
         startPos = transform.position;
         horizontalOffset = 3.0f;
@@ -39,10 +43,22 @@ public class EnemyBehavior : MonoBehaviour {
     void Update() {
 
 
+if(transform.position.x > GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position.x + offsetPos){
+    transform.LookAt(GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position);
+}
+        
+
+
         if (y < 1.0f && isMovingUp) {
             y += (1.05f - y) * y_speed * Time.deltaTime;
         } else if (y >= 1.0f) {
             isMovingUp = !isMovingUp;
+
+            if(transform.position.x > GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position.x + offsetPos) {
+                if (GameObject.FindGameObjectsWithTag("Bullet").Length < 2)
+                shoot();
+            }
+            
         }
 
         if (y > 0.0f && !isMovingUp) {
@@ -71,6 +87,10 @@ public class EnemyBehavior : MonoBehaviour {
             Destroy(gameObject);
         }
 
+    }
+
+    public void shoot(){
+        Instantiate(Bullet, transform.position, Quaternion.identity);
     }
 
     public void Attacked() {

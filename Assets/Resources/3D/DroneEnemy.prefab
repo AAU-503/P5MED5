@@ -517,7 +517,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -571,6 +571,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d0892952af115c44b19aaea00ab58d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Bullet: {fileID: 1898594025646614, guid: 0b599936717604bd08ad8843db49829a, type: 2}
   speedY: 2
   speedX: 1
   flyHeight: 1
@@ -578,6 +579,9 @@ MonoBehaviour:
   isMovingX: 0
   isMovingY: 1
   isDestroyed: 0
+  startPos: {x: 0, y: 0, z: 0}
+  horizontalOffset: 0
+  verticalOffset: 0
 --- !u!114 &114963239959391368
 MonoBehaviour:
   m_ObjectHideFlags: 1
