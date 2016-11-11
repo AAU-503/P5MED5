@@ -244,7 +244,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4045569195827050, guid: 6d7c3c3e8d0884845be028d17d00eb5f, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: gameObject
@@ -278,7 +278,19 @@ Prefab:
       value: 
       objectReference: {fileID: 1064099506557140, guid: 75916eedf81610d4d9c08460d136a373,
         type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 114251935506777010, guid: 6d7c3c3e8d0884845be028d17d00eb5f,
+        type: 2}
+      propertyPath: empty_prefab
+      value: 
+      objectReference: {fileID: 1232294691165558, guid: 1d741e6f3c71e0945b7106e21a2c6b7c,
+        type: 2}
+    - target: {fileID: 114251935506777010, guid: 6d7c3c3e8d0884845be028d17d00eb5f,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114251935506777010, guid: 6d7c3c3e8d0884845be028d17d00eb5f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6d7c3c3e8d0884845be028d17d00eb5f, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &654482839
@@ -565,6 +577,33 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!1 &1338702741 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1110652860291414, guid: 6d7c3c3e8d0884845be028d17d00eb5f,
+    type: 2}
+  m_PrefabInternal: {fileID: 576305925}
+--- !u!114 &1338702742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1338702741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1084e62b0c366f14c84bcf959f1f504a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiles: []
+  player: {fileID: 1168706778}
+  spacing_prefab: {fileID: 1064099506557140, guid: 75916eedf81610d4d9c08460d136a373,
+    type: 2}
+  empty_prefab: {fileID: 1232294691165558, guid: 1d741e6f3c71e0945b7106e21a2c6b7c,
+    type: 2}
+  level1Chunks: []
+  level2Chunks: []
+  level3Chunks: []
+  offset: 10
+  counter: 1
 --- !u!1 &1475737807
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,7 +925,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1941387488
 GameObject:

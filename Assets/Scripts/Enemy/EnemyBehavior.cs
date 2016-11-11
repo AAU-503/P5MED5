@@ -24,7 +24,6 @@ public class EnemyBehavior : MonoBehaviour {
     float x_speed;
     float y_speed;
 
-
     void Start() {
         startPos = transform.position;
         horizontalOffset = 3.0f;
@@ -34,10 +33,6 @@ public class EnemyBehavior : MonoBehaviour {
         y = Random.Range(0.0f, 1.0f);
         x_speed = Random.Range(1.0f, 3.0f);
         y_speed = Random.Range(1.0f, 3.0f);
-
-
-        print(y);
-
     }
 
     // Update is called once per frame
@@ -73,7 +68,7 @@ public class EnemyBehavior : MonoBehaviour {
         if (isDestroyed)
         {
             GetComponent<AudioSource>().Play(); 
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
 
     }

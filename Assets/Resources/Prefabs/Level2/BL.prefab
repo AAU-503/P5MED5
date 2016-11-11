@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4958795053738770}
   - component: {fileID: 114658314385231272}
   - component: {fileID: 114519659133685934}
+  - component: {fileID: 114665038094480498}
   m_Layer: 0
   m_Name: BL
   m_TagString: Untagged
@@ -199,6 +200,7 @@ MonoBehaviour:
   length: 2
   spacingMax: 7
   spacingMin: 5
+  spacing: 0
 --- !u!114 &114658314385231272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -212,6 +214,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snapValue: 0.5
   depth: 0
+--- !u!114 &114665038094480498
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1405416065200020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73a1f9549b4ffd84e90b137f830d5f4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  check: 0
 --- !u!114 &114705720989253290
 MonoBehaviour:
   m_ObjectHideFlags: 1

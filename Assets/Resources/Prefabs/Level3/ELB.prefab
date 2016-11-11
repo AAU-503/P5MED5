@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4433196870840574}
   - component: {fileID: 114459447856478458}
   - component: {fileID: 114348884104626798}
+  - component: {fileID: 114541283725617070}
   m_Layer: 0
   m_Name: ELB
   m_TagString: Untagged
@@ -261,6 +262,7 @@ MonoBehaviour:
   length: 3
   spacingMax: 5
   spacingMin: 8
+  spacing: 0
 --- !u!114 &114459447856478458
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -298,6 +300,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1929234556944312, guid: 42e4bd70642ac924da322190c9efc5d0, type: 2}
+--- !u!114 &114541283725617070
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1115525658571886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73a1f9549b4ffd84e90b137f830d5f4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  check: 0
 --- !u!114 &114613916308479272
 MonoBehaviour:
   m_ObjectHideFlags: 1

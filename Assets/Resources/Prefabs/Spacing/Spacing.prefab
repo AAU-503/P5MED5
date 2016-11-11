@@ -135,5 +135,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   length: 1
-  spacingMax: 5
-  spacingMin: 3
+  spacingMax: 1
+  spacingMin: 1
+  spacing: 0
