@@ -7,12 +7,15 @@ public class HazardCollision : MonoBehaviour {
     bool isLava = false;
     float setTime;
 
+    public ParticleSystem fire;
+    public ParticleSystem plasma; 
+
 	void Start() {
 	}
 
     void Update() {
-        if (GetComponentInChildren<ParticleSystem>().IsAlive() && Time.time > setTime) {
-            GetComponentInChildren<ParticleSystem>().Stop();
+        if (fire.IsAlive() && Time.time > setTime) {
+            fire.Stop();
         }
     }
 		
@@ -50,17 +53,27 @@ public class HazardCollision : MonoBehaviour {
                 //right now it just prints enemy to the debug log, I don't what script I need to change stuff in for it to subtract score
                 Debug.Log("enemy", gameObject);
             }
-
-
         }
     }
 
 
-    void OnCollisionEnter(Collision col) {
-        //Debug.Log("OnCollisionEnter : this :" + name + "  :  other : " + col.gameObject.name);
+    void OnTriggerEnter(Collider other) { // Ability to pick up coins adding to score in ScoreManager and attacking boxes
 
-        if (col.gameObject.tag == "Box") {
-            //Debug.Log("BOX");
+        print(other.gameObject);
+
+        if (other.gameObject.CompareTag("Coin")) {
+            Destroy(other.gameObject);
+            ScoreManager.ChangeScore(ScoreManager.coinsScore);
+        }
+
+        if (other.gameObject.tag == "Enemy") {
+            ScoreManager.ChangeScore(ScoreManager.enemyFailScore);
+        }
+
+        if (other.gameObject.tag == "Bullet") {
+            plasma.Play();
+            other.gameObject.GetComponent<BulletBehavior>().Destroy();
+            ScoreManager.ChangeScore(ScoreManager.bulletScore);
         }
     }
 

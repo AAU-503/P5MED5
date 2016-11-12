@@ -60,7 +60,6 @@ public class CameraController : MonoBehaviour
 
                 } else if (Time.timeScale < 0.95f) { 
                     Time.timeScale += (1 - Time.timeScale) * 1.2f * Time.deltaTime;
-                    print(Time.timeScale);
                 } else {
                     Time.timeScale = 1.0f;
                     slowTime = false;

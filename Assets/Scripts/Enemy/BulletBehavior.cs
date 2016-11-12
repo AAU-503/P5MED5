@@ -9,6 +9,8 @@ public class BulletBehavior : MonoBehaviour {
 	public float lifeTime = 2.0f;
 	public float normOffset;
 	public float offsetPos;
+    private bool isDestroyed;
+    public ParticleSystem particle;
 
 	// Use this for initialization
 	void Start () {
@@ -19,12 +21,22 @@ public class BulletBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-
-		transform.position += toPlayer  * speed * Time.deltaTime;
 		
 		if (Time.time > startTime + speed) {
 			Destroy(gameObject);
 		}
-	}
+
+        if (isDestroyed) {
+                Destroy(gameObject);
+            
+        } else {
+            transform.position += toPlayer * speed * Time.deltaTime;
+        }
+    }
+
+    public void Destroy() {
+
+        isDestroyed = true;
+
+    }
 }
