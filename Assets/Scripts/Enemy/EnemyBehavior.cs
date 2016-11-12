@@ -106,7 +106,7 @@ public class EnemyBehavior : MonoBehaviour {
         transform.position = new Vector3(startPos.x + Mathf.Lerp(0, horizontalOffset, x), startPos.y + Mathf.Lerp(0, verticalOffset, y), startPos.z);
 
         if (isDestroyed) {
-            //FloatingTextController.CreatePopupText(ScoreManager.enemyKillScore.ToString(), transform);
+            FloatingTextController.CreatePopupText(ScoreManager.enemyKillScore.ToString(), transform);
             GetComponent<AudioSource>().Stop();
             Destroy(this.gameObject);
         }
