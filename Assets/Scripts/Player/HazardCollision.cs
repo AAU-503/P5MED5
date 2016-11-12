@@ -30,7 +30,7 @@ public class HazardCollision : MonoBehaviour {
                 isLava = true;
 				ScoreManager.ChangeScore (+ScoreManager.lavaScore);
 
-                GetComponentInChildren<ParticleSystem>().Play();
+                fire.Play();
                 setTime = Time.time + 1.0f;
 
             } else if (hit.collider.gameObject.tag != "Lava") {
