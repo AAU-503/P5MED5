@@ -14,8 +14,6 @@ public class EnemyBehavior : MonoBehaviour {
     private bool isMovingUp;
     public bool isDestroyed = false;
 
-    public Canvas
-
     private float startTime;
 
     void Start() {
