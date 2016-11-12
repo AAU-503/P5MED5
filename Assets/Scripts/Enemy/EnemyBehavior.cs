@@ -36,8 +36,11 @@ public class EnemyBehavior : MonoBehaviour {
         y = Random.Range(0.0f, 1.0f);
         x_speed = Random.Range(1.0f, 3.0f);
         y_speed = Random.Range(1.0f, 3.0f);
-    }
 
+        GetComponent<AudioSource>().Play(); 
+        
+    }
+ 
     // Update is called once per frame
     void Update() {
 
@@ -77,6 +80,11 @@ public class EnemyBehavior : MonoBehaviour {
             y -= (y - -0.05f) * y_speed * Time.deltaTime;
         } else if (y <= 0.0f) {
             isMovingY = !isMovingY;
+
+        if (isDestroyed)
+        {
+            GetComponent<AudioSource>().Stop();
+            Destroy(this.gameObject);
         }
 
         if (x < 1.0f && isMovingX) {

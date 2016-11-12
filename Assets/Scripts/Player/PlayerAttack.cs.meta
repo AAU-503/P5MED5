@@ -1,10 +1,17 @@
 fileFormatVersion: 2
 guid: a6e2711fcad59ba47bf6208c1fcf7e2b
-timeCreated: 1477480403
+timeCreated: 1478792375
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - attackTriggerGround: {instanceID: 0}
+  - attackTriggerAir: {instanceID: 0}
+  - animator_ground: {instanceID: 0}
+  - animator_air: {instanceID: 0}
+  - airAttack: {fileID: 8300000, guid: c7d72270c837444c2b154847c4dac7b2, type: 3}
+  - groundAttack: {fileID: 8300000, guid: c55b590261c0b45c79302933b7299faa, type: 3}
+  - audioSource: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
