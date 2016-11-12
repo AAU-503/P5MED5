@@ -24,6 +24,8 @@ public class EnemyBehavior : MonoBehaviour {
     private float horizontalOffset;
     private float verticalOffset;
 
+    private float startTime;
+
     void Start() {
 
         explosion = GetComponentInChildren<ParticleSystem>();
@@ -39,6 +41,9 @@ public class EnemyBehavior : MonoBehaviour {
 
         GetComponent<AudioSource>().Play();
 
+        //FloatingTextController.Initialize();
+        startTime = Time.time;
+
     }
 
     // Update is called once per frame
@@ -48,6 +53,7 @@ public class EnemyBehavior : MonoBehaviour {
 
             for (int i = 0; i < GetComponentsInChildren<Renderer>()[1].GetComponentsInChildren<Renderer>().Length; i++) {
                 GetComponentsInChildren<Renderer>()[1].GetComponentsInChildren<Renderer>()[i].enabled = false;
+
             }
 
             GetComponent<AudioSource>().Play();
@@ -55,6 +61,7 @@ public class EnemyBehavior : MonoBehaviour {
             if (!explosion.IsAlive()) {
                 Destroy(gameObject);
             }
+
         } else {
             Movements();
         }
@@ -87,6 +94,7 @@ public class EnemyBehavior : MonoBehaviour {
             x += (1.05f - x) * x_speed * Time.deltaTime;
         } else if (x >= 1.0f) {
             isMovingX = !isMovingX;
+
         }
 
         if (x > 0.0f && !isMovingX) {
@@ -98,26 +106,11 @@ public class EnemyBehavior : MonoBehaviour {
         transform.position = new Vector3(startPos.x + Mathf.Lerp(0, horizontalOffset, x), startPos.y + Mathf.Lerp(0, verticalOffset, y), startPos.z);
 
         if (isDestroyed) {
+            //FloatingTextController.CreatePopupText(ScoreManager.enemyKillScore.ToString(), transform);
             GetComponent<AudioSource>().Stop();
             Destroy(this.gameObject);
         }
     }
-
-
-
-
-    //    if (x < 1.0f && isMovingX) {
-    //        x += (1.05f - x) * x_speed * Time.deltaTime;
-    //    } else if (x >= 1.0f) {
-    //        isMovingX = !isMovingX;
-    //    }
-
-    //    if (x > 0.0f && !isMovingX) {
-    //        x -= (x - -0.05f) * x_speed * Time.deltaTime;
-    //    } else if (x <= 0.0f) {
-    //        isMovingX = !isMovingX;
-    //    }
-
 
 
     public void shoot(){
@@ -132,7 +125,6 @@ public class EnemyBehavior : MonoBehaviour {
             CameraController.setShake();
             isDestroyed = true;
         }
-
     }
 
     public void OnBadCollision() {
