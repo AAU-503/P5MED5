@@ -14,14 +14,19 @@ public class EnemyBehavior : MonoBehaviour {
     private bool isMovingUp;
     public bool isDestroyed = false;
 
+    public Canvas
+
+    private float startTime;
+
     void Start() {
-        FloatingTextController.Initialize();
+        //FloatingTextController.Initialize();
+        startTime = Time.time;
     }
 
     // Update is called once per frame
     void Update() {
         if (isMovingX) {
-            transform.Translate(new Vector3(-speedX * Time.deltaTime, Mathf.Cos(Time.time * 10) / 100, 0));
+            transform.Translate(new Vector3(-speedX * Time.deltaTime, Mathf.Cos((Time.time-startTime) * 10) / 100, 0));
         }
         if (isMovingY)
         {
@@ -35,14 +40,14 @@ public class EnemyBehavior : MonoBehaviour {
             }
             if (!isMovingX && !isMovingY)
             {
-                transform.Translate(new Vector3(0, Mathf.Cos(Time.time * 10) / 100, 0));
+                transform.Translate(new Vector3(0, Mathf.Cos((Time.time - startTime) * 10) / 100, 0));
             }
         }
         if (isDestroyed)
         {
             GetComponent<AudioSource>().Play(); 
             Destroy(this.gameObject);
-            FloatingTextController.CreatePopupText(ScoreManager.enemyKillScore.ToString(), transform);
+            //FloatingTextController.CreatePopupText(ScoreManager.enemyKillScore.ToString(), transform);
         }
         if (isMovingUp && transform.position.y >= flyHeight)
         {

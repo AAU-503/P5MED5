@@ -7,7 +7,6 @@ public class FloatingText : MonoBehaviour {
     public Animator animator;
     private Text scoreText;
 
-
     void Start()
     {
         AnimatorClipInfo[] clipInfo = animator.GetCurrentAnimatorClipInfo(0);
