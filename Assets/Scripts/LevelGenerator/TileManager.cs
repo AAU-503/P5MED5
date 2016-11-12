@@ -73,16 +73,12 @@ public class TileManager : MonoBehaviour {
                     spacing = Random.Range(currentTile.GetComponent<PrefabDescription>().spacingMin, currentTile.GetComponent<PrefabDescription>().spacingMax);
                     target = length + spacing;
 
-                    print("Target: " + target + " length: " + length + " spacing: " + spacing);
 
                     tiles.Add(currentTile);
 
                     Destroy(tiles[i]);
                     tiles.RemoveAt(i);
                     ResetCounter();
-
-                    print(counter);
-
 
                 } else if (counter > length - 1) {
 
@@ -91,16 +87,12 @@ public class TileManager : MonoBehaviour {
                     Destroy(tiles[i]);
                     tiles.RemoveAt(i);
 
-                    print(counter);
-
                 } else {
 
                     tiles.Add(Instantiate(empty_prefab, new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity));
                     counter++;
                     Destroy(tiles[i]);
                     tiles.RemoveAt(i);
-
-                    print(counter);
 
                 }
             }

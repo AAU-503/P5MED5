@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
 	private static bool isShaking;
 
 	static public float shakeDuration = 0.2f;
-	public float shakeAmount = 0.2f;
+	private float shakeAmount = 0.2f;
 	private Vector3 startPosition;
 	private Vector3 shakeVector;
 
@@ -84,10 +84,8 @@ public class CameraController : MonoBehaviour
 		if (isShaking) { 
 
 			if (Time.time < setTime) {
-				
 				shakeVector = ((Random.insideUnitSphere) * shakeAmount);
 			} else {
-				
 				isShaking = false;
 			}
 		}
@@ -95,9 +93,14 @@ public class CameraController : MonoBehaviour
 		return shakeVector;
 	}
 
-	public static void setShake ()
+	public static void setShake (float shakeDuration)
 	{
 		setTime = Time.time + shakeDuration;
 		isShaking = true; 
 	}
+
+    public static void setShake() {
+        setTime = Time.time * shakeDuration;
+        isShaking = true;
+    }
 }

@@ -9,15 +9,15 @@ public class AttackTrigger : MonoBehaviour {
     void OnTriggerEnter(Collider col)
     {
 
-            print("hit " + col.gameObject.tag);
-
-
         if(col.CompareTag("Box")) {
-			col.gameObject.GetComponent<BoxBehavior> ().Attacked()	;
-
+            col.gameObject.GetComponent<BoxBehavior> ().Attacked();
         }
 
-        if(col.gameObject.tag == "Enemy") {
+        if(col.CompareTag("Explosive")) {
+            col.gameObject.GetComponent<ExplosiveBehavior>().Attacked();
+        }
+
+        if (col.gameObject.tag == "Enemy") {
 			col.gameObject.GetComponent<EnemyBehavior> ().Attacked();
 
         }

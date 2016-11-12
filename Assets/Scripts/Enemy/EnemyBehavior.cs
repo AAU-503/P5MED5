@@ -4,21 +4,10 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour {
     //speed can be adjusted to make them harder or easier
+
+    public ParticleSystem explosion;
     public GameObject Bullet;
-
-    public float speedY = 2;
-    public float speedX = 1;
-    public float flyHeight = 2;
-    public float revertHeight = -1.5f;
-
-    public bool isMovingX;
-    public bool isMovingY;
-    private bool isMovingUp = true;
-    public bool isDestroyed = false;
-
     public Vector3 startPos;
-    public float horizontalOffset;
-    public float verticalOffset;
 
     float x;
     float y;
@@ -26,9 +15,14 @@ public class EnemyBehavior : MonoBehaviour {
     float x_speed;
     float y_speed;
 
-
-    public ParticleSystem explosion;
     public float offsetPos = 3.0f;
+
+    private bool isMovingX = false;
+    private bool isMovingY = true;
+    private bool isDestroyed = false;
+
+    private float horizontalOffset;
+    private float verticalOffset;
 
     void Start() {
 
@@ -53,9 +47,7 @@ public class EnemyBehavior : MonoBehaviour {
                 GetComponentsInChildren<Renderer>()[1].GetComponentsInChildren<Renderer>()[i].enabled = false;
             }
 
-            GetComponent<Rigidbody>().isKinematic = true;
             GetComponent<AudioSource>().Play();
-
 
             if (!explosion.IsAlive()) {
                 Destroy(gameObject);
@@ -70,10 +62,10 @@ public class EnemyBehavior : MonoBehaviour {
 			transform.LookAt(GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position);
 		}
         
-        if (y < 1.0f && isMovingUp) {
+        if (y < 1.0f && isMovingY) {
             y += (1.05f - y) * y_speed * Time.deltaTime;
         } else if (y >= 1.0f) {
-            isMovingUp = !isMovingUp;
+            isMovingY = !isMovingY;
 
             if(transform.position.x > GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position.x + offsetPos) {
                 if (GameObject.FindGameObjectsWithTag("Bullet").Length < 2)
@@ -81,10 +73,10 @@ public class EnemyBehavior : MonoBehaviour {
             }
         }
 
-        if (y > 0.0f && !isMovingUp) {
+        if (y > 0.0f && !isMovingY) {
             y -= (y - -0.05f) * y_speed * Time.deltaTime;
         } else if (y <= 0.0f) {
-            isMovingUp = !isMovingUp;
+            isMovingY = !isMovingY;
         }
 
         if (x < 1.0f && isMovingX) {

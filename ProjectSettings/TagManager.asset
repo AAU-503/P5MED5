@@ -13,6 +13,7 @@ TagManager:
   - Coin
   - Enemy
   - Bullet
+  - Explosive
   layers:
   - Default
   - TransparentFX
