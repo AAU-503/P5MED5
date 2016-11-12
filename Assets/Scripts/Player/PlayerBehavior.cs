@@ -50,6 +50,9 @@ public class PlayerBehavior : MonoBehaviour
 		if (other.gameObject.tag == "Enemy") {
 			ScoreManager.ChangeScore (ScoreManager.enemyFailScore);
 		}
+		if (other.gameObject.tag == "Bullet") {
+			ScoreManager.ChangeScore (ScoreManager.bulletScore);
+		}
 	}
 
 	void Movement ()

@@ -12,6 +12,7 @@ TagManager:
   - Box
   - Coin
   - Enemy
+  - Bullet
   layers:
   - Default
   - TransparentFX

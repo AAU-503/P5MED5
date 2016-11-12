@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour {
     //speed can be adjusted to make them harder or easier
+    public GameObject Bullet;
+
     public float speedY = 2;
     public float speedX = 1;
     public float flyHeight = 2;
@@ -24,13 +26,14 @@ public class EnemyBehavior : MonoBehaviour {
     float x_speed;
     float y_speed;
 
-    public ParticleSystem explosion;
 
+    public ParticleSystem explosion;
+    public float offsetPos = 3.0f;
 
     void Start() {
 
         explosion = GetComponentInChildren<ParticleSystem>();
-
+		
         startPos = transform.position;
         horizontalOffset = 3.0f;
         verticalOffset = 3.0f;
@@ -57,18 +60,25 @@ public class EnemyBehavior : MonoBehaviour {
             if (!explosion.IsAlive()) {
                 Destroy(gameObject);
             }
-        }
-
-        if (!isDestroyed) {
+        } else {
             Movements();
-        }
+			}
     }
 
     public void Movements() {
+		if(transform.position.x > GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position.x + offsetPos){
+			transform.LookAt(GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position);
+		}
+        
         if (y < 1.0f && isMovingUp) {
             y += (1.05f - y) * y_speed * Time.deltaTime;
         } else if (y >= 1.0f) {
             isMovingUp = !isMovingUp;
+
+            if(transform.position.x > GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position.x + offsetPos) {
+                if (GameObject.FindGameObjectsWithTag("Bullet").Length < 2)
+                shoot();
+            }
         }
 
         if (y > 0.0f && !isMovingUp) {
@@ -92,6 +102,10 @@ public class EnemyBehavior : MonoBehaviour {
         transform.position = new Vector3(startPos.x + Mathf.Lerp(0, horizontalOffset, x), startPos.y + Mathf.Lerp(0, verticalOffset, y), startPos.z);
     }
 
+    public void shoot(){
+        Instantiate(Bullet, transform.position, Quaternion.identity);
+    }
+
     public void Attacked() {
 
         if (!isDestroyed) {
@@ -104,7 +118,6 @@ public class EnemyBehavior : MonoBehaviour {
     }
 
     public void OnBadCollision() {
-
 
     }
 }
