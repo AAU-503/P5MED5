@@ -24,7 +24,13 @@ public class EnemyBehavior : MonoBehaviour {
     float x_speed;
     float y_speed;
 
+    public ParticleSystem explosion;
+
+
     void Start() {
+
+        explosion = GetComponentInChildren<ParticleSystem>();
+
         startPos = transform.position;
         horizontalOffset = 3.0f;
         verticalOffset = 3.0f;
@@ -38,7 +44,27 @@ public class EnemyBehavior : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
+        if (isDestroyed) {
 
+            for (int i = 0; i < GetComponentsInChildren<Renderer>()[1].GetComponentsInChildren<Renderer>().Length; i++) {
+                GetComponentsInChildren<Renderer>()[1].GetComponentsInChildren<Renderer>()[i].enabled = false;
+            }
+
+            GetComponent<Rigidbody>().isKinematic = true;
+            GetComponent<AudioSource>().Play();
+
+
+            if (!explosion.IsAlive()) {
+                Destroy(gameObject);
+            }
+        }
+
+        if (!isDestroyed) {
+            Movements();
+        }
+    }
+
+    public void Movements() {
         if (y < 1.0f && isMovingUp) {
             y += (1.05f - y) * y_speed * Time.deltaTime;
         } else if (y >= 1.0f) {
@@ -64,21 +90,17 @@ public class EnemyBehavior : MonoBehaviour {
         }
 
         transform.position = new Vector3(startPos.x + Mathf.Lerp(0, horizontalOffset, x), startPos.y + Mathf.Lerp(0, verticalOffset, y), startPos.z);
-
-        if (isDestroyed)
-        {
-            GetComponent<AudioSource>().Play(); 
-            Destroy(gameObject);
-        }
-
     }
 
     public void Attacked() {
-		print("hello world");
 
-		if (!isDestroyed) {
-			isDestroyed = true;
-		}
+        if (!isDestroyed) {
+            GetComponent<AudioSource>().Play();
+            explosion.Play();
+            CameraController.setShake();
+            isDestroyed = true;
+        }
+
     }
 
     public void OnBadCollision() {
