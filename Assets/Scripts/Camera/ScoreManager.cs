@@ -11,10 +11,14 @@ public class ScoreManager : MonoBehaviour {
 	static public int enemyKillScore = 10;
 	static public int enemyFailScore = -10;
 	static public int lavaScore = -15;
+	static public int bulletScore = -20;
+    static public int explosiveHitScore = -10;
+    static public int explosiveFailScore = -10;
 
 
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         playerScore += Time.deltaTime * 10;
 	}
 

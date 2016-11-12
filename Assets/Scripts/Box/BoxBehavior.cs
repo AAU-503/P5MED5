@@ -24,6 +24,7 @@ public class BoxBehavior : MonoBehaviour {
         if (isDestroyed)
         {
             rend.enabled = false;
+            GetComponent<Rigidbody>().isKinematic = true;
             gameObject.GetComponent<BoxCollider>().enabled = false;
 
             if (!particle.IsAlive())

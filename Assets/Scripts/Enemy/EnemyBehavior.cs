@@ -4,63 +4,112 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour {
     //speed can be adjusted to make them harder or easier
-    public float speedY = 2;
-    public float speedX = 1;
-    public float flyHeight = 2;
-    public float revertHeight = -1.5f;
 
-    public bool isMovingX;
-    public bool isMovingY;
-    private bool isMovingUp;
-    public bool isDestroyed = false;
+    public ParticleSystem explosion;
+    public GameObject Bullet;
+    public Vector3 startPos;
+
+    float x;
+    float y;
+
+    float x_speed;
+    float y_speed;
+
+    public float offsetPos = 3.0f;
+
+    private bool isMovingX = false;
+    private bool isMovingY = true;
+    private bool isDestroyed = false;
+
+    private float horizontalOffset;
+    private float verticalOffset;
 
     void Start() {
+
+        explosion = GetComponentInChildren<ParticleSystem>();
+		
+        startPos = transform.position;
+        horizontalOffset = 3.0f;
+        verticalOffset = 3.0f;
+
+        x = Random.Range(0.0f, 1.0f);
+        y = Random.Range(0.0f, 1.0f);
+        x_speed = Random.Range(1.0f, 3.0f);
+        y_speed = Random.Range(1.0f, 3.0f);
     }
 
     // Update is called once per frame
     void Update() {
-        if (isMovingX) {
-            transform.Translate(new Vector3(-speedX * Time.deltaTime, Mathf.Cos(Time.time * 10) / 100, 0));
-        }
-        if (isMovingY)
-        {
-            if (isMovingUp)
-            {
-                transform.Translate(new Vector3(0, +speedY * Time.deltaTime, 0));
+
+        if (isDestroyed) {
+
+            for (int i = 0; i < GetComponentsInChildren<Renderer>()[1].GetComponentsInChildren<Renderer>().Length; i++) {
+                GetComponentsInChildren<Renderer>()[1].GetComponentsInChildren<Renderer>()[i].enabled = false;
             }
-            if (!isMovingUp)
-            {
-                transform.Translate(new Vector3(0, -speedY * Time.deltaTime, 0));
+
+            GetComponent<AudioSource>().Play();
+
+            if (!explosion.IsAlive()) {
+                Destroy(gameObject);
             }
-            if (!isMovingX && !isMovingY)
-            {
-                transform.Translate(new Vector3(0, Mathf.Cos(Time.time * 10) / 100, 0));
+        } else {
+            Movements();
+			}
+    }
+
+    public void Movements() {
+		if(transform.position.x > GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position.x + offsetPos){
+			transform.LookAt(GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position);
+		}
+        
+        if (y < 1.0f && isMovingY) {
+            y += (1.05f - y) * y_speed * Time.deltaTime;
+        } else if (y >= 1.0f) {
+            isMovingY = !isMovingY;
+
+            if(transform.position.x > GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position.x + offsetPos) {
+                if (GameObject.FindGameObjectsWithTag("Bullet").Length < 2)
+                shoot();
             }
         }
-        if (isDestroyed)
-        {
-            GetComponent<AudioSource>().Play(); 
-            Destroy(this.gameObject);
+
+        if (y > 0.0f && !isMovingY) {
+            y -= (y - -0.05f) * y_speed * Time.deltaTime;
+        } else if (y <= 0.0f) {
+            isMovingY = !isMovingY;
         }
-        if (isMovingUp && transform.position.y >= flyHeight)
-        {
-            isMovingUp = false;
-        }else if (!isMovingUp && transform.position.y <= revertHeight)
-        {
-            isMovingUp = true;
+
+        if (x < 1.0f && isMovingX) {
+            x += (1.05f - x) * x_speed * Time.deltaTime;
+        } else if (x >= 1.0f) {
+            isMovingX = !isMovingX;
         }
+
+        if (x > 0.0f && !isMovingX) {
+            x -= (x - -0.05f) * x_speed * Time.deltaTime;
+        } else if (x <= 0.0f) {
+            isMovingX = !isMovingX;
+        }
+
+        transform.position = new Vector3(startPos.x + Mathf.Lerp(0, horizontalOffset, x), startPos.y + Mathf.Lerp(0, verticalOffset, y), startPos.z);
+    }
+
+    public void shoot(){
+        Instantiate(Bullet, transform.position, Quaternion.identity);
     }
 
     public void Attacked() {
-		print("hello world");
 
-		if (!isDestroyed) {
-			isDestroyed = true;
-		}
+        if (!isDestroyed) {
+            GetComponent<AudioSource>().Play();
+            explosion.Play();
+            CameraController.setShake();
+            isDestroyed = true;
+        }
+
     }
 
     public void OnBadCollision() {
-
 
     }
 }
