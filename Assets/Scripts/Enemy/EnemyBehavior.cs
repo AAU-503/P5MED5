@@ -27,7 +27,7 @@ public class EnemyBehavior : MonoBehaviour {
     void Start() {
 
         explosion = GetComponentInChildren<ParticleSystem>();
-		
+
         startPos = transform.position;
         horizontalOffset = 3.0f;
         verticalOffset = 3.0f;
@@ -37,10 +37,10 @@ public class EnemyBehavior : MonoBehaviour {
         x_speed = Random.Range(1.0f, 3.0f);
         y_speed = Random.Range(1.0f, 3.0f);
 
-        GetComponent<AudioSource>().Play(); 
-        
+        GetComponent<AudioSource>().Play();
+
     }
- 
+
     // Update is called once per frame
     void Update() {
 
@@ -57,35 +57,31 @@ public class EnemyBehavior : MonoBehaviour {
             }
         } else {
             Movements();
-			}
+        }
     }
 
     public void Movements() {
-		if(transform.position.x > GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position.x + offsetPos){
-			transform.LookAt(GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position);
-		}
-        
+        if (transform.position.x > GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position.x + offsetPos) {
+            transform.LookAt(GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position);
+        }
+
         if (y < 1.0f && isMovingY) {
             y += (1.05f - y) * y_speed * Time.deltaTime;
-        } else if (y >= 1.0f) {
+        } else if (y >= 1.0f & isMovingY) {
             isMovingY = !isMovingY;
 
-            if(transform.position.x > GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position.x + offsetPos) {
+            if (transform.position.x > GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position.x + offsetPos) {
                 if (GameObject.FindGameObjectsWithTag("Bullet").Length < 2)
-                shoot();
+                    shoot();
             }
         }
 
         if (y > 0.0f && !isMovingY) {
-            y -= (y - -0.05f) * y_speed * Time.deltaTime;
+            y -= (y + 0.05f) * y_speed * Time.deltaTime;
         } else if (y <= 0.0f) {
             isMovingY = !isMovingY;
-
-        if (isDestroyed)
-        {
-            GetComponent<AudioSource>().Stop();
-            Destroy(this.gameObject);
         }
+
 
         if (x < 1.0f && isMovingX) {
             x += (1.05f - x) * x_speed * Time.deltaTime;
@@ -100,7 +96,29 @@ public class EnemyBehavior : MonoBehaviour {
         }
 
         transform.position = new Vector3(startPos.x + Mathf.Lerp(0, horizontalOffset, x), startPos.y + Mathf.Lerp(0, verticalOffset, y), startPos.z);
+
+        if (isDestroyed) {
+            GetComponent<AudioSource>().Stop();
+            Destroy(this.gameObject);
+        }
     }
+
+
+
+
+    //    if (x < 1.0f && isMovingX) {
+    //        x += (1.05f - x) * x_speed * Time.deltaTime;
+    //    } else if (x >= 1.0f) {
+    //        isMovingX = !isMovingX;
+    //    }
+
+    //    if (x > 0.0f && !isMovingX) {
+    //        x -= (x - -0.05f) * x_speed * Time.deltaTime;
+    //    } else if (x <= 0.0f) {
+    //        isMovingX = !isMovingX;
+    //    }
+
+
 
     public void shoot(){
         Instantiate(Bullet, transform.position, Quaternion.identity);
