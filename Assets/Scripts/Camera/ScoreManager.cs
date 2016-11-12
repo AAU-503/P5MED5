@@ -12,7 +12,6 @@ public class ScoreManager : MonoBehaviour {
 	static public int enemyFailScore = -10;
 	static public int lavaScore = -15;
 
-
 	// Update is called once per frame
 	void Update () {
         playerScore += Time.deltaTime * 10;
@@ -20,9 +19,11 @@ public class ScoreManager : MonoBehaviour {
 
     static public void ChangeScore(int amount)
     {
-		print ("score: " + amount);
+
+        print("score: " + amount);
         playerScore += amount;
     }
+
 
     void OnGUI()
 	{

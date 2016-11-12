@@ -15,6 +15,7 @@ public class EnemyBehavior : MonoBehaviour {
     public bool isDestroyed = false;
 
     void Start() {
+        FloatingTextController.Initialize();
     }
 
     // Update is called once per frame
@@ -41,6 +42,7 @@ public class EnemyBehavior : MonoBehaviour {
         {
             GetComponent<AudioSource>().Play(); 
             Destroy(this.gameObject);
+            FloatingTextController.CreatePopupText(ScoreManager.enemyKillScore.ToString(), transform);
         }
         if (isMovingUp && transform.position.y >= flyHeight)
         {
@@ -55,7 +57,7 @@ public class EnemyBehavior : MonoBehaviour {
 		print("hello world");
 
 		if (!isDestroyed) {
-			isDestroyed = true;
+            isDestroyed = true;
 		}
     }
 

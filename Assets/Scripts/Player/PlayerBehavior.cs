@@ -24,7 +24,7 @@ public class PlayerBehavior : MonoBehaviour
 		cameraController = GameObject.Find ("Main Camera").GetComponent<CameraController> ();
 		controller = GetComponent<CharacterController> ();
         invertGravity = gravity * airTime;
-	}
+    }
 
 	// Update is called once per frame
 	void Update ()
