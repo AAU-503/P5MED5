@@ -34,6 +34,7 @@ public class ExplosiveBehavior : MonoBehaviour {
 
     public void Attacked() {
         CameraController.setShake(1.0f);
+        CameraController.setSlowmotion();
 
         ScoreManager.ChangeScore(+ScoreManager.explosiveHitScore);
 		if (!isDestroyed) {
@@ -46,6 +47,7 @@ public class ExplosiveBehavior : MonoBehaviour {
 
     public void OnBadCollision() {
         CameraController.setShake(1.0f);
+        CameraController.setSlowmotion();
 
         ScoreManager.ChangeScore(+ScoreManager.explosiveFailScore);
         if (!isDestroyed) {

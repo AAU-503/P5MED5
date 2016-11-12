@@ -18,7 +18,9 @@ public class CameraController : MonoBehaviour
 	private Vector3 shakeVector;
 
     bool realtime = true;
-    int state = 1;
+    static bool slowTime = false;
+
+    static int state = 0;
     float sTime;
 
 
@@ -39,18 +41,14 @@ public class CameraController : MonoBehaviour
     }
 
     IEnumerator SlowTime() {
-        if (Input.GetKeyDown(KeyCode.E)) {
-            realtime = false;
-            state = 1; 
-        }
 
         switch (state) {
             case 1:
 
-                if (realtime == false && Time.timeScale > 0.2f) {
+                if (Time.timeScale > 0.2f) {
                     Time.timeScale -= (3f) * Time.deltaTime;
                 } else {
-                    sTime = Time.unscaledTime + 3;
+                    sTime = Time.unscaledTime + 1.0f;
                     state = 2;
                 }
 
@@ -58,14 +56,16 @@ public class CameraController : MonoBehaviour
              
             case 2:
 
-                if (Time.unscaledTime > sTime) {
-                    if (realtime == false && Time.timeScale < 1.0f) {
-                        Time.timeScale += (1 - Time.timeScale) * Time.deltaTime;
-                    } else {
-                        state = 0;
-                    }
-                }
+                if (Time.unscaledTime < sTime) {
 
+                } else if (Time.timeScale < 0.95f) { 
+                    Time.timeScale += (1 - Time.timeScale) * 1.2f * Time.deltaTime;
+                    print(Time.timeScale);
+                } else {
+                    Time.timeScale = 1.0f;
+                    slowTime = false;
+                    state = 0;
+                }
                 break;
     }
 
@@ -102,5 +102,12 @@ public class CameraController : MonoBehaviour
     public static void setShake() {
         setTime = Time.time * shakeDuration;
         isShaking = true;
+    }
+
+    public static void setSlowmotion() {
+        if (!slowTime) {
+            state = 1;
+            slowTime = true;
+        }
     }
 }
