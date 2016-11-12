@@ -18,6 +18,7 @@ public class AttackTrigger : MonoBehaviour {
         }
 
         if (col.gameObject.tag == "Enemy") {
+            ScoreManager.ChangeScore(ScoreManager.enemyKillScore);
 			col.gameObject.GetComponent<EnemyBehavior> ().Attacked();
 
         }

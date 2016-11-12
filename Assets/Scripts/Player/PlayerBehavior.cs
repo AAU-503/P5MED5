@@ -37,24 +37,6 @@ public class PlayerBehavior : MonoBehaviour
         controller.Move(moveDirection * Time.deltaTime);
     }
 
-	void OnTriggerEnter (Collider other)
-	{ // Ability to pick up coins adding to score in ScoreManager and attacking boxes
-        
-		print (other.gameObject);
-        
-		if (other.gameObject.CompareTag ("Coin")) {
-			Destroy (other.gameObject);
-			ScoreManager.ChangeScore (ScoreManager.coinsScore);
-		}
-
-		if (other.gameObject.tag == "Enemy") {
-			ScoreManager.ChangeScore (ScoreManager.enemyFailScore);
-		}
-		if (other.gameObject.tag == "Bullet") {
-			ScoreManager.ChangeScore (ScoreManager.bulletScore);
-		}
-	}
-
 	void Movement ()
 	{
 		transform.Translate (CameraController.speed * Time.deltaTime, 0, 0);

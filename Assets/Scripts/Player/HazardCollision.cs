@@ -49,10 +49,6 @@ public class HazardCollision : MonoBehaviour {
                 hit.collider.gameObject.GetComponent<ExplosiveBehavior>().OnBadCollision();
             }
 
-            if (hit.collider.gameObject.tag == "Enemy" && hit.distance < 0.2f) {
-                //right now it just prints enemy to the debug log, I don't what script I need to change stuff in for it to subtract score
-                Debug.Log("enemy", gameObject);
-            }
         }
     }
 

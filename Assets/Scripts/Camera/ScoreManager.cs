@@ -9,9 +9,9 @@ public class ScoreManager : MonoBehaviour {
 	static public int boxHitScore = 2;
 	static public int boxFailScore = -5;
 	static public int enemyKillScore = 10;
-	static public int enemyFailScore = -10;
-	static public int lavaScore = -15;
-	static public int bulletScore = -20;
+	static public int enemyFailScore = -5;
+	static public int lavaScore = -10;
+	static public int bulletScore = -5;
     static public int explosiveHitScore = -10;
     static public int explosiveFailScore = -10;
 
@@ -19,8 +19,8 @@ public class ScoreManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        playerScore += Time.deltaTime * 10;
-	}
+
+    }
 
     static public void ChangeScore(int amount)
     {

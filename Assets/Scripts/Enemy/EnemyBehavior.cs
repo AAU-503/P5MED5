@@ -44,6 +44,9 @@ public class EnemyBehavior : MonoBehaviour {
         //FloatingTextController.Initialize();
         startTime = Time.time;
 
+        GetComponent<AudioSource>().Play();
+
+
     }
 
     // Update is called once per frame
@@ -56,10 +59,10 @@ public class EnemyBehavior : MonoBehaviour {
 
             }
 
-            GetComponent<AudioSource>().Play();
-
             if (!explosion.IsAlive()) {
                 Destroy(gameObject);
+                FloatingTextController.CreatePopupText(ScoreManager.enemyKillScore.ToString(), transform);
+
             }
 
         } else {
@@ -105,11 +108,7 @@ public class EnemyBehavior : MonoBehaviour {
 
         transform.position = new Vector3(startPos.x + Mathf.Lerp(0, horizontalOffset, x), startPos.y + Mathf.Lerp(0, verticalOffset, y), startPos.z);
 
-        if (isDestroyed) {
-            FloatingTextController.CreatePopupText(ScoreManager.enemyKillScore.ToString(), transform);
-            GetComponent<AudioSource>().Stop();
-            Destroy(this.gameObject);
-        }
+
     }
 
 
@@ -121,6 +120,7 @@ public class EnemyBehavior : MonoBehaviour {
 
         if (!isDestroyed) {
             GetComponent<AudioSource>().Play();
+            GetComponent<BoxCollider>().enabled = false;
             explosion.Play();
             CameraController.setShake();
             isDestroyed = true;

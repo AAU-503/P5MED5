@@ -267,7 +267,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1173712965542482}
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -0.2156115, y: -0.28476974, z: 0.21561141}
+  m_LocalPosition: {x: -0.28150123, y: 0.09621751, z: 0.07750051}
   m_LocalScale: {x: 0.40681398, y: 0.4068144, z: 0.40681407}
   m_Children:
   - {fileID: 4433627767287710}
@@ -351,7 +351,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1081795888663002}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 3.53, y: 0.7, z: 0.53}
+  m_LocalPosition: {x: 69.190506, y: 1.2634852, z: 0.6919651}
   m_LocalScale: {x: 2.4581246, y: 2.4581263, z: 2.4581263}
   m_Children:
   - {fileID: 4850019682295388}
@@ -633,7 +633,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.5, y: 0.3, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &82301014970860910
 AudioSource:
@@ -743,9 +743,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d0892952af115c44b19aaea00ab58d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 0}
+  explosion: {fileID: 198949239844163382}
   Bullet: {fileID: 1898594025646614, guid: 0b599936717604bd08ad8843db49829a, type: 2}
-  startPos: {x: 0, y: 0, z: 0}
+  startPos: {x: -9.102237, y: 2.4177752, z: 4.2575045}
   offsetPos: 3
 --- !u!114 &114626087420250924
 MonoBehaviour:
@@ -3319,7 +3319,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1376179158
+  randomSeed: 941855262
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -8429,7 +8429,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1570805060
+  randomSeed: 645023171
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -13653,7 +13653,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -1659201334
+  randomSeed: 1200201271
   InitialModule:
     serializedVersion: 3
     enabled: 1
