@@ -11783,7 +11783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1168706778}
   chunkHeight: 2
-  chunkWidth: 3
+  chunkWidth: 4
 --- !u!114 &1491612456
 MonoBehaviour:
   m_ObjectHideFlags: 0

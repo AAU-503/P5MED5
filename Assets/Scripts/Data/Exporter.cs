@@ -26,17 +26,17 @@ public class Exporter : MonoBehaviour {
         - Player outside chunk - 
             1. Write all indices of chunk to csv. file. 
     */
-    
+
     // Sets the current chunk where the index corresponds to the position of a tile inside the chunk.
     public static void setChunk(GameObject[,] chunk) {
         tileMemory = chunk;
     }
 
     // Logs the tile in the current chunk.
-    public static void LogTile(GameObject tile, GameObject chunk, int result, Vector3 position) {
+    public static void LogTile(GameObject tile, GameObject chunk, int result, Vector3 tilePos) {
 
         if (tileMemory != null) {
-            tileMemory[(int)position.x, (int)position.y].GetComponent<Renderer>().material.color = new Vector4(0f, 2f, 0f, 0.1f);
+            tileMemory[(int)tilePos.x, (int)tilePos.y].GetComponent<Renderer>().material.color = new Vector4(0f, 2f, 0f, 0.1f);
 
             // If there is information in the chunks-array, check if the current chunk is contained.
             if (chunks.Count != 0) {
@@ -61,8 +61,9 @@ public class Exporter : MonoBehaviour {
             }
 
             /*Put data into a buffer*/
+            WriteToMemory(tile, chunk, result, tilePos, GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position - chunk.transform.position);
 
-            WriteToCSV(tile.ToString(), chunk.ToString(), instance, 0, episodes[index], result, position);
+            //WriteToCSV(tile.ToString(), chunk.ToString(), instance, 0, episodes[index], result, tilePos);
         } else {
             Debug.Log("TileMemory returned a nullpointer exception.");
         }
@@ -74,19 +75,22 @@ public class Exporter : MonoBehaviour {
     }
 
     // Write to the chunk memory.
-    public static void WriteToMemory(string tileID, string chunkID, int instance, int session, int episode, int result, Vector3 position) {
-        string log = tileID + "," + chunkID + "," + instance + "," + session + "," + episode + "," + result + "," + position.x + "," + position.y + "\n";
+    private static void WriteToMemory(GameObject tile, GameObject chunk, int result, Vector3 tilePos, Vector3 PlayerPos) {
+        string log = tile.ToString() + "," + chunk.ToString() + "," + instance + "," + ScoreManager.session + "," + episodes[index] + "," + result + "," + tilePos.x + "," + tilePos.y + "," + PlayerPos.x + "," + PlayerPos.y + "\n";
+        chunkMemory[(int)tilePos.x, (int)tilePos.y] = log;
     }
 
     // Write chunk memory to .csv file.
-    public static void WriteToCSV(string tileID, string chunkID, int instance, int session, int episode, int result, Vector3 position) {
-        //string file = "data.xls";
-        string log = tileID + "," + chunkID + "," + instance + "," + ScoreManager.session + "," + episode + "," + result + "," + position.x + "," + position.y + "\n";
+    public static void WriteToCSV() {
 
-        if (!File.Exists("Data.csv")) {
-            File.AppendAllText("Data.csv", log);
-        } else {
-            File.AppendAllText("Data.csv", log);
+        for (int j = 0; j < chunkMemory.GetLength(1); j++) {
+            for (int i = 0; i < chunkMemory.GetLength(0); i++) {
+                if (!File.Exists("Data.csv")) {
+                    File.WriteAllText("Data.csv", chunkMemory[i,j]);
+                } else {
+                    File.AppendAllText("Data.csv", chunkMemory[i,j]);
+                }
+            }
         }
     }
 }

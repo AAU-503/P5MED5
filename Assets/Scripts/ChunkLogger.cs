@@ -44,9 +44,13 @@ public class ChunkLogger : MonoBehaviour {
             // This is stupid :P
             inside = true;
             insideCheck = true;
+            print("Chunklogger");
             Exporter.setChunk(posMem);
+            Exporter.CreateMemory();
             Exporter.instance++;
+
         } else if (player.transform.position.x - transform.position.x > chunkWidth && inside) {
+            Exporter.WriteToCSV();
             inside = false;
             insideCheck = false;
         }
