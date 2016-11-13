@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43667555, g: 0.48427182, b: 0.56452405, a: 1}
+  m_IndirectSpecularColor: {r: 0.43667546, g: 0.48427135, b: 0.5645225, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -8812,7 +8812,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4ae49ff3657066e4798f956985ce4c8c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.161
+  m_Volume: 0.397
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -9072,7 +9072,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8f161ecc32d500f4ebb7c153e10ff451, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.219
+  m_Volume: 0.374
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -9152,7 +9152,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.257
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -12389,10 +12389,6 @@ Prefab:
         type: 2}
       propertyPath: Mute
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4241460495613420, guid: d6a1e354d6cf4d74ea31c451dbfc9740, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0.096217506
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6a1e354d6cf4d74ea31c451dbfc9740, type: 2}
