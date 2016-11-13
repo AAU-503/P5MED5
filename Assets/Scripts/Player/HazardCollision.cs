@@ -29,9 +29,13 @@ public class HazardCollision : MonoBehaviour {
             if (hit.collider.gameObject.tag == "Lava" && hit.distance < 0.5f && isLava == false) {
                 isLava = true;
 				ScoreManager.ChangeScore (+ScoreManager.lavaScore);
-
                 fire.Play();
                 setTime = Time.time + 1.0f;
+
+                // ChunkLogger
+                if (ChunkLogger.insideCheck) {
+                    Exporter.LogTile(hit.collider.gameObject, hit.collider.gameObject.transform.parent.gameObject, -1, hit.collider.transform.localPosition);
+                }
 
             } else if (hit.collider.gameObject.tag != "Lava") {
                 isLava = false;

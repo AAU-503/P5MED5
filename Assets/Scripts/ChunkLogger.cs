@@ -10,10 +10,10 @@ public class ChunkLogger : MonoBehaviour {
 
     public int chunkHeight;
     public int chunkWidth;
-
-    private const float detectionThreshold = 0.2f;
+    private bool inside;
+    public static bool insideCheck;
     private const float margin = 0.01f;
-    private const float resolution = 7.0f;
+    private const float resolution = 1.0f;
 
     // Use this for initialization
     void Start() {
@@ -24,38 +24,31 @@ public class ChunkLogger : MonoBehaviour {
 
         for (float j = 0; j < chunkHeight; j += 1 / resolution) {
             for (float i = 0; i < chunkWidth; i += 1 / resolution) {
-                posMem[(int)(i * resolution), (int)(j * resolution)] = GameObject.Instantiate(quad,
+                posMem[(int)(i * resolution), (int)(j * resolution)] = Instantiate(quad,
                     new Vector3(transform.position.x + i - (quad.transform.localScale.x + margin) * (resolution - 1) / 2,
-                    transform.position.y + j - (quad.transform.localScale.y + margin) * (resolution - 1) / 2, transform.position.z), Quaternion.identity);
+                    transform.position.y + j - (quad.transform.localScale.y + margin) * (resolution - 1) / 2, transform.position.z + -2), Quaternion.identity);
             }
         }
     }
-
-    int index_x;
-    int index_y;
     
     // Update is called once per frame
     void Update() {
+        Check();
+    }
 
-        //if (player.transform.position.x > transform.position.x) {
-            //index_x = (int)((player.transform.position.x - transform.position.x) * resolution);
-            //index_y = (int)((player.transform.position.y - transform.position.y) * resolution);
-        //}
+    // Check if the player is inside a chunk. 
+    void Check() {
 
-        //posMem[index_x, index_y].GetComponent<Renderer>().material.color = Color.green;
+        if (player.transform.position.x - transform.position.x > 0 && player.transform.position.x - transform.position.x < chunkWidth && !inside) {
 
-
-        print(player.transform.position.x - transform.position.x);
-
-        if (player != null) {
-            for (int j = 0; j < chunkHeight * resolution; j += 1) {
-                for (int i = 0; i < chunkWidth * resolution; i += 1) {
-                    if (posMem[i, j].transform.position.x < player.transform.position.x + detectionThreshold && posMem[i, j].transform.position.x > player.transform.position.x - detectionThreshold
-                        && posMem[i, j].transform.position.y < player.transform.position.y + detectionThreshold && posMem[i, j].transform.position.y > player.transform.position.y - detectionThreshold) {
-                        posMem[i, j].GetComponent<Renderer>().material.color = new Vector4(0f, 2f, 0f, 0.1f);
-                    }
-                }
-            }
+            // This is stupid :P
+            inside = true;
+            insideCheck = true;
+            Exporter.setChunk(posMem);
+            Exporter.instance++;
+        } else if (player.transform.position.x - transform.position.x > chunkWidth && inside) {
+            inside = false;
+            insideCheck = false;
         }
     }
 }
