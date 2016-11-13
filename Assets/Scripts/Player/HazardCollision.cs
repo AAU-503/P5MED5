@@ -8,10 +8,18 @@ public class HazardCollision : MonoBehaviour {
     float setTime;
 
     public ParticleSystem fire;
-    public ParticleSystem plasma; 
+    public ParticleSystem plasma;
+    public AudioSource fireSound;
+    public AudioSource plasmaSound;
 
-	void Start() {
-	}
+
+    void Start() {
+        AudioSource[] audios = GetComponents<AudioSource>();
+        fireSound = audios[1];
+        plasmaSound = audios[2];
+        
+
+    }
 
     void Update() {
         if (fire.IsAlive() && Time.time > setTime) {
@@ -29,8 +37,10 @@ public class HazardCollision : MonoBehaviour {
             if (hit.collider.gameObject.tag == "Lava" && hit.distance < 0.5f && isLava == false) {
                 isLava = true;
 				ScoreManager.ChangeScore (+ScoreManager.lavaScore);
-
+                
                 fire.Play();
+                fireSound.Play();
+
                 setTime = Time.time + 1.0f;
 
             } else if (hit.collider.gameObject.tag != "Lava") {
@@ -68,6 +78,7 @@ public class HazardCollision : MonoBehaviour {
 
         if (other.gameObject.tag == "Bullet") {
             plasma.Play();
+            plasmaSound.Play();
             other.gameObject.GetComponent<BulletBehavior>().Destroy();
             ScoreManager.ChangeScore(ScoreManager.bulletScore);
         }
