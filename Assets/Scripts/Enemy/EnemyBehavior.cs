@@ -24,6 +24,9 @@ public class EnemyBehavior : MonoBehaviour {
     private float horizontalOffset;
     private float verticalOffset;
 
+    public AudioSource shootSound;
+    public AudioSource explosionSound;
+
     private float startTime;
 
     void Start() {
@@ -39,10 +42,12 @@ public class EnemyBehavior : MonoBehaviour {
         x_speed = Random.Range(1.0f, 3.0f);
         y_speed = Random.Range(1.0f, 3.0f);
 
-        GetComponent<AudioSource>().Play();
+        AudioSource[] audios = GetComponents<AudioSource>();
+        shootSound = audios[0];
+        explosionSound = audios[1];
 
-        //FloatingTextController.Initialize();
-        startTime = Time.time;
+    //FloatingTextController.Initialize();
+    startTime = Time.time;
 
         GetComponent<AudioSource>().Play();
 
@@ -113,6 +118,7 @@ public class EnemyBehavior : MonoBehaviour {
 
 
     public void shoot(){
+        shootSound.Play();
         Instantiate(Bullet, transform.position, Quaternion.identity);
     }
 
@@ -122,6 +128,7 @@ public class EnemyBehavior : MonoBehaviour {
             GetComponent<AudioSource>().Play();
             GetComponent<BoxCollider>().enabled = false;
             explosion.Play();
+            explosionSound.Play();
             CameraController.setShake();
             isDestroyed = true;
         }
