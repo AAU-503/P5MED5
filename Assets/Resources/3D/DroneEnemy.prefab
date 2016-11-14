@@ -41,7 +41,11 @@ GameObject:
   - component: {fileID: 65744246630362220}
   - component: {fileID: 114043416954374126}
   - component: {fileID: 23896104001615448}
+<<<<<<< HEAD
   - component: {fileID: 82018824873434818}
+=======
+  - component: {fileID: 114051476249692936}
+>>>>>>> refs/remotes/origin/EventLogger
   m_Layer: 0
   m_Name: DroneEnemy
   m_TagString: Enemy
@@ -747,7 +751,22 @@ MonoBehaviour:
   Bullet: {fileID: 1898594025646614, guid: 0b599936717604bd08ad8843db49829a, type: 2}
   startPos: {x: -9.102237, y: 2.4177752, z: 4.2575045}
   offsetPos: 3
+<<<<<<< HEAD
   explosionSound: {fileID: 82018824873434818}
+=======
+--- !u!114 &114051476249692936
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1081795888663002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8feca95e11359b947b714aa0458c7ea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chunkLogger: {fileID: 0}
+>>>>>>> refs/remotes/origin/EventLogger
 --- !u!114 &114626087420250924
 MonoBehaviour:
   m_ObjectHideFlags: 1

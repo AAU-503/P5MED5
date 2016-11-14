@@ -37,11 +37,19 @@ public class HazardCollision : MonoBehaviour {
             if (hit.collider.gameObject.tag == "Lava" && hit.distance < 0.5f && isLava == false) {
                 isLava = true;
 				ScoreManager.ChangeScore (+ScoreManager.lavaScore);
+<<<<<<< HEAD
                 
+=======
+>>>>>>> refs/remotes/origin/EventLogger
                 fire.Play();
                 fireSound.Play();
 
                 setTime = Time.time + 1.0f;
+
+                print(hit.collider.transform.localPosition);
+
+                // ChunkLogger
+                Exporter.LogTile(hit.collider.gameObject, hit.collider.gameObject.transform.parent.gameObject, -1, hit.collider.transform.localPosition);
 
             } else if (hit.collider.gameObject.tag != "Lava") {
                 isLava = false;
@@ -51,11 +59,19 @@ public class HazardCollision : MonoBehaviour {
         if (Physics.Raycast(transform.position, Vector3.right, out hit)) {
 
 			if (hit.collider.gameObject.tag == "Box" && hit.distance < 0.2f) {
-                //print("box");
+                // ChunkLogger
+                Exporter.LogTile(hit.collider.gameObject, hit.collider.gameObject.transform.parent.gameObject, -1, hit.collider.transform.localPosition);
+
+
                 hit.collider.gameObject.GetComponent<BoxBehavior>().OnBadCollision();
+                
             }
 
             if (hit.collider.gameObject.tag == "Explosive" && hit.distance < 0.2f) {
+                // ChunkLogger
+                Exporter.LogTile(hit.collider.gameObject, hit.collider.gameObject.transform.parent.gameObject, -1, hit.collider.transform.localPosition);
+
+
                 hit.collider.gameObject.GetComponent<ExplosiveBehavior>().OnBadCollision();
             }
 
@@ -63,23 +79,35 @@ public class HazardCollision : MonoBehaviour {
     }
 
 
-    void OnTriggerEnter(Collider other) { // Ability to pick up coins adding to score in ScoreManager and attacking boxes
+    void OnTriggerEnter(Collider collider) { 
 
-        print(other.gameObject);
+        if (collider.gameObject.CompareTag("Coin")) {
+            // ChunkLogger
+            Exporter.LogTile(collider.gameObject, collider.gameObject.transform.parent.gameObject, 1, collider.transform.localPosition);
 
-        if (other.gameObject.CompareTag("Coin")) {
-            Destroy(other.gameObject);
+            Destroy(collider.gameObject);
             ScoreManager.ChangeScore(ScoreManager.coinsScore);
         }
 
-        if (other.gameObject.tag == "Enemy") {
+        if (collider.gameObject.tag == "Enemy") {
+            // ChunkLogger
+            Exporter.LogTile(collider.gameObject, collider.gameObject.transform.parent.gameObject, -1, collider.gameObject.GetComponent<ChunkConnector>().startPos);
+
             ScoreManager.ChangeScore(ScoreManager.enemyFailScore);
+            
         }
 
-        if (other.gameObject.tag == "Bullet") {
+        if (collider.gameObject.tag == "Bullet") {
+            // ChunkLogger
+            collider.gameObject.GetComponent<BulletBehavior>().drone.GetComponentInParent<ChunkLogger>().LogTile(collider.gameObject, collider.gameObject.GetComponent<BulletBehavior>().drone, -1, collider.gameObject.GetComponent<ChunkConnector>().startPos, "Bullet");
+
             plasma.Play();
+<<<<<<< HEAD
             plasmaSound.Play();
             other.gameObject.GetComponent<BulletBehavior>().Destroy();
+=======
+            collider.gameObject.GetComponent<BulletBehavior>().Destroy();
+>>>>>>> refs/remotes/origin/EventLogger
             ScoreManager.ChangeScore(ScoreManager.bulletScore);
         }
     }

@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 114692469649998408}
   - component: {fileID: 114984108987652296}
   - component: {fileID: 82408068085607786}
+  - component: {fileID: 114326717302475848}
   m_Layer: 0
   m_Name: Box
   m_TagString: Box
@@ -57,7 +58,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1468913053451210}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 249, y: 1.5, z: 0}
+  m_LocalPosition: {x: 12, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4813502649155232}
@@ -126,7 +127,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 2
   m_Constraints: 0
   m_CollisionDetection: 1
@@ -270,6 +271,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114326717302475848
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1468913053451210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8feca95e11359b947b714aa0458c7ea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chunkLogger: {fileID: 0}
 --- !u!114 &114692469649998408
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -821,6 +834,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
+    m_CombineMode: 0
     cnt0: 30
     cnt1: 30
     cnt2: 30

@@ -6,20 +6,30 @@ public class AttackTrigger : MonoBehaviour {
 
     private bool attacked = true;
 
-    void OnTriggerEnter(Collider col)
+    void OnTriggerEnter(Collider collider)
     {
 
-        if(col.CompareTag("Box")) {
-            col.gameObject.GetComponent<BoxBehavior> ().Attacked();
+        if(collider.CompareTag("Box")) {
+            collider.gameObject.GetComponent<BoxBehavior> ().Attacked();
+
+            collider.GetComponentInParent<ChunkLogger>().LogTile(collider.gameObject, collider.gameObject.transform.parent.gameObject, 1, collider.transform.localPosition, "Attacked");
+
         }
 
-        if(col.CompareTag("Explosive")) {
-            col.gameObject.GetComponent<ExplosiveBehavior>().Attacked();
+        if (collider.CompareTag("Explosive")) {
+            collider.gameObject.GetComponent<ExplosiveBehavior>().Attacked();
+
+            // ChunkLogger
+            collider.GetComponentInParent<ChunkLogger>().LogTile(collider.gameObject, collider.gameObject.transform.parent.gameObject, -1, collider.transform.localPosition, "Attacked");
         }
 
-        if (col.gameObject.tag == "Enemy") {
+        if (collider.gameObject.tag == "Enemy") {
+            // ChunkLogger
             ScoreManager.ChangeScore(ScoreManager.enemyKillScore);
-			col.gameObject.GetComponent<EnemyBehavior> ().Attacked();
+			collider.gameObject.GetComponent<EnemyBehavior> ().Attacked();
+
+            collider.GetComponentInParent<ChunkLogger>().LogTile(collider.gameObject, collider.gameObject.transform.parent.gameObject, 1, collider.GetComponent<ChunkConnector>().startPos, "Attacked");
+
 
         }
     }	
