@@ -32,13 +32,18 @@ public class ScoreManager : MonoBehaviour {
         // Now I Would Destroy The Script Or Whatever You
         // Want To Do To Prevent It From Running Multiple
         // Times In One Launch Session
-        Destroy(this);
+
     }
 
     static public void ChangeScore(int amount) {
 		print ("score: " + amount);
         playerScore += amount;
     }
+
+    void Update () {
+        scoreText.text = "Score: " + (int)(playerScore);
+    }
+
 
     void OnGUI()
 	{

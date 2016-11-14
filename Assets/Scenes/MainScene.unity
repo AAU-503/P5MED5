@@ -695,6 +695,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
+    m_CombineMode: 0
     cnt0: 20
     cnt1: 30
     cnt2: 30
@@ -3821,6 +3822,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
+    m_CombineMode: 0
     cnt0: 50
     cnt1: 30
     cnt2: 30
@@ -6588,6 +6590,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
+    m_CombineMode: 0
     cnt0: 1
     cnt1: 1
     cnt2: 1
@@ -9314,6 +9317,8 @@ MonoBehaviour:
   level3Chunks: []
   offset: 10
   counter: 1
+  level2Time: 60
+  level3Time: 180
 --- !u!1 &1475737807
 GameObject:
   m_ObjectHideFlags: 0
@@ -9407,7 +9412,7 @@ Transform:
   - {fileID: 321072128}
   - {fileID: 1933660709}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 10.074, y: 23.627, z: 0}
 --- !u!114 &1475737813
 MonoBehaviour:
@@ -10103,6 +10108,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
+    m_CombineMode: 0
     cnt0: 30
     cnt1: 30
     cnt2: 30
@@ -12383,7 +12389,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4823858389295780, guid: d6a1e354d6cf4d74ea31c451dbfc9740, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 82018824873434818, guid: d6a1e354d6cf4d74ea31c451dbfc9740,
         type: 2}
