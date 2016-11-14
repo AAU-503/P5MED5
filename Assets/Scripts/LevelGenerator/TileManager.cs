@@ -25,6 +25,8 @@ public class TileManager : MonoBehaviour {
     public int counter = 1;
     private int length;
 
+    public float level2Time = 60;
+    public float level3Time = 180;
 
 
 
@@ -57,10 +59,24 @@ public class TileManager : MonoBehaviour {
 
                     switch (level) {
                         case 3:
-                            currentTile = Instantiate(level3Chunks[Random.Range(0, level3Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
+                            float k = Random.Range(0f, 1f);
+                            if ( k < 0.33f)
+                            {
+                                currentTile = Instantiate(level3Chunks[Random.Range(0, level3Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
+                            } else if (k > 0.33f && k < 0.66f) {
+                                currentTile = Instantiate(level2Chunks[Random.Range(0, level2Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
+                            } else {
+                                currentTile = Instantiate(level1Chunks[Random.Range(0, level1Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
+                            }
                             break;
                         case 2:
-                            currentTile = Instantiate(level2Chunks[Random.Range(0, level2Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
+                            float j = Random.Range(0f, 1f);
+                            if (j > 0.5f) { 
+                                currentTile = Instantiate(level2Chunks[Random.Range(0, level2Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
+                            }
+                            else {
+                                currentTile = Instantiate(level1Chunks[Random.Range(0, level1Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
+                            }
                             break;
                         case 1:
                             currentTile = Instantiate(level1Chunks[Random.Range(0, level1Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
@@ -100,9 +116,9 @@ public class TileManager : MonoBehaviour {
     }
 
     int SetLevel() {
-        if (ScoreManager.playerScore > 500) {
+        if (Time.time > level3Time) {
             return 3;
-        } else if (ScoreManager.playerScore > 200) {
+        } else if (Time.time > level2Time) {
             return 2;
         } else {
             return 1;

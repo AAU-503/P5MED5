@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour {
 
@@ -14,7 +15,8 @@ public class ScoreManager : MonoBehaviour {
 	static public int bulletScore = -5;
     static public int explosiveHitScore = -10;
     static public int explosiveFailScore = -10;
-
+    public Text scoreText;
+   
 
 
     // Update is called once per frame
@@ -30,7 +32,7 @@ public class ScoreManager : MonoBehaviour {
 
     void OnGUI()
 	{
-		GUI.Label (new Rect (10, 10, 100, 30), "Score: " + (int)(playerScore));
-	}
+        scoreText.text = "Score: " + (int)(playerScore);
+    }
     
 }

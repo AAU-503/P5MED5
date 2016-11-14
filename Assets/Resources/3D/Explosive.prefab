@@ -396,10 +396,10 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1969609909833788}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4f76d014d0a1249bf838bf973af716fa, type: 3}
+  m_audioClip: {fileID: 8300000, guid: fcdd9c066e3df834f91c2f476241b496, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -529,7 +529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 134c9c386a5c7834ba07e9cef265c2d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxBreak: {fileID: 0}
+  boxBreak: {fileID: 8300000, guid: 8f161ecc32d500f4ebb7c153e10ff451, type: 3}
   isDestroyed: 0
 --- !u!114 &114503023350779530
 MonoBehaviour:
@@ -1063,7 +1063,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    m_CombineMode: 0
     cnt0: 60
     cnt1: 30
     cnt2: 30
@@ -3639,7 +3638,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    m_CombineMode: 0
     cnt0: 5
     cnt1: 30
     cnt2: 30
@@ -6218,7 +6216,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    m_CombineMode: 0
     cnt0: 1
     cnt1: 30
     cnt2: 30
@@ -8806,7 +8803,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    m_CombineMode: 0
     cnt0: 30
     cnt1: 30
     cnt2: 30
@@ -11430,7 +11426,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    m_CombineMode: 0
     cnt0: 1
     cnt1: 1
     cnt2: 1
@@ -13970,7 +13965,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    m_CombineMode: 0
     cnt0: 30
     cnt1: 30
     cnt2: 30
@@ -16492,7 +16486,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    m_CombineMode: 0
     cnt0: 30
     cnt1: 30
     cnt2: 30
@@ -19008,7 +19001,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    m_CombineMode: 0
     cnt0: 100
     cnt1: 20
     cnt2: 30
@@ -21590,7 +21582,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    m_CombineMode: 0
     cnt0: 200
     cnt1: 30
     cnt2: 30
