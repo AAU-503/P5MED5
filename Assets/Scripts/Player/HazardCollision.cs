@@ -37,10 +37,7 @@ public class HazardCollision : MonoBehaviour {
             if (hit.collider.gameObject.tag == "Lava" && hit.distance < 0.5f && isLava == false) {
                 isLava = true;
 				ScoreManager.ChangeScore (+ScoreManager.lavaScore);
-<<<<<<< HEAD
-                
-=======
->>>>>>> refs/remotes/origin/EventLogger
+
                 fire.Play();
                 fireSound.Play();
 
@@ -102,12 +99,9 @@ public class HazardCollision : MonoBehaviour {
             collider.gameObject.GetComponent<BulletBehavior>().drone.GetComponentInParent<ChunkLogger>().LogTile(collider.gameObject, collider.gameObject.GetComponent<BulletBehavior>().drone, -1, collider.gameObject.GetComponent<ChunkConnector>().startPos, "Bullet");
 
             plasma.Play();
-<<<<<<< HEAD
             plasmaSound.Play();
-            other.gameObject.GetComponent<BulletBehavior>().Destroy();
-=======
             collider.gameObject.GetComponent<BulletBehavior>().Destroy();
->>>>>>> refs/remotes/origin/EventLogger
+
             ScoreManager.ChangeScore(ScoreManager.bulletScore);
         }
     }

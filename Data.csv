@@ -4,3 +4,14 @@ DroneEnemy(Clone) (UnityEngine.GameObject),E(Clone) (UnityEngine.GameObject),3,3
 Box(Clone) (UnityEngine.GameObject),B(Clone) (UnityEngine.GameObject),4,347,1,1,0,1,-1.225109,2.300026,Attacked
 DroneEnemy(Clone) (UnityEngine.GameObject),E(Clone) (UnityEngine.GameObject),6,347,2,1,0,1,0.2690277,2.9334,Attacked
 Box(Clone) (UnityEngine.GameObject),B(Clone) (UnityEngine.GameObject),7,347,2,1,0,1,-1.425793,1.250243,Attacked
+Box(Clone) (UnityEngine.GameObject),B(Clone) (UnityEngine.GameObject),1,358,1,1,0,1,-1.521353,0.7797825,Attacked
+Explosive(Clone) (UnityEngine.GameObject),X(Clone) (UnityEngine.GameObject),7,358,1,-1,0,1,-0.637188,0.7797825
+Box(Clone) (UnityEngine.GameObject),B(Clone) (UnityEngine.GameObject),8,358,2,-1,0,1,-0.6079407,0.7797825
+Box(Clone) (UnityEngine.GameObject),B(Clone) (UnityEngine.GameObject),10,358,3,-1,0,1,-0.5320587,0.7797825
+Box(Clone) (UnityEngine.GameObject),B(Clone) (UnityEngine.GameObject),12,358,4,-1,0,1,-0.650177,0.7797811
+Box(Clone) (UnityEngine.GameObject),B(Clone) (UnityEngine.GameObject),29,358,5,1,0,1,-1.757401,0.7797825,Attacked
+Explosive(Clone) (UnityEngine.GameObject),X(Clone) (UnityEngine.GameObject),32,358,5,-1,0,1,-1.799042,0.7797723,Attacked
+Box(Clone) (UnityEngine.GameObject),B(Clone) (UnityEngine.GameObject),33,358,6,-1,0,1,-0.6317596,0.7797825
+Explosive(Clone) (UnityEngine.GameObject),X(Clone) (UnityEngine.GameObject),38,358,6,-1,0,1,-2.224854,2.924118,Attacked
+Box(Clone) (UnityEngine.GameObject),B(Clone) (UnityEngine.GameObject),43,358,7,1,0,1,-2.183197,0.7797825,Attacked
+Box(Clone) (UnityEngine.GameObject),B(Clone) (UnityEngine.GameObject),47,358,8,1,0,1,-1.744659,0.7797825,Attacked

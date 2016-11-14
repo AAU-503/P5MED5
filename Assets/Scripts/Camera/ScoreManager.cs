@@ -15,13 +15,9 @@ public class ScoreManager : MonoBehaviour {
 	static public int bulletScore = -5;
     static public int explosiveHitScore = -10;
     static public int explosiveFailScore = -10;
-<<<<<<< HEAD
-    public Text scoreText;
-   
-=======
 
+    public Text scoreText;
     public static int session;
->>>>>>> refs/remotes/origin/EventLogger
 
     void Awake() {
         // Check For 'TimesLaunched', Set To 0 If Value Isnt Set (First Time Being Launched)
@@ -44,16 +40,10 @@ public class ScoreManager : MonoBehaviour {
         playerScore += amount;
     }
 
-<<<<<<< HEAD
     void OnGUI()
 	{
         scoreText.text = "Score: " + (int)(playerScore);
     }
     
 }
-=======
-    void OnGUI() {
-		GUI.Label (new Rect (10, 10, 100, 30), "Score: " + (int)(playerScore));
-	}
-}
->>>>>>> refs/remotes/origin/EventLogger
+

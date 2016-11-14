@@ -114,12 +114,8 @@ public class EnemyBehavior : MonoBehaviour {
 
 
     public void shoot(){
-<<<<<<< HEAD
-        Instantiate(Bullet, transform.position, Quaternion.identity);
-        
-=======
+
         Instantiate(Bullet, transform.position, Quaternion.identity).GetComponent<BulletBehavior>().Init(gameObject);
->>>>>>> refs/remotes/origin/EventLogger
     }
 
     public void Attacked() {
