@@ -10,10 +10,12 @@ public class ChunkLogger : MonoBehaviour {
     public GameObject[,] posMem;
     public GameObject[,] objMem;
 
+    public static int instance;
+    public static bool currentChunk;
+
     public int chunkHeight;
     public int chunkWidth;
     private bool inside;
-    public static bool currentChunk;
     private const float margin = 0.01f;
     private const float resolution = 1.0f;
 
@@ -57,8 +59,6 @@ public class ChunkLogger : MonoBehaviour {
             Exporter.setChunk(posMem);
             Exporter.CreateMemory();
             currentChunk = true;
-            Exporter.instance++;
-            print(currentChunk);
         } else if (currentChunk && player.transform.position.x - transform.position.x > chunkWidth && player.transform.position.x - transform.position.x < chunkWidth + 1) {
             Exporter.WriteToCSV();
             currentChunk = false;
@@ -73,11 +73,10 @@ public class ChunkLogger : MonoBehaviour {
             currentChunk = true;
             Exporter.setChunk(posMem);
             Exporter.CreateMemory();
-            Exporter.instance++;
         }
     }
 
-    public void LogTile(GameObject tile, GameObject chunk, int result, Vector3 tilePos, string attribute) {
+    public void LogTile(GameObject tile, GameObject chunk, int instance, int result, Vector3 tilePos, string attribute) {
         /* Should log the instance correctly. Right now if the player is hit by a bullet, the memory is cleared and the instance will increment. We should assign the instance to the
            chunk with an unique identifier if the identifier has not already been assigned an instance number. Else we use the old instance number */  
         
@@ -85,8 +84,7 @@ public class ChunkLogger : MonoBehaviour {
             Exporter.setChunk(posMem);
             Exporter.CreateMemory();
             currentChunk = true;
-            Exporter.instance++;
-            Exporter.LogTile(tile, chunk, result, tilePos, attribute);
+            Exporter.LogTile(tile, chunk, instance, result, tilePos, attribute);
         
     }
 }

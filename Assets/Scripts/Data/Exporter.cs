@@ -11,7 +11,6 @@ public class Exporter : MonoBehaviour {
     private static List<string> chunks = new List<string>();
     private static List<int> episodes = new List<int>();
 
-    public static int instance;
     private static int index;
     private static bool addToList;
 
@@ -33,16 +32,14 @@ public class Exporter : MonoBehaviour {
     }
 
     // Logs the tile in the current chunk.
-    public static void LogTile(GameObject tile, GameObject chunk, int result, Vector3 tilePos) {
+    public static void LogTile(GameObject tile, GameObject chunk, int instance, int result, Vector3 tilePos) {
 
         if (ChunkLogger.currentChunk) {
             if (tileMemory != null) {
                 //tileMemory[(int)tilePos.x, (int)tilePos.y].GetComponent<Renderer>().material.color = new Vector4(0f, 2f, 0f, 0.1f);
-                print("2");
 
                 // If there is information in the chunks-array, check if the current chunk is contained.
                 if (chunks.Count != 0) {
-                    print("3");
 
                     for (int i = 0; i < chunks.Count; i++) {
 
@@ -65,9 +62,8 @@ public class Exporter : MonoBehaviour {
                 }
 
                 /*Put data into a buffer*/
-                WriteToMemory(tile, chunk, result, tilePos, GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position - chunk.transform.position);
+                WriteToMemory(tile, chunk, instance, result, tilePos, GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position - chunk.transform.position);
 
-                //WriteToCSV(tile.ToString(), chunk.ToString(), instance, 0, episodes[index], result, tilePos);
             } else {
                 Debug.Log("TileMemory returned a nullpointer exception.");
             }
@@ -75,7 +71,7 @@ public class Exporter : MonoBehaviour {
     }
 
     // Logs the tile in the current chunk.
-    public static void LogTile(GameObject tile, GameObject chunk, int result, Vector3 tilePos, string attribute) {
+    public static void LogTile(GameObject tile, GameObject chunk, int instance, int result, Vector3 tilePos, string attribute) {
 
             if (tileMemory != null) {
                 //tileMemory[(int)tilePos.x, (int)tilePos.y].GetComponent<Renderer>().material.color = new Vector4(0f, 2f, 0f, 0.1f);
@@ -103,7 +99,7 @@ public class Exporter : MonoBehaviour {
                 }
 
                 /*Put data into a buffer*/
-                WriteToMemory(tile, chunk, result, tilePos, GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position - chunk.transform.position, attribute);
+                WriteToMemory(tile, chunk, instance, result, tilePos, GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position - chunk.transform.position, attribute);
 
                 //WriteToCSV(tile.ToString(), chunk.ToString(), instance, 0, episodes[index], result, tilePos);
             } else {
@@ -117,12 +113,12 @@ public class Exporter : MonoBehaviour {
     }
 
     // Write to the chunk memory.
-    private static void WriteToMemory(GameObject tile, GameObject chunk, int result, Vector3 tilePos, Vector3 PlayerPos) {
+    private static void WriteToMemory(GameObject tile, GameObject chunk, int instance, int result, Vector3 tilePos, Vector3 PlayerPos) {
         string log = tile.ToString() + "," + chunk.ToString() + "," + instance + "," + ScoreManager.session + "," + episodes[index] + "," + result + "," + tilePos.x + "," + tilePos.y + "," + PlayerPos.x + "," + PlayerPos.y + "\n";
         chunkMemory[(int)tilePos.x, (int)tilePos.y] = log;
     }
 
-    private static void WriteToMemory(GameObject tile, GameObject chunk, int result, Vector3 tilePos, Vector3 PlayerPos, string attribute) {
+    private static void WriteToMemory(GameObject tile, GameObject chunk, int instance, int result, Vector3 tilePos, Vector3 PlayerPos, string attribute) {
         string log = tile.ToString() + "," + chunk.ToString() + "," + instance + "," + ScoreManager.session + "," + episodes[index] + "," + result + "," + tilePos.x + "," + tilePos.y + "," + PlayerPos.x + "," + PlayerPos.y + "," + attribute + "\n";
         chunkMemory[(int)tilePos.x, (int)tilePos.y] = log;
     }

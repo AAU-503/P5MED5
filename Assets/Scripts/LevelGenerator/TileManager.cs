@@ -53,7 +53,7 @@ public class TileManager : MonoBehaviour {
         level = SetLevel();
 
         for (int i = 0; i < tiles.Count; i++) {
-            if (tiles[i].transform.position.x + offset < player.transform.position.x && !tiles[i].GetComponent<LogicScript>().check) {
+            if (tiles[i].transform.position.x + offset < player.transform.position.x) {
 
                 if (counter >= target) {
 

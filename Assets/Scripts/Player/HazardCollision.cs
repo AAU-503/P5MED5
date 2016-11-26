@@ -46,7 +46,7 @@ public class HazardCollision : MonoBehaviour {
                 print(hit.collider.transform.localPosition);
 
                 // ChunkLogger
-                Exporter.LogTile(hit.collider.gameObject, hit.collider.gameObject.transform.parent.gameObject, -1, hit.collider.transform.localPosition);
+                Exporter.LogTile(hit.collider.gameObject, hit.collider.gameObject.transform.parent.gameObject, hit.collider.gameObject.GetComponentInParent<PrefabDescription>().instance, -1, hit.collider.transform.localPosition);
 
             } else if (hit.collider.gameObject.tag != "Lava") {
                 isLava = false;
@@ -57,7 +57,7 @@ public class HazardCollision : MonoBehaviour {
 
 			if (hit.collider.gameObject.tag == "Box" && hit.distance < 0.2f) {
                 // ChunkLogger
-                Exporter.LogTile(hit.collider.gameObject, hit.collider.gameObject.transform.parent.gameObject, -1, hit.collider.transform.localPosition);
+                Exporter.LogTile(hit.collider.gameObject, hit.collider.gameObject.transform.parent.gameObject, hit.collider.gameObject.GetComponentInParent<PrefabDescription>().instance, -1, hit.collider.transform.localPosition);
 
 
                 hit.collider.gameObject.GetComponent<BoxBehavior>().OnBadCollision();
@@ -66,7 +66,7 @@ public class HazardCollision : MonoBehaviour {
 
             if (hit.collider.gameObject.tag == "Explosive" && hit.distance < 0.2f) {
                 // ChunkLogger
-                Exporter.LogTile(hit.collider.gameObject, hit.collider.gameObject.transform.parent.gameObject, -1, hit.collider.transform.localPosition);
+                Exporter.LogTile(hit.collider.gameObject, hit.collider.gameObject.transform.parent.gameObject, hit.collider.gameObject.GetComponentInParent<PrefabDescription>().instance, -1, hit.collider.transform.localPosition);
 
 
                 hit.collider.gameObject.GetComponent<ExplosiveBehavior>().OnBadCollision();
@@ -80,7 +80,7 @@ public class HazardCollision : MonoBehaviour {
 
         if (collider.gameObject.CompareTag("Coin")) {
             // ChunkLogger
-            Exporter.LogTile(collider.gameObject, collider.gameObject.transform.parent.gameObject, 1, collider.transform.localPosition);
+            Exporter.LogTile(collider.gameObject, collider.gameObject.transform.parent.gameObject, collider.GetComponentInParent<PrefabDescription>().instance, 1, collider.transform.localPosition);
 
             Destroy(collider.gameObject);
             ScoreManager.ChangeScore(ScoreManager.coinsScore);
@@ -88,15 +88,14 @@ public class HazardCollision : MonoBehaviour {
 
         if (collider.gameObject.tag == "Enemy") {
             // ChunkLogger
-            Exporter.LogTile(collider.gameObject, collider.gameObject.transform.parent.gameObject, -1, collider.gameObject.GetComponent<ChunkConnector>().startPos);
-
-            ScoreManager.ChangeScore(ScoreManager.enemyFailScore);
+            //Exporter.LogTile(collider.gameObject, collider.gameObject.transform.parent.gameObject, collider.GetComponentInParent<PrefabDescription>().instance, -1, collider.gameObject.GetComponent<ChunkConnector>().startPos);
+            //ScoreManager.ChangeScore(ScoreManager.enemyFailScore);
             
         }
 
         if (collider.gameObject.tag == "Bullet") {
             // ChunkLogger
-            collider.gameObject.GetComponent<BulletBehavior>().drone.GetComponentInParent<ChunkLogger>().LogTile(collider.gameObject, collider.gameObject.GetComponent<BulletBehavior>().drone, -1, collider.gameObject.GetComponent<ChunkConnector>().startPos, "Bullet");
+            //collider.gameObject.GetComponent<BulletBehavior>().drone.GetComponentInParent<ChunkLogger>().LogTile(collider.gameObject, collider.gameObject.GetComponent<BulletBehavior>().drone, -1, collider.gameObject.GetComponent<BulletBehavior>().drone.GetComponentInParent<PrefabDescription>().instance, collider.gameObject.GetComponent<ChunkConnector>().startPos, "Bullet");
 
             plasma.Play();
             plasmaSound.Play();

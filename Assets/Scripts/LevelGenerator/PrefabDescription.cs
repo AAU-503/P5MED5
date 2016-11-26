@@ -9,11 +9,14 @@ public class PrefabDescription : MonoBehaviour {
     public int spacingMin;
     public int spacing;
 
-
+    public int instance;
 
 
     // Use this for initialization
     void Start() {
+        ChunkLogger.instance++;
+        instance = ChunkLogger.instance;
+
         spacing = Random.Range(spacingMin, spacingMax);
     }
 
