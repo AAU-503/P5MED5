@@ -17,6 +17,7 @@ public class PlayerBehavior : MonoBehaviour
 	private bool attacked = true;
     private float forceY = 0;
     private float invertGravity;
+    private bool jumpQueued = false;
 
     // Use this for initialization
     void Start ()
@@ -52,7 +53,8 @@ public class PlayerBehavior : MonoBehaviour
 			}
 
 		}
-        if(Input.GetKey(KeyCode.Space) && forceY != 0)
+
+        if (Input.GetKey(KeyCode.Space) && forceY != 0)
         {
             invertGravity -= Time.deltaTime;
             forceY += invertGravity * Time.deltaTime;
