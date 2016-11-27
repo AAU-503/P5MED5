@@ -32,93 +32,96 @@ public class Exporter : MonoBehaviour {
     }
 
     // Logs the tile in the current chunk.
-    public static void LogTile(GameObject tile, GameObject chunk, int instance, int result, Vector3 tilePos) {
+    //public static void LogTile(GameObject tile, GameObject chunk, int instance, int result, Vector3 tilePos) {
 
-        if (ChunkLogger.currentChunk) {
-            if (tileMemory != null) {
-                //tileMemory[(int)tilePos.x, (int)tilePos.y].GetComponent<Renderer>().material.color = new Vector4(0f, 2f, 0f, 0.1f);
+    //    if (ChunkMemory.currentChunk) {
+    //        if (tileMemory != null) {
+    //            //tileMemory[(int)tilePos.x, (int)tilePos.y].GetComponent<Renderer>().material.color = new Vector4(0f, 2f, 0f, 0.1f);
 
-                // If there is information in the chunks-array, check if the current chunk is contained.
-                if (chunks.Count != 0) {
+    //            // If there is information in the chunks-array, check if the current chunk is contained.
+    //            if (chunks.Count != 0) {
 
-                    for (int i = 0; i < chunks.Count; i++) {
+    //                for (int i = 0; i < chunks.Count; i++) {
 
-                        // If [true] increment episodes, or if [false] permit a new entry.
-                        if (chunks[i] == chunk.name) {
-                            episodes[i]++;
-                            index = i;
-                        } else {
-                            addToList = true;
-                        }
-                    }
-                }
+    //                    // If [true] increment episodes, or if [false] permit a new entry.
+    //                    if (chunks[i] == chunk.name) {
+    //                        episodes[i]++;
+    //                        index = i;
+    //                    } else {
+    //                        addToList = true;
+    //                    }
+    //                }
+    //            }
 
-                // If the entry is permitted, add the current chunk to the chunks-array.
-                if (addToList || chunks.Count == 0) {
-                    chunks.Add(chunk.name);
-                    episodes.Add(1);
-                    index = 0;
-                    addToList = false;
-                }
+    //            // If the entry is permitted, add the current chunk to the chunks-array.
+    //            if (addToList || chunks.Count == 0) {
+    //                chunks.Add(chunk.name);
+    //                episodes.Add(1);
+    //                index = 0;
+    //                addToList = false;
+    //            }
 
-                /*Put data into a buffer*/
-                WriteToMemory(tile, chunk, instance, result, tilePos, GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position - chunk.transform.position);
+    //            /*Put data into a buffer*/
+    //            WriteToMemory(tile, chunk, instance, result, tilePos, GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position - chunk.transform.position);
 
-            } else {
-                Debug.Log("TileMemory returned a nullpointer exception.");
-            }
-        }
-    }
+    //        } else {
+    //            Debug.Log("TileMemory returned a nullpointer exception.");
+    //        }
+    //    }
+    //}
 
     // Logs the tile in the current chunk.
-    public static void LogTile(GameObject tile, GameObject chunk, int instance, int result, Vector3 tilePos, string attribute) {
+    public static void Set(GameObject chunk) {
 
-            if (tileMemory != null) {
-                //tileMemory[(int)tilePos.x, (int)tilePos.y].GetComponent<Renderer>().material.color = new Vector4(0f, 2f, 0f, 0.1f);
-
-                // If there is information in the chunks-array, check if the current chunk is contained.
-                if (chunks.Count != 0) {
-                    for (int i = 0; i < chunks.Count; i++) {
-
-                        // If [true] increment episodes, or if [false] permit a new entry.
-                        if (chunks[i] == chunk.name) {
-                            episodes[i]++;
-                            index = i;
-                        } else {
-                            addToList = true;
-                        }
-                    }
-                }
-
-                // If the entry is permitted, add the current chunk to the chunks-array.
-                if (addToList || chunks.Count == 0) {
-                    chunks.Add(chunk.name);
-                    episodes.Add(1);
-                    index = 0;
-                    addToList = false;
-                }
-
-                /*Put data into a buffer*/
-                WriteToMemory(tile, chunk, instance, result, tilePos, GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position - chunk.transform.position, attribute);
-
-                //WriteToCSV(tile.ToString(), chunk.ToString(), instance, 0, episodes[index], result, tilePos);
+        for (int i = 0; i < chunks.Count; i++) {
+            // If [true] increment episodes, or if [false] permit a new entry.
+            if (chunks[i] == chunk.name) {
+                episodes[i]++;
+                index = i;
             } else {
-                Debug.Log("TileMemory returned a nullpointer exception.");
+                addToList = true;
             }
-    }
+        }
 
-    // Instantiate or overwrite existing chunk memory. 
-    public static void CreateMemory() {
-        chunkMemory = new string[tileMemory.GetLength(0), tileMemory.GetLength(1)];
+        // If the entry is permitted, add the current chunk to the chunks-array.
+        if (addToList || chunks.Count == 0) {
+            chunks.Add(chunk.name);
+            episodes.Add(1);
+            index = 0;
+            addToList = false;
+        }
+
+
+        for (int j = 0; j < chunk.GetComponent<ChunkMemory>().objMem.GetLength(1); j++) {
+            for (int i = 0; i < chunk.GetComponent<ChunkMemory>().objMem.GetLength(0); i++) {
+
+                if (chunk.GetComponent<ChunkMemory>().objMem[i, j] != null) {
+
+                    print(chunk.GetComponent<ChunkMemory>().objMem[i, j].GetComponent<TileChunkBridge>().state);
+
+                    Write(chunk.GetComponent<ChunkMemory>().objMem[i, j], chunk, chunk.GetComponent<PrefabDescription>().instance, chunk.GetComponent<ChunkMemory>().objMem[i, j].GetComponent<TileChunkBridge>().state, new Vector2(i, j), GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position - chunk.transform.position);
+                }
+
+            }
+        }
+        //WriteToMemory(tile, chunk, instance, result, tilePos, GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position - chunk.transform.position, attribute);
+
+        //WriteToCSV(tile.ToString(), chunk.ToString(), instance, 0, episodes[index], result, tilePos); 
     }
 
     // Write to the chunk memory.
-    private static void WriteToMemory(GameObject tile, GameObject chunk, int instance, int result, Vector3 tilePos, Vector3 PlayerPos) {
+    private static void Write(GameObject tile, GameObject chunk, int instance, int result, Vector2 tilePos, Vector3 PlayerPos) {
         string log = tile.ToString() + "," + chunk.ToString() + "," + instance + "," + ScoreManager.session + "," + episodes[index] + "," + result + "," + tilePos.x + "," + tilePos.y + "," + PlayerPos.x + "," + PlayerPos.y + "\n";
-        chunkMemory[(int)tilePos.x, (int)tilePos.y] = log;
+
+                if (!File.Exists("Data.csv")) {
+                    File.WriteAllText("Data.csv", log);
+
+                } else {
+                    File.AppendAllText("Data.csv", log);
+                }
     }
 
-    private static void WriteToMemory(GameObject tile, GameObject chunk, int instance, int result, Vector3 tilePos, Vector3 PlayerPos, string attribute) {
+    private static void WriteToMemory(GameObject tile, GameObject chunk, int instance, int result, Vector2 tilePos, Vector3 PlayerPos, string attribute) {
         string log = tile.ToString() + "," + chunk.ToString() + "," + instance + "," + ScoreManager.session + "," + episodes[index] + "," + result + "," + tilePos.x + "," + tilePos.y + "," + PlayerPos.x + "," + PlayerPos.y + "," + attribute + "\n";
         chunkMemory[(int)tilePos.x, (int)tilePos.y] = log;
     }

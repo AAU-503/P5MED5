@@ -8,7 +8,7 @@ public class HazardCollision : MonoBehaviour {
     float setTime;
 
     public ParticleSystem fire;
-    public ParticleSystem plasma;
+    public ParticleSystem plasmaParticles;
     public AudioSource fireSound;
     public AudioSource plasmaSound;
 
@@ -17,8 +17,6 @@ public class HazardCollision : MonoBehaviour {
         AudioSource[] audios = GetComponents<AudioSource>();
         fireSound = audios[1];
         plasmaSound = audios[2];
-        
-
     }
 
     void Update() {
@@ -26,7 +24,6 @@ public class HazardCollision : MonoBehaviour {
             fire.Stop();
         }
     }
-		
 
     void FixedUpdate() {
 
@@ -36,17 +33,15 @@ public class HazardCollision : MonoBehaviour {
         if (Physics.Raycast(transform.position, dwn, out hit)) {
             if (hit.collider.gameObject.tag == "Lava" && hit.distance < 0.5f && isLava == false) {
                 isLava = true;
-				ScoreManager.ChangeScore (+ScoreManager.lavaScore);
 
                 fire.Play();
                 fireSound.Play();
 
                 setTime = Time.time + 1.0f;
 
-                print(hit.collider.transform.localPosition);
+                ScoreManager.ChangeScore(+ScoreManager.lavaScore);
+                hit.collider.GetComponent<TileChunkBridge>().SetState(-1);
 
-                // ChunkLogger
-                Exporter.LogTile(hit.collider.gameObject, hit.collider.gameObject.transform.parent.gameObject, hit.collider.gameObject.GetComponentInParent<PrefabDescription>().instance, -1, hit.collider.transform.localPosition);
 
             } else if (hit.collider.gameObject.tag != "Lava") {
                 isLava = false;
@@ -55,33 +50,26 @@ public class HazardCollision : MonoBehaviour {
 
         if (Physics.Raycast(transform.position, Vector3.right, out hit)) {
 
-			if (hit.collider.gameObject.tag == "Box" && hit.distance < 0.2f) {
-                // ChunkLogger
-                Exporter.LogTile(hit.collider.gameObject, hit.collider.gameObject.transform.parent.gameObject, hit.collider.gameObject.GetComponentInParent<PrefabDescription>().instance, -1, hit.collider.transform.localPosition);
+            if (hit.collider.gameObject.tag == "Box" && hit.distance < 0.2f) {
 
-
+                hit.collider.GetComponent<TileChunkBridge>().SetState(-1);
                 hit.collider.gameObject.GetComponent<BoxBehavior>().OnBadCollision();
-                
             }
 
             if (hit.collider.gameObject.tag == "Explosive" && hit.distance < 0.2f) {
-                // ChunkLogger
-                Exporter.LogTile(hit.collider.gameObject, hit.collider.gameObject.transform.parent.gameObject, hit.collider.gameObject.GetComponentInParent<PrefabDescription>().instance, -1, hit.collider.transform.localPosition);
 
-
+                hit.collider.GetComponent<TileChunkBridge>().SetState(-1);
                 hit.collider.gameObject.GetComponent<ExplosiveBehavior>().OnBadCollision();
             }
-
         }
     }
 
 
-    void OnTriggerEnter(Collider collider) { 
+    void OnTriggerEnter(Collider collider) {
 
         if (collider.gameObject.CompareTag("Coin")) {
-            // ChunkLogger
-            Exporter.LogTile(collider.gameObject, collider.gameObject.transform.parent.gameObject, collider.GetComponentInParent<PrefabDescription>().instance, 1, collider.transform.localPosition);
 
+            collider.GetComponent<TileChunkBridge>().SetState(1);
             Destroy(collider.gameObject);
             ScoreManager.ChangeScore(ScoreManager.coinsScore);
         }
@@ -90,19 +78,20 @@ public class HazardCollision : MonoBehaviour {
             // ChunkLogger
             //Exporter.LogTile(collider.gameObject, collider.gameObject.transform.parent.gameObject, collider.GetComponentInParent<PrefabDescription>().instance, -1, collider.gameObject.GetComponent<ChunkConnector>().startPos);
             //ScoreManager.ChangeScore(ScoreManager.enemyFailScore);
-            
+
         }
 
         if (collider.gameObject.tag == "Bullet") {
             // ChunkLogger
             //collider.gameObject.GetComponent<BulletBehavior>().drone.GetComponentInParent<ChunkLogger>().LogTile(collider.gameObject, collider.gameObject.GetComponent<BulletBehavior>().drone, -1, collider.gameObject.GetComponent<BulletBehavior>().drone.GetComponentInParent<PrefabDescription>().instance, collider.gameObject.GetComponent<ChunkConnector>().startPos, "Bullet");
 
-            plasma.Play();
+            plasmaParticles.Play();
             plasmaSound.Play();
+
+            collider.GetComponent<TileChunkBridge>().SetState(-1);
             collider.gameObject.GetComponent<BulletBehavior>().Destroy();
 
             ScoreManager.ChangeScore(ScoreManager.bulletScore);
         }
     }
-
 }

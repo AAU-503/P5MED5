@@ -106,7 +106,6 @@ GameObject:
   - component: {fileID: 4068720064306280}
   - component: {fileID: 114574693564244258}
   - component: {fileID: 114242037582397200}
-  - component: {fileID: 114250536455157762}
   m_Layer: 0
   m_Name: BEB
   m_TagString: Untagged
@@ -280,6 +279,7 @@ MonoBehaviour:
   spacingMax: 5
   spacingMin: 8
   spacing: 0
+  instance: 0
 --- !u!114 &114249768189123946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -292,18 +292,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1468913053451210, guid: b245a94fb3928fe488bf2368391718ed, type: 2}
---- !u!114 &114250536455157762
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1728127661717852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73a1f9549b4ffd84e90b137f830d5f4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  check: 0
 --- !u!114 &114360136819712884
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -20,8 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4198327856151286}
   - component: {fileID: 114839244461352702}
-  - component: {fileID: 114975426722106138}
-  - component: {fileID: 114019394752859352}
+  - component: {fileID: 114844885809399514}
   m_Layer: 0
   m_Name: Spacing
   m_TagString: Untagged
@@ -73,18 +72,6 @@ Transform:
   m_Father: {fileID: 4198327856151286}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114019394752859352
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1064099506557140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73a1f9549b4ffd84e90b137f830d5f4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  check: 0
 --- !u!114 &114078149829083626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -123,18 +110,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snapValue: 0.5
   depth: 0
---- !u!114 &114975426722106138
+--- !u!114 &114844885809399514
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1064099506557140}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72558b4c8318646a98c64f3a980b1258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  length: 1
-  spacingMax: 1
-  spacingMin: 1
+  length: 0
+  spacingMax: 0
+  spacingMin: 0
   spacing: 0
+  instance: 0

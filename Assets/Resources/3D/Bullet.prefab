@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 114016979821774144}
   - component: {fileID: 114662609569927988}
   - component: {fileID: 82279004729732246}
+  - component: {fileID: 114426587266707842}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -359,6 +360,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snapValue: 0.5
   depth: 0
+--- !u!114 &114426587266707842
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1898594025646614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8feca95e11359b947b714aa0458c7ea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  obj: {fileID: 0}
+  startPos: {x: 0, y: 0, z: 0}
 --- !u!114 &114662609569927988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -377,6 +392,7 @@ MonoBehaviour:
   normOffset: 0
   offsetPos: 10
   particle: {fileID: 198945654454751206}
+  drone: {fileID: 0}
 --- !u!198 &198214349232188186
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -986,6 +1002,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
+    m_CombineMode: 0
     cnt0: 1
     cnt1: 1
     cnt2: 1
@@ -3519,6 +3536,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
+    m_CombineMode: 0
     cnt0: 20
     cnt1: 30
     cnt2: 30
@@ -6142,6 +6160,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
+    m_CombineMode: 0
     cnt0: 5
     cnt1: 5
     cnt2: 5
@@ -8741,6 +8760,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
+    m_CombineMode: 0
     cnt0: 1
     cnt1: 30
     cnt2: 30
@@ -11286,6 +11306,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
+    m_CombineMode: 0
     cnt0: 20
     cnt1: 30
     cnt2: 30
