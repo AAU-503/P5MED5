@@ -15,7 +15,7 @@ public class CameraController : MonoBehaviour
 	static public float shakeDuration = 0.2f;
 	private float shakeAmount = 0.2f;
 	private Vector3 startPosition;
-	private Vector3 shakeVector;
+    private Vector3 shakeVector;
 
     bool realtime = true;
     static bool slowTime = false;
@@ -25,16 +25,15 @@ public class CameraController : MonoBehaviour
 
 
 	void Start () {
-		startPosition = transform.position;
+        startPosition = transform.position;
         Time.timeScale = 1f;
 
     }
 
     void Update (){
-		
 		xAdd += speed * Time.deltaTime;
 
-		transform.position = startPosition + Movement() + Shake();
+        transform.position = startPosition + Movement() + Shake();
 
             StartCoroutine("SlowTime");
 
