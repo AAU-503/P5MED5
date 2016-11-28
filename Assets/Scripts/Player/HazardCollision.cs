@@ -50,7 +50,7 @@ public class HazardCollision : MonoBehaviour
                 isLava = true;
 
                 ScoreManager.ChangeScore(+ScoreManager.lavaScore);
-                Instantiate(toast, hit.transform.position + new Vector3(3.0f, 2.0f, -2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.lavaScore);
+                Instantiate(toast, hit.transform.position + new Vector3(3.0f, 1.0f, -2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.lavaScore);
 
                 fire.Play();
                 fireSound.Play();
@@ -75,7 +75,7 @@ public class HazardCollision : MonoBehaviour
                 hit.collider.GetComponent<TileChunkBridge>().SetState(-1);
 
                 hit.collider.gameObject.GetComponent<BoxBehavior>().OnBadCollision();
-                Instantiate(toast, hit.transform.position + new Vector3(3.0f, 2.0f, -2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.boxFailScore);
+                Instantiate(toast, hit.transform.position + new Vector3(3.0f, 1.0f, -2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.boxFailScore);
             }
 
             if (hit.collider.gameObject.tag == "Explosive" && hit.distance < 0.2f) {
@@ -83,7 +83,7 @@ public class HazardCollision : MonoBehaviour
                 hit.collider.GetComponent<TileChunkBridge>().SetState(-1);
 
                 hit.collider.gameObject.GetComponent<ExplosiveBehavior>().OnBadCollision();
-                Instantiate(toast, hit.transform.position + new Vector3(3.0f, 2.0f, -2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.explosiveHitScore);
+                Instantiate(toast, hit.transform.position + new Vector3(3.0f, 1.0f, -2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.explosiveHitScore);
             }
         }
     }
@@ -96,7 +96,7 @@ public class HazardCollision : MonoBehaviour
             collider.GetComponent<TileChunkBridge>().SetState(1);
             Destroy(collider.gameObject);
             ScoreManager.ChangeScore(ScoreManager.coinsScore);
-            Instantiate(toast, collider.transform.position + new Vector3(3.0f, 2.0f, -2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.coinsScore);
+            Instantiate(toast, collider.transform.position + new Vector3(3.0f, 1.0f, -2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.coinsScore);
 
         }
 
@@ -104,7 +104,7 @@ public class HazardCollision : MonoBehaviour
         {
             robotSound.Play();
             ScoreManager.ChangeScore(ScoreManager.enemyFailScore);
-            Instantiate(toast, collider.transform.position + new Vector3(3.0f, 2.0f, -2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.enemyFailScore);
+            Instantiate(toast, collider.transform.position + new Vector3(2.0f, 0.0f, -2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.enemyFailScore);
 
         }
 
@@ -119,7 +119,7 @@ public class HazardCollision : MonoBehaviour
             collider.gameObject.GetComponent<BulletBehavior>().Destroy();
 
             ScoreManager.ChangeScore(ScoreManager.bulletScore);
-            Instantiate(toast, collider.transform.position + new Vector3(3.0f, 2.0f, -2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.bulletScore);
+            Instantiate(toast, collider.transform.position + new Vector3(3.0f, 1.0f, -2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.bulletScore);
         }
     }
 }
