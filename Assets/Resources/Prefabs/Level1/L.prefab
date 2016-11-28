@@ -136,9 +136,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   length: 1
-  spacingMax: 6
-  spacingMin: 4
-  spacing: 0
+  spacingMax: 5
+  spacingMin: 3
 --- !u!114 &114827084566837518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -153,4 +152,3 @@ MonoBehaviour:
   length: 1
   spacingMax: 5
   spacingMin: 3
-  spacing: 0

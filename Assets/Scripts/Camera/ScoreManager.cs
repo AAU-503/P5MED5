@@ -16,8 +16,7 @@ public class ScoreManager : MonoBehaviour {
     static public int explosiveHitScore = -10;
     static public int explosiveFailScore = -10;
     public Text scoreText;
-    public Text levelText;
-    public TileManager tileManager;
+   
 
 
     // Update is called once per frame
@@ -34,7 +33,6 @@ public class ScoreManager : MonoBehaviour {
     void OnGUI()
 	{
         scoreText.text = "Score: " + (int)(playerScore);
-        levelText.text = "Level: " + tileManager.currentLevel;
     }
     
 }
