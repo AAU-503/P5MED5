@@ -11,12 +11,18 @@ public class HazardCollision : MonoBehaviour {
     public ParticleSystem plasma;
     public AudioSource fireSound;
     public AudioSource plasmaSound;
+<<<<<<< HEAD
     public GameObject toast;
+=======
+    public AudioSource robotSound;
+
+>>>>>>> master
 
     void Start() {
         AudioSource[] audios = GetComponents<AudioSource>();
         fireSound = audios[1];
         plasmaSound = audios[2];
+        robotSound = audios[3];
         
 
     }
@@ -78,6 +84,7 @@ public class HazardCollision : MonoBehaviour {
         }
 
         if (other.gameObject.tag == "Enemy") {
+            robotSound.Play();
             ScoreManager.ChangeScore(ScoreManager.enemyFailScore);
             Instantiate(toast, other.transform.position + new Vector3(3.0f,2.0f,-2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.enemyFailScore);
                 
