@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43667546, g: 0.48427135, b: 0.5645225, a: 1}
+  m_IndirectSpecularColor: {r: 0.43667564, g: 0.48427147, b: 0.56452364, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2761,6 +2761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4894aa868720e41409f803de140c063a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toast: {fileID: 1445680908169714, guid: b53032ec6f1ba4a4e9ba69c846da8e72, type: 2}
 --- !u!4 &194910716
 Transform:
   m_ObjectHideFlags: 0
@@ -3438,7 +3439,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1006858788
+  randomSeed: 798544942
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -9072,6 +9073,7 @@ MonoBehaviour:
   fireSound: {fileID: 1168706779}
   plasmaSound: {fileID: 1168706790}
   robotSound: {fileID: 1168706792}
+  toast: {fileID: 1445680908169714, guid: b53032ec6f1ba4a4e9ba69c846da8e72, type: 2}
 --- !u!215 &1168706787
 ReflectionProbe:
   m_ObjectHideFlags: 0
@@ -9138,6 +9140,8 @@ MonoBehaviour:
   airTime: 2
   gravity: 20
   gravityForce: 3
+  jumpQueueDelaySeconds: 0.2
+  jumpQueueEndSeconds: 0.5
 --- !u!82 &1168706790
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9771,7 +9775,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -907911860
+  randomSeed: -1626925112
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -12637,6 +12641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4894aa868720e41409f803de140c063a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toast: {fileID: 1445680908169714, guid: b53032ec6f1ba4a4e9ba69c846da8e72, type: 2}
 --- !u!4 &1665085262
 Transform:
   m_ObjectHideFlags: 0
