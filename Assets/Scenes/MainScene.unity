@@ -9140,7 +9140,7 @@ MonoBehaviour:
   airTime: 2
   gravity: 20
   gravityForce: 3
-  jumpQueueDelaySeconds: 0.2
+  jumpQueueDelaySeconds: 0.05
   jumpQueueEndSeconds: 0.5
 --- !u!82 &1168706790
 AudioSource:
