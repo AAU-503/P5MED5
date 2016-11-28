@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 4385222519476786}
   - component: {fileID: 114429969205052832}
   - component: {fileID: 114436410573241630}
+  - component: {fileID: 114389848865973504}
   m_Layer: 0
   m_Name: LBL
   m_TagString: Untagged
@@ -190,6 +191,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snapValue: 0.5
   depth: 0
+--- !u!114 &114389848865973504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1676606658593568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ed2b0345bb7cd4d803de7565aab8ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chunkHeight: 3
+  chunkWidth: 3
+  attack: 0
 --- !u!114 &114401019841652716
 MonoBehaviour:
   m_ObjectHideFlags: 1
