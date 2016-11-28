@@ -11,12 +11,14 @@ public class HazardCollision : MonoBehaviour {
     public ParticleSystem plasma;
     public AudioSource fireSound;
     public AudioSource plasmaSound;
-    public GameObject toast;
+    public AudioSource robotSound;
+
 
     void Start() {
         AudioSource[] audios = GetComponents<AudioSource>();
         fireSound = audios[1];
         plasmaSound = audios[2];
+        robotSound = audios[3];
         
 
     }
@@ -37,7 +39,6 @@ public class HazardCollision : MonoBehaviour {
             if (hit.collider.gameObject.tag == "Lava" && hit.distance < 0.5f && isLava == false) {
                 isLava = true;
 				ScoreManager.ChangeScore (+ScoreManager.lavaScore);
-                Instantiate(toast, hit.transform.position + new Vector3(3.0f,2.0f,-2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.lavaScore);                
                 
                 fire.Play();
                 fireSound.Play();
@@ -54,12 +55,10 @@ public class HazardCollision : MonoBehaviour {
 			if (hit.collider.gameObject.tag == "Box" && hit.distance < 0.2f) {
                 //print("box");
                 hit.collider.gameObject.GetComponent<BoxBehavior>().OnBadCollision();
-                Instantiate(toast, hit.transform.position + new Vector3(3.0f,2.0f,-2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.boxFailScore);
             }
 
             if (hit.collider.gameObject.tag == "Explosive" && hit.distance < 0.2f) {
                 hit.collider.gameObject.GetComponent<ExplosiveBehavior>().OnBadCollision();
-                Instantiate(toast, hit.transform.position + new Vector3(3.0f,2.0f,-2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.explosiveHitScore);
             }
 
         }
@@ -73,14 +72,11 @@ public class HazardCollision : MonoBehaviour {
         if (other.gameObject.CompareTag("Coin")) {
             Destroy(other.gameObject);
             ScoreManager.ChangeScore(ScoreManager.coinsScore);
-            Instantiate(toast, other.transform.position + new Vector3(3.0f,2.0f,-2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.coinsScore);
-
         }
 
         if (other.gameObject.tag == "Enemy") {
+            robotSound.Play();
             ScoreManager.ChangeScore(ScoreManager.enemyFailScore);
-            Instantiate(toast, other.transform.position + new Vector3(3.0f,2.0f,-2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.enemyFailScore);
-                
         }
 
         if (other.gameObject.tag == "Bullet") {
@@ -88,7 +84,6 @@ public class HazardCollision : MonoBehaviour {
             plasmaSound.Play();
             other.gameObject.GetComponent<BulletBehavior>().Destroy();
             ScoreManager.ChangeScore(ScoreManager.bulletScore);
-            Instantiate(toast, other.transform.position + new Vector3(3.0f,2.0f,-2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.bulletScore);                
         }
     }
 
