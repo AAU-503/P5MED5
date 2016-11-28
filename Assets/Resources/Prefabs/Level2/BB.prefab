@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4513430719336118}
   - component: {fileID: 114004669750428194}
   - component: {fileID: 114966554358761348}
-  - component: {fileID: 114705828773526172}
+  - component: {fileID: 114046574997864170}
   m_Layer: 0
   m_Name: BB
   m_TagString: Untagged
@@ -179,6 +179,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snapValue: 0.5
   depth: 0
+--- !u!114 &114046574997864170
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1690304860201520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ed2b0345bb7cd4d803de7565aab8ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chunkHeight: 2
+  chunkWidth: 2
+  attack: 0
 --- !u!114 &114255783397386282
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -242,18 +256,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snapValue: 0.5
   depth: 0
---- !u!114 &114705828773526172
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1690304860201520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73a1f9549b4ffd84e90b137f830d5f4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  check: 0
 --- !u!114 &114799258227817054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -293,6 +295,7 @@ MonoBehaviour:
   spacingMax: 6
   spacingMin: 5
   spacing: 0
+  instance: 0
 --- !u!114 &114970946873899378
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4502425597788950}
   - component: {fileID: 114675600616353248}
   - component: {fileID: 114776426615252628}
-  - component: {fileID: 114085833143487932}
+  - component: {fileID: 114301112784608680}
   m_Layer: 0
   m_Name: EE
   m_TagString: Untagged
@@ -179,18 +179,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snapValue: 0.5
   depth: 0
---- !u!114 &114085833143487932
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1269933134142292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73a1f9549b4ffd84e90b137f830d5f4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  check: 0
 --- !u!114 &114171389083364860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -216,6 +204,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snapValue: 0.5
   depth: 0
+--- !u!114 &114301112784608680
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1269933134142292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ed2b0345bb7cd4d803de7565aab8ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chunkHeight: 2
+  chunkWidth: 2
+  attack: 0
 --- !u!114 &114310307136476554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -306,3 +308,4 @@ MonoBehaviour:
   spacingMax: 6
   spacingMin: 5
   spacing: 0
+  instance: 0

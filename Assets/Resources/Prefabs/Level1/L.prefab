@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4858704981203036}
   - component: {fileID: 114300000679197766}
   - component: {fileID: 114210476672344976}
-  - component: {fileID: 114827084566837518}
   m_Layer: 0
   m_Name: Lava_Spawner
   m_TagString: Untagged
@@ -39,7 +38,7 @@ GameObject:
   - component: {fileID: 4808024459675882}
   - component: {fileID: 114357824740219554}
   - component: {fileID: 114425226444778242}
-  - component: {fileID: 114061603037456698}
+  - component: {fileID: 114371857400277228}
   m_Layer: 0
   m_Name: L
   m_TagString: Untagged
@@ -54,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1560683136913916}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 44.5, y: -0.5, z: 0}
+  m_LocalPosition: {x: -9.5, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4858704981203036}
@@ -74,18 +73,6 @@ Transform:
   m_Father: {fileID: 4808024459675882}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114061603037456698
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1560683136913916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73a1f9549b4ffd84e90b137f830d5f4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  check: 0
 --- !u!114 &114210476672344976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,6 +111,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snapValue: 0.5
   depth: 0
+--- !u!114 &114371857400277228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1560683136913916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ed2b0345bb7cd4d803de7565aab8ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chunkHeight: 2
+  chunkWidth: 1
+  attack: 0
 --- !u!114 &114425226444778242
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -136,21 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   length: 1
-  spacingMax: 6
-  spacingMin: 4
-  spacing: 0
---- !u!114 &114827084566837518
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1231499084602764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72558b4c8318646a98c64f3a980b1258, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  length: 1
   spacingMax: 5
   spacingMin: 3
   spacing: 0
+  instance: 0

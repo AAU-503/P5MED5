@@ -56,13 +56,15 @@ public class TileManager : MonoBehaviour {
         
 
         for (int i = 0; i < tiles.Count; i++) {
-            if (tiles[i].transform.position.x + offset < player.transform.position.x && !tiles[i].GetComponent<LogicScript>().check) {
+            if (tiles[i].transform.position.x + offset < player.transform.position.x) {
 
                 if (counter >= target) {
 
                     switch (level) {
+
                         case 3:
                             currentLevel = 3;
+
                             float k = Random.Range(0f, 1f);
                             if ( k < 0.33f)
                             {
@@ -83,6 +85,7 @@ public class TileManager : MonoBehaviour {
                                 currentTile = Instantiate(level1Chunks[Random.Range(0, level1Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
                             }
                             break;
+
                         case 1:
                             currentLevel = 1;
                             currentTile = Instantiate(level1Chunks[Random.Range(0, level1Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);

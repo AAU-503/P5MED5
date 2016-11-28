@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 23531116111622074}
   - component: {fileID: 54148952612397222}
   - component: {fileID: 114513890447831130}
+  - component: {fileID: 114222879510327630}
   m_Layer: 0
   m_Name: Lava_lvl_1
   m_TagString: Lava
@@ -88,7 +89,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1396790873299228}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5, y: 0.5, z: 0}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4305573473228020}
@@ -269,6 +270,19 @@ Light:
   m_BounceIntensity: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114222879510327630
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1396790873299228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8feca95e11359b947b714aa0458c7ea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chunkLogger: {fileID: 0}
+  startPos: {x: 0, y: 0, z: 0}
 --- !u!114 &114488347379101110
 MonoBehaviour:
   m_ObjectHideFlags: 1

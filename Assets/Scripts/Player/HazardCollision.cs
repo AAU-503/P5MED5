@@ -9,7 +9,7 @@ public class HazardCollision : MonoBehaviour
     float setTime;
 
     public ParticleSystem fire;
-    public ParticleSystem plasma;
+    public ParticleSystem plasmaParticles;
     public AudioSource fireSound;
     public AudioSource plasmaSound;
 
@@ -26,8 +26,6 @@ public class HazardCollision : MonoBehaviour
         fireSound = audios[1];
         plasmaSound = audios[2];
         robotSound = audios[3];
-
-
     }
 
     void Update()
@@ -50,6 +48,7 @@ public class HazardCollision : MonoBehaviour
             if (hit.collider.gameObject.tag == "Lava" && hit.distance < 0.5f && isLava == false)
             {
                 isLava = true;
+
                 ScoreManager.ChangeScore(+ScoreManager.lavaScore);
                 Instantiate(toast, hit.transform.position + new Vector3(3.0f, 2.0f, -2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.lavaScore);
 
@@ -58,9 +57,12 @@ public class HazardCollision : MonoBehaviour
 
                 setTime = Time.time + 1.0f;
 
-            }
-            else if (hit.collider.gameObject.tag != "Lava")
-            {
+
+                ScoreManager.ChangeScore(+ScoreManager.lavaScore);
+                hit.collider.GetComponent<TileChunkBridge>().SetState(-1);
+
+
+            } else if (hit.collider.gameObject.tag != "Lava") {
                 isLava = false;
             }
         }
@@ -68,52 +70,56 @@ public class HazardCollision : MonoBehaviour
         if (Physics.Raycast(transform.position, Vector3.right, out hit))
         {
 
-            if (hit.collider.gameObject.tag == "Box" && hit.distance < 0.2f)
-            {
-                //print("box");
+            if (hit.collider.gameObject.tag == "Box" && hit.distance < 0.2f) {
+
+                hit.collider.GetComponent<TileChunkBridge>().SetState(-1);
+
                 hit.collider.gameObject.GetComponent<BoxBehavior>().OnBadCollision();
                 Instantiate(toast, hit.transform.position + new Vector3(3.0f, 2.0f, -2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.boxFailScore);
             }
 
-            if (hit.collider.gameObject.tag == "Explosive" && hit.distance < 0.2f)
-            {
+            if (hit.collider.gameObject.tag == "Explosive" && hit.distance < 0.2f) {
+
+                hit.collider.GetComponent<TileChunkBridge>().SetState(-1);
+
                 hit.collider.gameObject.GetComponent<ExplosiveBehavior>().OnBadCollision();
                 Instantiate(toast, hit.transform.position + new Vector3(3.0f, 2.0f, -2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.explosiveHitScore);
             }
-
         }
     }
 
 
-    void OnTriggerEnter(Collider other)
-    { // Ability to pick up coins adding to score in ScoreManager and attacking boxes
 
-        print(other.gameObject);
+    void OnTriggerEnter(Collider collider) { // Ability to pick up coins adding to score in ScoreManager and attacking boxes
 
-        if (other.gameObject.CompareTag("Coin"))
-        {
-            Destroy(other.gameObject);
+        if (collider.gameObject.CompareTag("Coin")) {
+            collider.GetComponent<TileChunkBridge>().SetState(1);
+            Destroy(collider.gameObject);
             ScoreManager.ChangeScore(ScoreManager.coinsScore);
-            Instantiate(toast, other.transform.position + new Vector3(3.0f, 2.0f, -2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.coinsScore);
+            Instantiate(toast, collider.transform.position + new Vector3(3.0f, 2.0f, -2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.coinsScore);
 
         }
 
-        if (other.gameObject.tag == "Enemy")
+ 	if (collider.gameObject.tag == "Enemy")
         {
             robotSound.Play();
             ScoreManager.ChangeScore(ScoreManager.enemyFailScore);
-            Instantiate(toast, other.transform.position + new Vector3(3.0f, 2.0f, -2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.enemyFailScore);
+            Instantiate(toast, collider.transform.position + new Vector3(3.0f, 2.0f, -2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.enemyFailScore);
 
         }
 
-        if (other.gameObject.tag == "Bullet")
-        {
-            plasma.Play();
+        if (collider.gameObject.tag == "Bullet") {
+            // ChunkLogger
+            //collider.gameObject.GetComponent<BulletBehavior>().drone.GetComponentInParent<ChunkLogger>().LogTile(collider.gameObject, collider.gameObject.GetComponent<BulletBehavior>().drone, -1, collider.gameObject.GetComponent<BulletBehavior>().drone.GetComponentInParent<PrefabDescription>().instance, collider.gameObject.GetComponent<ChunkConnector>().startPos, "Bullet");
+
+            plasmaParticles.Play();
             plasmaSound.Play();
-            other.gameObject.GetComponent<BulletBehavior>().Destroy();
+
+            collider.GetComponent<TileChunkBridge>().SetState(-1);
+            collider.gameObject.GetComponent<BulletBehavior>().Destroy();
+
             ScoreManager.ChangeScore(ScoreManager.bulletScore);
-            Instantiate(toast, other.transform.position + new Vector3(3.0f, 2.0f, -2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.bulletScore);
+            Instantiate(toast, collider.transform.position + new Vector3(3.0f, 2.0f, -2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.bulletScore);
         }
     }
-
 }

@@ -5,6 +5,7 @@ Shader "Custom/CurvedWorld" {
 	Properties{
 		// Diffuse texture
 		_MainTex("Base (RGB)", 2D) = "white" {}
+		_Color("Color", Color) = (1.0,1.0,1.0,1.0)
 	// Degree of curvature
 	_Curvature("Curvature", Float) = 0.005
 	}
@@ -19,7 +20,8 @@ Shader "Custom/CurvedWorld" {
 
 		// Access the shaderlab properties
 		uniform sampler2D _MainTex;
-	uniform float _Curvature;
+		uniform float _Curvature; 
+			uniform float4 _Color;
 
 	// Basic input structure to the shader function
 	// requires only a single set of UV texture mapping coordinates
@@ -49,7 +51,7 @@ Shader "Custom/CurvedWorld" {
 
 	// This is just a default surface shader
 	void surf(Input IN, inout SurfaceOutput o) {
-		half4 c = tex2D(_MainTex, IN.uv_MainTex);
+		half4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
 		o.Albedo = c.rgb;
 		o.Alpha = c.a;
 	}

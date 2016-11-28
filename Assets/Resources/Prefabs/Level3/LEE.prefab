@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4595656528855170}
   - component: {fileID: 114688165140386950}
   - component: {fileID: 114253187098481514}
-  - component: {fileID: 114201465962192612}
+  - component: {fileID: 114125536243111044}
   m_Layer: 0
   m_Name: LEE
   m_TagString: Untagged
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1081795888663002, guid: d6a1e354d6cf4d74ea31c451dbfc9740, type: 2}
---- !u!114 &114201465962192612
+--- !u!114 &114125536243111044
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -217,10 +217,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1565204535053128}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73a1f9549b4ffd84e90b137f830d5f4f, type: 3}
+  m_Script: {fileID: 11500000, guid: b8ed2b0345bb7cd4d803de7565aab8ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  check: 0
+  chunkHeight: 3
+  chunkWidth: 3
+  attack: 0
 --- !u!114 &114236349324306338
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -248,6 +250,7 @@ MonoBehaviour:
   spacingMax: 7
   spacingMin: 6
   spacing: 0
+  instance: 0
 --- !u!114 &114419806784348310
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -17,6 +17,7 @@ public class EnemyBehavior : MonoBehaviour {
 
     public float offsetPos = 3.0f;
 
+    private bool shot = false;
     private bool isMovingX = false;
     private bool isMovingY = true;
     private bool isDestroyed = false;
@@ -94,18 +95,18 @@ public class EnemyBehavior : MonoBehaviour {
         }
 
 
-        if (x < 1.0f && isMovingX) {
-            x += (1.05f - x) * x_speed * Time.deltaTime;
-        } else if (x >= 1.0f) {
-            isMovingX = !isMovingX;
+        //if (x < 1.0f && isMovingX) {
+        //    x += (1.05f - x) * x_speed * Time.deltaTime;
+        //} else if (x >= 1.0f) {
+        //    isMovingX = !isMovingX;
 
-        }
+        //}
 
-        if (x > 0.0f && !isMovingX) {
-            x -= (x - -0.05f) * x_speed * Time.deltaTime;
-        } else if (x <= 0.0f) {
-            isMovingX = !isMovingX;
-        }
+        //if (x > 0.0f && !isMovingX) {
+        //    x -= (x - -0.05f) * x_speed * Time.deltaTime;
+        //} else if (x <= 0.0f) {
+        //    isMovingX = !isMovingX;
+        //}
 
         transform.position = new Vector3(startPos.x + Mathf.Lerp(0, horizontalOffset, x), startPos.y + Mathf.Lerp(0, verticalOffset, y), startPos.z);
 
@@ -114,8 +115,10 @@ public class EnemyBehavior : MonoBehaviour {
 
 
     public void shoot(){
-        Instantiate(Bullet, transform.position, Quaternion.identity);
-        
+        if (!shot) {
+            Instantiate(Bullet, transform.position, Quaternion.identity).GetComponent<BulletBehavior>().Init(gameObject);
+            shot = true;
+        }
     }
 
     public void Attacked() {
