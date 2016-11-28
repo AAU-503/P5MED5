@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43667564, g: 0.48427147, b: 0.56452364, a: 1}
+  m_IndirectSpecularColor: {r: 0.43667564, g: 0.48427135, b: 0.5645232, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -695,7 +695,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    m_CombineMode: 0
     cnt0: 20
     cnt1: 30
     cnt2: 30
@@ -2762,7 +2761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4894aa868720e41409f803de140c063a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toast: {fileID: 1445680908169714, guid: b53032ec6f1ba4a4e9ba69c846da8e72, type: 2}
+  toast: {fileID: 0}
 --- !u!4 &194910716
 Transform:
   m_ObjectHideFlags: 0
@@ -3898,7 +3897,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    m_CombineMode: 0
     cnt0: 50
     cnt1: 30
     cnt2: 30
@@ -6666,7 +6664,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    m_CombineMode: 0
     cnt0: 1
     cnt1: 1
     cnt2: 1
@@ -9316,7 +9313,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8d0aafcd1d974fd4fbe2e8a3ce5daed4, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.268
+  m_Volume: 0.137
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -9372,7 +9369,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -9600,8 +9597,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 732327309}
-  levelText: {fileID: 283197056}
-  tileManager: {fileID: 1338702742}
+  levelText: {fileID: 0}
+  tileManager: {fileID: 0}
 --- !u!114 &1475737815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10272,7 +10269,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    m_CombineMode: 0
     cnt0: 30
     cnt1: 30
     cnt2: 30
@@ -12556,7 +12552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4894aa868720e41409f803de140c063a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toast: {fileID: 1445680908169714, guid: b53032ec6f1ba4a4e9ba69c846da8e72, type: 2}
+  toast: {fileID: 0}
 --- !u!4 &1665085262
 Transform:
   m_ObjectHideFlags: 0

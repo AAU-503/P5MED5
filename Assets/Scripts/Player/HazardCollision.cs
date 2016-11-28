@@ -96,7 +96,7 @@ public class HazardCollision : MonoBehaviour
             collider.GetComponent<TileChunkBridge>().SetState(1);
             Destroy(collider.gameObject);
             ScoreManager.ChangeScore(ScoreManager.coinsScore);
-            Instantiate(toast, other.transform.position + new Vector3(3.0f, 2.0f, -2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.coinsScore);
+            Instantiate(toast, collider.transform.position + new Vector3(3.0f, 2.0f, -2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.coinsScore);
 
         }
 
@@ -119,7 +119,7 @@ public class HazardCollision : MonoBehaviour
             collider.gameObject.GetComponent<BulletBehavior>().Destroy();
 
             ScoreManager.ChangeScore(ScoreManager.bulletScore);
-            Instantiate(toast, other.transform.position + new Vector3(3.0f, 2.0f, -2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.bulletScore);
+            Instantiate(toast, collider.transform.position + new Vector3(3.0f, 2.0f, -2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.bulletScore);
         }
     }
 }
