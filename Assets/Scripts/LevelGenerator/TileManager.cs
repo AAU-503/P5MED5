@@ -58,7 +58,7 @@ public class TileManager : MonoBehaviour {
                 if (counter >= target) {
 
                     switch (level) {
-                        case 3:
+                        case 1:
                             float k = Random.Range(0f, 1f);
                             if ( k < 0.33f)
                             {
@@ -78,7 +78,7 @@ public class TileManager : MonoBehaviour {
                                 currentTile = Instantiate(level1Chunks[Random.Range(0, level1Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
                             }
                             break;
-                        case 1:
+                        case 3:
                             currentTile = Instantiate(level1Chunks[Random.Range(0, level1Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
                             break;
                             Debug.Log("Level out of range");

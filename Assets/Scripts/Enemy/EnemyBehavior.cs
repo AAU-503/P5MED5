@@ -17,6 +17,7 @@ public class EnemyBehavior : MonoBehaviour {
 
     public float offsetPos = 3.0f;
 
+    private bool shot = false;
     private bool isMovingX = false;
     private bool isMovingY = true;
     private bool isDestroyed = false;
@@ -114,8 +115,10 @@ public class EnemyBehavior : MonoBehaviour {
 
 
     public void shoot(){
-
-        Instantiate(Bullet, transform.position, Quaternion.identity).GetComponent<BulletBehavior>().Init(gameObject);
+        if (!shot) {
+            Instantiate(Bullet, transform.position, Quaternion.identity).GetComponent<BulletBehavior>().Init(gameObject);
+            shot = true;
+        }
     }
 
     public void Attacked() {

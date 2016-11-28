@@ -11,21 +11,24 @@ public class ChunkMemory : MonoBehaviour {
     private GameObject player;
     private GameObject quad;
     public GameObject[,] quadContainer;
-    public GameObject[,] objMem;
+    public GameObject[,] memLayer1;
+    public GameObject[,] memLayer2;
 
     public static int instance;
 
     public int chunkHeight;
     public int chunkWidth;
     private bool check = false;
-    private static bool debug = true;
+    private static bool debug = false;
 
     private const float margin = 0.01f;
     private const float resolution = 1.0f;
 
     void Start() {
         player = GameObject.FindWithTag("Player");
-        objMem = new GameObject[(int)(chunkWidth * resolution), (int)(chunkHeight * resolution)];
+        memLayer1 = new GameObject[(int)(chunkWidth * resolution), (int)(chunkHeight * resolution)];
+        memLayer2 = new GameObject[(int)(chunkWidth * resolution), (int)(chunkHeight * resolution)];
+
 
         if (debug)
             ShowDebug();
@@ -42,9 +45,12 @@ public class ChunkMemory : MonoBehaviour {
     }
 
     public void UpdateMemory(GameObject obj) {
-
         // Load object into memory.
-        objMem[(int)obj.GetComponent<TileChunkBridge>().startPos.x, (int)obj.GetComponent<TileChunkBridge>().startPos.y] = obj;
+        if (obj.tag == "Bullet") {
+            memLayer2[(int)obj.GetComponent<TileChunkBridge>().startPos.x, (int)obj.GetComponent<TileChunkBridge>().startPos.y] = obj;
+        } else {
+            memLayer1[(int)obj.GetComponent<TileChunkBridge>().startPos.x, (int)obj.GetComponent<TileChunkBridge>().startPos.y] = obj;
+        }
 
         if (debug) {
             if (obj.GetComponent<TileChunkBridge>().state == 1) {
@@ -79,6 +85,7 @@ public class ChunkMemory : MonoBehaviour {
 
 
     public void LogTile() {
+    
             Exporter.Set(gameObject);
     }
 

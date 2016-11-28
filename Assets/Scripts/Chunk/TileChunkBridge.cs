@@ -8,6 +8,9 @@ using UnityEngine;
 public class TileChunkBridge : MonoBehaviour {
 
     public int state; // State of the object (+1, 0, -1).
+    public string playerPosX;
+    public string playerPosY;
+
     public GameObject obj; // Reference to the tile.  
     public Vector3 startPos; // The tile spawn position. 
     private ChunkMemory chunkMem;
@@ -24,7 +27,10 @@ public class TileChunkBridge : MonoBehaviour {
             chunkMem = obj.GetComponentInParent<ChunkMemory>();
         }
 
-        chunkMem.UpdateMemory(obj);
+        chunkMem.UpdateMemory(gameObject);
+
+        playerPosX = "N/A";
+        playerPosY = "N/A";
     }
 
     /// <summary>
@@ -43,6 +49,14 @@ public class TileChunkBridge : MonoBehaviour {
                 break;
         }
 
+        if (gameObject.tag == "Bullet") {
+            playerPosX = (GameObject.FindWithTag("Player").transform.position.x - obj.transform.position.x).ToString();
+            playerPosY = (GameObject.FindWithTag("Player").transform.position.y - obj.transform.position.y).ToString();
+        } else {
+            playerPosX = (GameObject.FindWithTag("Player").transform.position.x - obj.transform.parent.position.x).ToString();
+            playerPosY = (GameObject.FindWithTag("Player").transform.position.y - obj.transform.parent.position.y).ToString();
+        }
+
         Sync();
     }
 
@@ -50,6 +64,6 @@ public class TileChunkBridge : MonoBehaviour {
     /// Send information to <see cref="ChunkMemory"/> for later export.  
     /// </summary>
     public void Sync() {
-        chunkMem.UpdateMemory(gameObject);
+            chunkMem.UpdateMemory(gameObject);
     }
 }

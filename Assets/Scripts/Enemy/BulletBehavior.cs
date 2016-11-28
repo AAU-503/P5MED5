@@ -12,6 +12,7 @@ public class BulletBehavior : MonoBehaviour {
     private bool isDestroyed;
     public ParticleSystem particle;
     public GameObject drone;
+    private Renderer[] renderes;
 
 	// Use this for initialization
 	public void Init (GameObject drone) {
@@ -30,7 +31,11 @@ public class BulletBehavior : MonoBehaviour {
 		}
 
         if (isDestroyed) {
-                Destroy(gameObject);
+            renderes = GetComponentsInChildren<Renderer>();
+
+            foreach (Renderer element in renderes) {
+                element.enabled = false;
+            }
             
         } else {
             transform.position += toPlayer * speed * Time.deltaTime;
