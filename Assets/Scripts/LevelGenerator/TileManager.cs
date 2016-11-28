@@ -21,6 +21,8 @@ public class TileManager : MonoBehaviour {
     private int spacing;
     private int level;
 
+    public int currentLevel;
+
     public int offset = 10;
     public int counter = 1;
     private int length;
@@ -37,7 +39,7 @@ public class TileManager : MonoBehaviour {
         level3Chunks = Resources.LoadAll<GameObject>("Prefabs/Level3");
 
         transform.position = new Vector3(player.transform.position.x - offset, transform.position.y, transform.position.z);
-
+        currentLevel = 1;
         for (int i = 0; i < 40; i++) {
             currentTile = Instantiate(spacing_prefab, new Vector3(transform.position.x + i, transform.position.y, transform.position.z), Quaternion.identity);
             tiles.Add(currentTile);
@@ -51,6 +53,7 @@ public class TileManager : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         level = SetLevel();
+        
 
         for (int i = 0; i < tiles.Count; i++) {
             if (tiles[i].transform.position.x + offset < player.transform.position.x) {
@@ -58,7 +61,10 @@ public class TileManager : MonoBehaviour {
                 if (counter >= target) {
 
                     switch (level) {
-                        case 1:
+
+                        case 3:
+                            currentLevel = 3;
+
                             float k = Random.Range(0f, 1f);
                             if ( k < 0.33f)
                             {
@@ -70,6 +76,7 @@ public class TileManager : MonoBehaviour {
                             }
                             break;
                         case 2:
+                            currentLevel = 2;
                             float j = Random.Range(0f, 1f);
                             if (j > 0.5f) { 
                                 currentTile = Instantiate(level2Chunks[Random.Range(0, level2Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
@@ -78,7 +85,9 @@ public class TileManager : MonoBehaviour {
                                 currentTile = Instantiate(level1Chunks[Random.Range(0, level1Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
                             }
                             break;
-                        case 3:
+
+                        case 1:
+                            currentLevel = 1;
                             currentTile = Instantiate(level1Chunks[Random.Range(0, level1Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
                             break;
                             Debug.Log("Level out of range");

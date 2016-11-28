@@ -17,7 +17,10 @@ public class ScoreManager : MonoBehaviour {
     static public int explosiveFailScore = -10;
 
     public Text scoreText;
+
     public static int session;
+    public Text levelText;
+    public TileManager tileManager;
 
     void Awake() {
         // Check For 'TimesLaunched', Set To 0 If Value Isnt Set (First Time Being Launched)
@@ -47,6 +50,7 @@ public class ScoreManager : MonoBehaviour {
     void OnGUI()
 	{
         scoreText.text = "Score: " + (int)(playerScore);
+        levelText.text = "Level: " + tileManager.currentLevel;
     }
     
 }
