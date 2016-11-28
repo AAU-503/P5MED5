@@ -28,8 +28,8 @@ public class TileManager : MonoBehaviour {
     private int length;
 
     public float level2Time = 60;
-    public float level3Time = 180;
-
+    public float level3Time = 150;
+    public float endState = 240;
 
 
     // Use this for initialization
