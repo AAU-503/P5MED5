@@ -12,11 +12,15 @@ public class HazardCollision : MonoBehaviour {
     public AudioSource fireSound;
     public AudioSource plasmaSound;
 
+    public AudioSource robotSound;
+
+
 
     void Start() {
         AudioSource[] audios = GetComponents<AudioSource>();
         fireSound = audios[1];
         plasmaSound = audios[2];
+        robotSound = audios[3];
         
 
     }
@@ -73,6 +77,7 @@ public class HazardCollision : MonoBehaviour {
         }
 
         if (other.gameObject.tag == "Enemy") {
+            robotSound.Play();
             ScoreManager.ChangeScore(ScoreManager.enemyFailScore);
         }
 
