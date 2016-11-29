@@ -36,7 +36,7 @@ public class AttackTrigger : MonoBehaviour {
 
             //collider.GetComponentInParent<ChunkLogger>().LogTile(collider.gameObject, collider.gameObject.transform.parent.gameObject, GetComponentInParent<PrefabDescription>().instance, 1, collider.GetComponent<ChunkConnector>().startPos, "Attacked");
 
-            Instantiate(toast, collider.transform.position + new Vector3(3.0f,0.0f,-2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.enemyKillScore);
+            Instantiate(toast, collider.transform.position + new Vector3(2.0f,0.0f,-2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.enemyKillScore);
 
         }
     }	

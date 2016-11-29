@@ -119,6 +119,7 @@ MonoBehaviour:
   spacingMax: 5
   spacingMin: 3
   spacing: 0
+  instance: 0
 --- !u!114 &114165573769269610
 MonoBehaviour:
   m_ObjectHideFlags: 1
