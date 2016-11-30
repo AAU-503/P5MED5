@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TileManager : MonoBehaviour {
 
@@ -10,6 +11,7 @@ public class TileManager : MonoBehaviour {
     public GameObject spacing_prefab;
     public GameObject empty_prefab;
     private GameObject currentTile;
+    
 
     public GameObject[] level1Chunks;
     public GameObject[] level2Chunks;
@@ -27,9 +29,8 @@ public class TileManager : MonoBehaviour {
     public int counter = 1;
     private int length;
 
-    public float level2Time = 60;
-    public float level3Time = 150;
-    public float endState = 240;
+    public float level2Time = 45;
+    public float level3Time = 135;
 
 
     // Use this for initialization
@@ -62,6 +63,11 @@ public class TileManager : MonoBehaviour {
 
                     switch (level) {
 
+                        case 4:
+                            Time.timeScale = 0;
+                            SceneManager.LoadScene("EndScene");
+                            
+                            break;
                         case 3:
                             currentLevel = 3;
 
@@ -125,7 +131,12 @@ public class TileManager : MonoBehaviour {
     }
 
     int SetLevel() {
-        if (Time.time > level3Time) {
+        if (Time.time > 255)
+        {
+            print(255);
+            return 4;
+        }
+        else if (Time.time > level3Time) {
             return 3;
         } else if (Time.time > level2Time) {
             return 2;
