@@ -69,7 +69,6 @@
      <Compile Include="Assets\Asset Store\Standard Assets\Effects\Common\MinAttribute.cs" />
      <Compile Include="Assets\Asset Store\Standard Assets\Effects\Common\RenderTextureUtility.cs" />
      <Compile Include="Assets\Asset Store\Standard Assets\Effects\LensAberrations\LensAberrations.cs" />
-     <Compile Include="Assets\ScoreText.cs" />
      <Compile Include="Assets\Scripts\Box\BoxBehavior.cs" />
      <Compile Include="Assets\Scripts\Box\ExplosiveBehavior.cs" />
      <Compile Include="Assets\Scripts\Camera\ButtonManager.cs" />
@@ -78,6 +77,7 @@
      <Compile Include="Assets\Scripts\Camera\FloatingTextController.cs" />
      <Compile Include="Assets\Scripts\Camera\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\Camera\ScoreManager.cs" />
+     <Compile Include="Assets\Scripts\Camera\ScoreText.cs" />
      <Compile Include="Assets\Scripts\Chunk\ChunkMemory.cs" />
      <Compile Include="Assets\Scripts\Chunk\TileChunkBridge.cs" />
      <Compile Include="Assets\Scripts\Coin\CoinBehavior.cs" />
