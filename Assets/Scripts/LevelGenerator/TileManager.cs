@@ -66,10 +66,10 @@ public class TileManager : MonoBehaviour {
                             currentLevel = 3;
 
                             float k = Random.Range(0f, 1f);
-                            if ( k < 0.33f)
+                            if ( k < 0.50f)
                             {
                                 currentTile = Instantiate(level3Chunks[Random.Range(0, level3Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
-                            } else if (k > 0.33f && k < 0.66f) {
+                            } else if (k > 0.50f && k < 0.85f) {
                                 currentTile = Instantiate(level2Chunks[Random.Range(0, level2Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
                             } else {
                                 currentTile = Instantiate(level1Chunks[Random.Range(0, level1Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
@@ -78,7 +78,7 @@ public class TileManager : MonoBehaviour {
                         case 2:
                             currentLevel = 2;
                             float j = Random.Range(0f, 1f);
-                            if (j > 0.5f) { 
+                            if (j > 0.35f) { 
                                 currentTile = Instantiate(level2Chunks[Random.Range(0, level2Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
                             }
                             else {
