@@ -21,7 +21,7 @@ public class TileManager : MonoBehaviour {
     private int spacing;
     private int level;
 
-    public int currentLevel;
+    public static int currentLevel;
 
     public int offset = 10;
     public int counter = 1;

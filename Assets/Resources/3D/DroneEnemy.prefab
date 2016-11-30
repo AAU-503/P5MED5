@@ -725,9 +725,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1a8b7c68975214d33af9160eb8df0bd2, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.121
+  m_audioClip: {fileID: 8300000, guid: 8f161ecc32d500f4ebb7c153e10ff451, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.213
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1371,6 +1371,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
+    m_CombineMode: 0
     cnt0: 50
     cnt1: 30
     cnt2: 30
@@ -3886,6 +3887,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
+    m_CombineMode: 0
     cnt0: 30
     cnt1: 30
     cnt2: 30
@@ -6455,6 +6457,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
+    m_CombineMode: 0
     cnt0: 1
     cnt1: 1
     cnt2: 1
@@ -9078,6 +9081,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
+    m_CombineMode: 0
     cnt0: 1
     cnt1: 30
     cnt2: 30
@@ -11701,6 +11705,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
+    m_CombineMode: 0
     cnt0: 5
     cnt1: 5
     cnt2: 5
@@ -14210,6 +14215,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
+    m_CombineMode: 0
     cnt0: 20
     cnt1: 30
     cnt2: 30

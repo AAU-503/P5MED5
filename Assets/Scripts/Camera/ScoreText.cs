@@ -22,8 +22,6 @@ public class ScoreText : MonoBehaviour {
 
 	public void setText(int score){
 
-		print("test");
-
 		if (score > 0) {
 			GetComponent<TextMesh>().color = Color.green; 
 	    	GetComponent<TextMesh>().text = "+" + score + " pts";
@@ -36,8 +34,6 @@ public class ScoreText : MonoBehaviour {
 
 	public void Animate(){
 	
-		print(animator.GetAnimatorTransitionInfo(0).nameHash);
-
 	if (animator.GetAnimatorTransitionInfo(0).nameHash == 3705433) {
 		Destroy(gameObject.transform.parent.gameObject);
 	}

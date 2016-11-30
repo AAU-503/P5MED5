@@ -13,13 +13,12 @@ public class PlayerBehavior : MonoBehaviour
     public float airTime = 2f;
 	public float gravity = 20.0f;
     public float gravityForce = 3.0f;
-    public float jumpQueueDelaySeconds = 0.2f;
-    public float jumpQueueEndSeconds = 0.5f;
-
     private bool attacked = true;
     private float forceY = 0;
     private float invertGravity;
     private bool jumpQueued = false;
+    private bool reset = true;
+
 
     // Use this for initialization
     void Start ()
@@ -45,33 +44,46 @@ public class PlayerBehavior : MonoBehaviour
 		transform.Translate (CameraController.speed * Time.deltaTime, 0, 0);
 	}
 
-    void SwitchJumpQueued()
-    {
-        if (jumpQueued)
-        {
+
+    IEnumerator SwitchJumpQueued(float delayTime) {
+        jumpQueued = true;
+        yield return new WaitForSeconds(delayTime);
+        if (!Input.GetKey(KeyCode.Space)) {
             jumpQueued = false;
-        }else if (!jumpQueued)
-        {
-            jumpQueued = true;
         }
     }
 
-	void Jump ()
+    void Jump ()
 	{
 		if (controller.isGrounded) {
             forceY = 0;
             invertGravity = gravity * airTime;
-			if (Input.GetKeyDown (KeyCode.Space) || jumpQueued) {
-                forceY = jumpSpeed;
-			}
 
-		}
+            if (Input.GetKeyDown (KeyCode.Space) || jumpQueued) {
+                
+                forceY = jumpSpeed;
+                jumpQueued = false;
+                reset = false;
+
+            }
+
+            if (Input.GetKeyUp(KeyCode.Space)) {
+                reset = true;
+            }
+
+        }
         if (!controller.isGrounded)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyUp(KeyCode.Space))
             {
-                Invoke("SwitchJumpQueued", jumpQueueDelaySeconds);
-                Invoke("SwitchJumpQueued", jumpQueueEndSeconds);
+                if (reset) {
+                    StartCoroutine(SwitchJumpQueued(0.1f));
+                }
+                reset = true;
+            }
+
+            if (Input.GetKey(KeyCode.Space) && reset == true) {
+                jumpQueued = true;
             }
         }
 

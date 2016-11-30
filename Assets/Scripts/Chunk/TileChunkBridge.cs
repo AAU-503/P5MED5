@@ -8,6 +8,8 @@ using UnityEngine;
 public class TileChunkBridge : MonoBehaviour {
 
     public int state; // State of the object (+1, 0, -1).
+    public int level; // Level the tile appeared in. 
+
     public string playerPosX;
     public string playerPosY;
 
@@ -16,6 +18,8 @@ public class TileChunkBridge : MonoBehaviour {
     private ChunkMemory chunkMem;
 
 	void Start () {
+        level = TileManager.currentLevel;
+
         // Send information regarding specific game objects to ChunkLog.cs.
         if (gameObject.tag == "Bullet") { // Bullets need to be logged at the drone start-position, therefore we treat them as a special case. 
             obj = gameObject.GetComponent<BulletBehavior>().drone;

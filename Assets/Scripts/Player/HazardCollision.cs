@@ -70,7 +70,7 @@ public class HazardCollision : MonoBehaviour
         if (Physics.Raycast(transform.position, Vector3.right, out hit))
         {
 
-            if (hit.collider.gameObject.tag == "Box" && hit.distance < 0.2f) {
+            if (hit.collider.gameObject.tag == "Box" && hit.distance < 0.5f) {
 
                 hit.collider.GetComponent<TileChunkBridge>().SetState(-1);
 
@@ -78,7 +78,7 @@ public class HazardCollision : MonoBehaviour
                 Instantiate(toast, hit.transform.position + new Vector3(3.0f, 1.0f, -2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.boxFailScore);
             }
 
-            if (hit.collider.gameObject.tag == "Explosive" && hit.distance < 0.2f) {
+            if (hit.collider.gameObject.tag == "Explosive" && hit.distance < 0.5f) {
 
                 hit.collider.GetComponent<TileChunkBridge>().SetState(-1);
 
@@ -105,6 +105,7 @@ public class HazardCollision : MonoBehaviour
             robotSound.Play();
             ScoreManager.ChangeScore(ScoreManager.enemyFailScore);
             Instantiate(toast, collider.transform.position + new Vector3(2.0f, 0.0f, -2.0f), Quaternion.identity).GetComponentInChildren<ScoreText>().setText(ScoreManager.enemyFailScore);
+            collider.GetComponent<TileChunkBridge>().SetState(-1);
 
         }
 

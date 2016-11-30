@@ -103,11 +103,11 @@ public class Exporter : MonoBehaviour {
             for (int i = 0; i < chunk.GetComponent<ChunkMemory>().memLayer1.GetLength(0); i++) {
 
                 if (chunk.GetComponent<ChunkMemory>().memLayer1[i, j] != null) {
-                    Write(chunk.GetComponent<ChunkMemory>().memLayer1[i, j], chunk, chunk.GetComponent<PrefabDescription>().instance, chunk.GetComponent<ChunkMemory>().memLayer1[i, j].GetComponent<TileChunkBridge>().state, new Vector2(i, j), chunk.GetComponent<ChunkMemory>().memLayer1[i, j].GetComponent<TileChunkBridge>().playerPosX, chunk.GetComponent<ChunkMemory>().memLayer1[i, j].GetComponent<TileChunkBridge>().playerPosY);
+                    Write(chunk.GetComponent<ChunkMemory>().memLayer1[i, j], chunk, chunk.GetComponent<PrefabDescription>().instance, chunk.GetComponent<ChunkMemory>().memLayer1[i, j].GetComponent<TileChunkBridge>().level, chunk.GetComponent<ChunkMemory>().memLayer1[i, j].GetComponent<TileChunkBridge>().state, new Vector2(i, j), chunk.GetComponent<ChunkMemory>().memLayer1[i, j].GetComponent<TileChunkBridge>().playerPosX, chunk.GetComponent<ChunkMemory>().memLayer1[i, j].GetComponent<TileChunkBridge>().playerPosY);
                 }
 
                 if (chunk.GetComponent<ChunkMemory>().memLayer2[i, j] != null) {
-                    Write(chunk.GetComponent<ChunkMemory>().memLayer2[i, j], chunk, chunk.GetComponent<PrefabDescription>().instance, chunk.GetComponent<ChunkMemory>().memLayer2[i, j].GetComponent<TileChunkBridge>().state, new Vector2(i, j), chunk.GetComponent<ChunkMemory>().memLayer2[i, j].GetComponent<TileChunkBridge>().playerPosX, chunk.GetComponent<ChunkMemory>().memLayer2[i, j].GetComponent<TileChunkBridge>().playerPosY);
+                    Write(chunk.GetComponent<ChunkMemory>().memLayer2[i, j], chunk, chunk.GetComponent<PrefabDescription>().instance, chunk.GetComponent<ChunkMemory>().memLayer2[i, j].GetComponent<TileChunkBridge>().level, chunk.GetComponent<ChunkMemory>().memLayer2[i, j].GetComponent<TileChunkBridge>().state, new Vector2(i, j), chunk.GetComponent<ChunkMemory>().memLayer2[i, j].GetComponent<TileChunkBridge>().playerPosX, chunk.GetComponent<ChunkMemory>().memLayer2[i, j].GetComponent<TileChunkBridge>().playerPosY);
                 }
             }
         }
@@ -146,8 +146,8 @@ public class Exporter : MonoBehaviour {
     //}
 
     // Write to the chunk memory.
-    private static void Write(GameObject tile, GameObject chunk, int instance, int result, Vector2 tilePos, string PlayerPosX, string PlayerPosY) {
-        string log = tile.ToString() + "," + chunk.ToString() + "," + instance + "," + ScoreManager.session + "," + episodes[index] + "," + result + "," + tilePos.x + "," + tilePos.y + "," + PlayerPosX + "," + PlayerPosY + "\n";
+    private static void Write(GameObject tile, GameObject chunk, int instance, int currentLevel, int result, Vector2 tilePos, string PlayerPosX, string PlayerPosY) {
+        string log = tile.ToString() + "," + chunk.ToString() + "," + instance + "," + currentLevel + "," + ScoreManager.session + "," + episodes[index] + "," + result + "," + tilePos.x + "," + tilePos.y + "," + PlayerPosX + "," + PlayerPosY + "\n";
 
                 if (!File.Exists("Data.csv")) {
                     File.WriteAllText("Data.csv", log);
@@ -155,11 +155,6 @@ public class Exporter : MonoBehaviour {
                 } else {
                     File.AppendAllText("Data.csv", log);
                 }
-    }
-
-    private static void WriteToMemory(GameObject tile, GameObject chunk, int instance, int result, Vector2 tilePos, Vector3 PlayerPos, string attribute) {
-        string log = tile.ToString() + "," + chunk.ToString() + "," + instance + "," + ScoreManager.session + "," + episodes[index] + "," + result + "," + tilePos.x + "," + tilePos.y + "," + PlayerPos.x + "," + PlayerPos.y + "," + attribute + "\n";
-        chunkMemory[(int)tilePos.x, (int)tilePos.y] = log;
     }
 
     // Write chunk memory to .csv file.
