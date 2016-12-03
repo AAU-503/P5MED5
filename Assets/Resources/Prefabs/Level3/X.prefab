@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114532332219049460}
   - component: {fileID: 114137653999833842}
   - component: {fileID: 114573297825092006}
+  - component: {fileID: 114631408355005504}
   m_Layer: 0
   m_Name: X3
   m_TagString: Untagged
@@ -117,7 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   length: 1
   spacingMax: 5
-  spacingMin: 3
+  spacingMin: 5
   spacing: 0
   instance: 0
 --- !u!114 &114165573769269610
@@ -170,6 +171,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   check: 0
+--- !u!114 &114631408355005504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1373530806762746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ed2b0345bb7cd4d803de7565aab8ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chunkHeight: 2
+  chunkWidth: 1
+  attack: 0
 --- !u!114 &114681392389840484
 MonoBehaviour:
   m_ObjectHideFlags: 1

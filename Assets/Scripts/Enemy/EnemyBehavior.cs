@@ -37,7 +37,6 @@ public class EnemyBehavior : MonoBehaviour {
         horizontalOffset = 3.0f;
         verticalOffset = 3.0f;
 
-        x = Random.Range(0.0f, 1.0f);
         y = Random.Range(0.0f, 1.0f);
         x_speed = Random.Range(1.0f, 3.0f);
         y_speed = Random.Range(1.0f, 3.0f);
