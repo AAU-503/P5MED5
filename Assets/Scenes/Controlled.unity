@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43667564, g: 0.48427147, b: 0.56452364, a: 1}
+  m_IndirectSpecularColor: {r: 0.43667546, g: 0.48427135, b: 0.5645225, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -695,6 +695,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
+    m_CombineMode: 0
     cnt0: 20
     cnt1: 30
     cnt2: 30
@@ -2733,7 +2734,7 @@ GameObject:
   - component: {fileID: 194910715}
   m_Layer: 0
   m_Name: AttackColliderGround
-  m_TagString: Untagged
+  m_TagString: Hitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3897,6 +3898,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
+    m_CombineMode: 0
     cnt0: 50
     cnt1: 30
     cnt2: 30
@@ -6664,6 +6666,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
+    m_CombineMode: 0
     cnt0: 1
     cnt1: 1
     cnt2: 1
@@ -9468,15 +9471,14 @@ MonoBehaviour:
     type: 2}
   empty_prefab: {fileID: 1232294691165558, guid: 1d741e6f3c71e0945b7106e21a2c6b7c,
     type: 2}
-  EndGameCanvas: {fileID: 0}
   level1Chunks: []
   level2Chunks: []
   level3Chunks: []
   offset: 10
   counter: 1
-  level2Time: 60
-  level3Time: 180
-  endTime: 0
+  level2Time: 40
+  level3Time: 100
+  scene: ControlledToPremade
 --- !u!1 &1475737807
 GameObject:
   m_ObjectHideFlags: 0
@@ -9494,6 +9496,7 @@ GameObject:
   - component: {fileID: 1475737815}
   - component: {fileID: 1475737816}
   - component: {fileID: 1475737817}
+  - component: {fileID: 1475737818}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -9637,6 +9640,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 3d417cf48fde7da46b5a79811115e87f, type: 3}
+--- !u!114 &1475737818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1475737807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004589803ab9a0f4aa436bd7622f52d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _condition: 3
 --- !u!1 &1482449551
 GameObject:
   m_ObjectHideFlags: 0
@@ -10268,6 +10283,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
+    m_CombineMode: 0
     cnt0: 30
     cnt1: 30
     cnt2: 30
@@ -12523,7 +12539,7 @@ GameObject:
   - component: {fileID: 1665085261}
   m_Layer: 0
   m_Name: AttackColliderAir
-  m_TagString: Untagged
+  m_TagString: Hitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

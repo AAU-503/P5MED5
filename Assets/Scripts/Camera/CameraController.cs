@@ -27,6 +27,7 @@ public class CameraController : MonoBehaviour
 	void Start () {
         startPosition = transform.position;
         Time.timeScale = 1f;
+        xAdd = 0;
 
     }
 

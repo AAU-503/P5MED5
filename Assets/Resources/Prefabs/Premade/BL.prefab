@@ -198,8 +198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   length: 2
-  spacingMax: 5
-  spacingMin: 5
+  spacingMax: 6
+  spacingMin: 6
   spacing: 0
   instance: 0
 --- !u!114 &114557549677793906

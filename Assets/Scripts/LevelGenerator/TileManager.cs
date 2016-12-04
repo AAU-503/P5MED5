@@ -32,6 +32,7 @@ public class TileManager : MonoBehaviour {
     public float level2Time = 45;
     public float level3Time = 135;
 
+    public string scene; 
 
     // Use this for initialization
     void Start() {
@@ -65,7 +66,7 @@ public class TileManager : MonoBehaviour {
 
                         case 4:
                             Time.timeScale = 0;
-                            SceneManager.LoadScene("EndScene");
+                            SceneManager.LoadScene(scene);
                             
                             break;
                         case 3:
@@ -131,7 +132,7 @@ public class TileManager : MonoBehaviour {
     }
 
     int SetLevel() {
-        if (Time.time > 255)
+        if (Time.time > 160)
         {
             print(255);
             return 4;

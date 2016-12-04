@@ -6,38 +6,33 @@ using UnityEngine.SceneManagement;
 public class TileManagerPremade : MonoBehaviour {
 
     public List<GameObject> tiles = new List<GameObject>();
+    int[] order = new int[42] {1, 6, 0, 12, 9, 3, 2, 8, 11, 5, 13, 4, 7, 10, 13, 2, 8, 11, 7, 9, 6, 5, 10, 1, 3, 4, 0, 12, 0, 2, 4, 1, 11, 13, 6, 8, 7, 5, 10, 9, 3, 12 };
+
+    int index = 0;
+    int count = 0;
 
     public GameObject player;
     public GameObject spacing_prefab;
     public GameObject empty_prefab;
     private GameObject currentTile;
     
-
-    public GameObject[] level1Chunks;
-    public GameObject[] level2Chunks;
-    public GameObject[] level3Chunks;
-
+    public GameObject[] premadeChunks;
     private PrefabDescription prefabDescription;
 
     private int target;
     private int spacing;
     private int level;
 
-    public static int currentLevel;
+    public static int currentLevel = 1;
 
     public int offset = 10;
     public int counter = 1;
     private int length;
-
-    public float level2Time = 45;
-    public float level3Time = 135;
-
+    public string scene; 
 
     // Use this for initialization
     void Start() {
-        level1Chunks = Resources.LoadAll<GameObject>("Prefabs/Level1");
-        level2Chunks = Resources.LoadAll<GameObject>("Prefabs/Level2");
-        level3Chunks = Resources.LoadAll<GameObject>("Prefabs/Level3");
+        premadeChunks = Resources.LoadAll<GameObject>("Prefabs/Premade");
 
         transform.position = new Vector3(player.transform.position.x - offset, transform.position.y, transform.position.z);
         currentLevel = 1;
@@ -63,39 +58,25 @@ public class TileManagerPremade : MonoBehaviour {
 
                     switch (level) {
 
-                        case 4:
-                            Time.timeScale = 0;
-                            SceneManager.LoadScene("EndScene");
-                            
-                            break;
-                        case 3:
-                            currentLevel = 3;
-
-                            float k = Random.Range(0f, 1f);
-                            if ( k < 0.50f)
-                            {
-                                currentTile = Instantiate(level3Chunks[Random.Range(0, level3Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
-                            } else if (k > 0.50f && k < 0.85f) {
-                                currentTile = Instantiate(level2Chunks[Random.Range(0, level2Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
-                            } else {
-                                currentTile = Instantiate(level1Chunks[Random.Range(0, level1Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
-                            }
-                            break;
                         case 2:
-                            currentLevel = 2;
-                            float j = Random.Range(0f, 1f);
-                            if (j > 0.35f) { 
-                                currentTile = Instantiate(level2Chunks[Random.Range(0, level2Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
-                            }
-                            else {
-                                currentTile = Instantiate(level1Chunks[Random.Range(0, level1Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
-                            }
+                            Time.timeScale = 0;
+                            SceneManager.LoadScene(scene);
                             break;
-
                         case 1:
-                            currentLevel = 1;
-                            currentTile = Instantiate(level1Chunks[Random.Range(0, level1Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
+
+                            count++;
+
+                            if (index < order.Length) {
+
+                                currentTile = Instantiate(premadeChunks[order[index]], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
+                                index++;
+
+                            } else { 
+                                currentTile = Instantiate(spacing_prefab, new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
+                            }
+
                             break;
+                            default:
                             Debug.Log("Level out of range");
                             break;
                     }
@@ -104,14 +85,13 @@ public class TileManagerPremade : MonoBehaviour {
                     spacing = Random.Range(currentTile.GetComponent<PrefabDescription>().spacingMin, currentTile.GetComponent<PrefabDescription>().spacingMax);
                     target = length + spacing;
 
-
                     tiles.Add(currentTile);
 
                     Destroy(tiles[i]);
                     tiles.RemoveAt(i);
                     ResetCounter();
 
-                } else if (counter > length - 1) {
+                } else if (counter >= length) {
 
                     tiles.Add(Instantiate(spacing_prefab, new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity));
                     counter++;
@@ -119,7 +99,6 @@ public class TileManagerPremade : MonoBehaviour {
                     tiles.RemoveAt(i);
 
                 } else {
-
                     tiles.Add(Instantiate(empty_prefab, new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity));
                     counter++;
                     Destroy(tiles[i]);
@@ -131,14 +110,8 @@ public class TileManagerPremade : MonoBehaviour {
     }
 
     int SetLevel() {
-        if (Time.time > 255)
+        if (count >= 100)
         {
-            print(255);
-            return 4;
-        }
-        else if (Time.time > level3Time) {
-            return 3;
-        } else if (Time.time > level2Time) {
             return 2;
         } else {
             return 1;

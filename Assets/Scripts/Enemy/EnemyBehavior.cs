@@ -18,8 +18,8 @@ public class EnemyBehavior : MonoBehaviour {
     public float offsetPos = 3.0f;
 
     private bool shot = false;
-    private bool isMovingX = false;
-    private bool isMovingY = true;
+    public bool isMovingX = false;
+    public bool isMovingY = true;
     private bool isDestroyed = false;
 
     private float horizontalOffset;
@@ -46,12 +46,37 @@ public class EnemyBehavior : MonoBehaviour {
 
     //FloatingTextController.Initialize();
     startTime = Time.time;
-
+        angle = Random.Range(0, 360);
 
     }
 
+    float angle;
+    float speed = 60;
+    float toDegrees = Mathf.PI/180;
+    float maxUpAndDown = 1.5f;
+
     // Update is called once per frame
     void Update() {
+
+        angle += speed * Time.deltaTime;
+
+        if (angle > 360) {
+            angle -= 360;
+        }
+
+        transform.position = startPos + new Vector3 (0, maxUpAndDown * Mathf.Sin(angle * toDegrees) + maxUpAndDown);
+
+        if (transform.position.x > GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position.x + offsetPos && GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position.x + 10 > transform.position.x) {
+            if (GameObject.FindGameObjectsWithTag("Bullet").Length < 2) {
+                if (Mathf.Sin(angle * toDegrees) > 0.95) {
+                    isMovingY = false;
+                    shoot();
+                } else if (Mathf.Sin(angle * toDegrees) < -0.95) {
+                    isMovingY = true;
+                    shoot();
+                }
+            }
+        }
 
         if (isDestroyed) {
 
@@ -67,7 +92,7 @@ public class EnemyBehavior : MonoBehaviour {
             }
 
         } else {
-            Movements();
+            //Movements();
         }
     }
 
@@ -81,16 +106,21 @@ public class EnemyBehavior : MonoBehaviour {
         } else if (y >= 1.0f & isMovingY) {
             isMovingY = !isMovingY;
 
-            if (transform.position.x > GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position.x + offsetPos) {
-                if (GameObject.FindGameObjectsWithTag("Bullet").Length < 2)
-                    shoot();
-            }
+                if (transform.position.x > GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position.x + offsetPos && GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position.x + 10 > transform.position.x) {
+                    if (GameObject.FindGameObjectsWithTag("Bullet").Length < 2)
+                        shoot();
+                }
         }
 
         if (y > 0.0f && !isMovingY) {
             y -= (y + 0.05f) * y_speed * Time.deltaTime;
         } else if (y <= 0.0f) {
             isMovingY = !isMovingY;
+
+            if (transform.position.x > GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position.x + offsetPos && GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position.x + 10 > transform.position.x) {
+                if (GameObject.FindGameObjectsWithTag("Bullet").Length < 2)
+                    shoot();
+            }
         }
 
 
@@ -107,7 +137,7 @@ public class EnemyBehavior : MonoBehaviour {
         //    isMovingX = !isMovingX;
         //}
 
-        transform.position = new Vector3(startPos.x + Mathf.Lerp(0, horizontalOffset, x), startPos.y + Mathf.Lerp(0, verticalOffset, y), startPos.z);
+        //transform.position = new Vector3(startPos.x + Mathf.Lerp(0, horizontalOffset, x), startPos.y + Mathf.Lerp(0, verticalOffset, y), startPos.z);
 
 
     }
@@ -131,8 +161,7 @@ public class EnemyBehavior : MonoBehaviour {
         }
     }
 
-    public void OnBadCollision() {
 
-    }
+ 
 }
 

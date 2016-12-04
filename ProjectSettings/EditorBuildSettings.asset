@@ -10,6 +10,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
   - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+  - enabled: 0
     path: Assets/Scenes/MainScene.unity
   - enabled: 1
-    path: Assets/Scenes/EndScene.unity
+    path: Assets/Scenes/Premade1.unity
+  - enabled: 1
+    path: Assets/Scenes/Premade2.unity
+  - enabled: 1
+    path: Assets/Scenes/Controlled.unity
+  - enabled: 0
+    path: Assets/Scenes/Transition.unity
+  - enabled: 1
+    path: Assets/Scenes/PremadeToControlled.unity
+  - enabled: 1
+    path: Assets/Scenes/ControlledToPremade.unity

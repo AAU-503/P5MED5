@@ -1015,6 +1015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd0caa6b94c3f2c4b8f029051815a999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scene: Premade1
 --- !u!114 &1692328470
 MonoBehaviour:
   m_ObjectHideFlags: 0

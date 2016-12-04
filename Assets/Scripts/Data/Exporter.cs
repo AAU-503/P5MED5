@@ -28,6 +28,10 @@ public class Exporter : MonoBehaviour {
             1. Write all indices of chunk to csv. file. 
     */
 
+    public void Start() {
+        condition = _condition;
+    }
+
     // Sets the current chunk where the index corresponds to the position of a tile inside the chunk.
     public static void setChunk(GameObject[,] posMem) {
         tileMemory = posMem;
@@ -146,15 +150,43 @@ public class Exporter : MonoBehaviour {
     //}
 
     // Write to the chunk memory.
+
+    public static int condition;
+    public int _condition;
+
     private static void Write(GameObject tile, GameObject chunk, int instance, int currentLevel, int result, Vector2 tilePos, string PlayerPosX, string PlayerPosY) {
         string log = tile.ToString() + "," + chunk.ToString() + "," + instance + "," + currentLevel + "," + ScoreManager.session + "," + episodes[index] + "," + result + "," + tilePos.x + "," + tilePos.y + "," + PlayerPosX + "," + PlayerPosY + "\n";
 
-                if (!File.Exists("Data.csv")) {
-                    File.WriteAllText("Data.csv", log);
-
+        switch (condition) {
+            case 1:
+                if (!File.Exists("Premade1.csv")) {
+                    File.WriteAllText("Premade1.csv", log);
                 } else {
-                    File.AppendAllText("Data.csv", log);
+                    File.AppendAllText("Premade1.csv", log);
                 }
+                break;
+            case 2:
+                if (!File.Exists("Premade2.csv")) {
+                    File.WriteAllText("Premade2.csv", log);
+                } else {
+                    File.AppendAllText("Premade2.csv", log);
+                }
+                break;
+            case 3:
+                if (!File.Exists("Controlled.csv")) {
+                    File.WriteAllText("Controlled.csv", log);
+                } else {
+                    File.AppendAllText("Controlled.csv", log);
+                }
+                break;
+            case 4:
+                if (!File.Exists("Experimental.csv")) {
+                    File.WriteAllText("Experimental.csv", log);
+                } else {
+                    File.AppendAllText("Experimental.csv", log);
+                }
+                break;
+        }
     }
 
     // Write chunk memory to .csv file.
