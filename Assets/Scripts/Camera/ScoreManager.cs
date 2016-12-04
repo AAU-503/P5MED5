@@ -43,15 +43,17 @@ public class ScoreManager : MonoBehaviour {
     }
 
     void Update () {
+        if (scoreText != null) { 
         scoreText.text = "Score: " + (int)(playerScore);
+            }
     }
 
 
-    void OnGUI()
-	{
-        scoreText.text = "Score: " + (int)(playerScore);
-        levelText.text = "Level: " + TileManager.currentLevel;
+    void OnGUI() {
+        if (scoreText != null) {
+            scoreText.text = "Score: " + (int)(playerScore);
+            levelText.text = "Level: " + TileManager.currentLevel;
+        }
     }
-    
 }
 

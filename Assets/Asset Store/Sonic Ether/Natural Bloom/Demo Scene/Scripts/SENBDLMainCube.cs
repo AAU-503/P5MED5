@@ -19,8 +19,8 @@ public class SENBDLMainCube : MonoBehaviour
 	public Color glowColor;
 	int currentColorIndex = 0;
 
-	private float bloomAmount = 0.04f;
-	private float lensDirtAmount = 0.3f;
+	private float bloomAmount = 1f;
+	private float lensDirtAmount = 1f;
 
 	private float fps;
 
@@ -49,7 +49,7 @@ public class SENBDLMainCube : MonoBehaviour
 			Instantiate(glowingOrbitingCube, Vector3.zero, Quaternion.identity);
 		}
 
-		Camera.main.backgroundColor = new Color(0.08f, 0.08f, 0.08f);
+		Camera.main.backgroundColor = new Color(0.00f, 0.00f, 0.00f);
 
 		SENBDLGlobal.mainCube = this;
 
@@ -81,7 +81,6 @@ public class SENBDLMainCube : MonoBehaviour
 		IncrementCounters();
 
 		GetInput();
-		UpdateShaderValues();
 
 		SmoothFPSCounter();
 	}
@@ -114,8 +113,6 @@ public class SENBDLMainCube : MonoBehaviour
 		invColor.g = 1.0f - glowColor.g;
 		invColor.b = 1.0f - glowColor.b;
 		invColor = Color.Lerp(invColor, Color.white, 0.1f);
-
-		particles.GetComponent<Renderer>().material.SetColor("_TintColor", invColor);
 		
 	}
 
@@ -171,12 +168,6 @@ public class SENBDLMainCube : MonoBehaviour
 			lensDirtAmount = 0.1f;
 			Time.timeScale = 1.0f;
 		}
-	}
-
-	void UpdateShaderValues()
-	{
-		bloomShader.bloomIntensity = bloomAmount;
-		bloomShader.lensDirtIntensity = lensDirtAmount;
 	}
 
 	void SmoothFPSCounter()

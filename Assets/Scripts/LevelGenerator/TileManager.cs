@@ -19,15 +19,17 @@ public class TileManager : MonoBehaviour {
 
     private PrefabDescription prefabDescription;
 
+    public static int currentLevel;
+
     private int target;
     private int spacing;
     private int level;
+    private int length;
 
-    public static int currentLevel;
+    private float startTime;
 
     public int offset = 10;
     public int counter = 1;
-    private int length;
 
     public float level2Time = 45;
     public float level3Time = 135;
@@ -50,6 +52,7 @@ public class TileManager : MonoBehaviour {
         length = currentTile.GetComponent<PrefabDescription>().length;
         spacing = Random.Range(currentTile.GetComponent<PrefabDescription>().spacingMin, currentTile.GetComponent<PrefabDescription>().spacingMax);
         target = 0;
+        startTime = Time.time;
     }
 
     // Update is called once per frame
@@ -132,14 +135,14 @@ public class TileManager : MonoBehaviour {
     }
 
     int SetLevel() {
-        if (Time.time > 160)
+        if (Time.time - startTime > 160)
         {
             print(255);
             return 4;
         }
-        else if (Time.time > level3Time) {
+        else if (Time.time - startTime > level3Time) {
             return 3;
-        } else if (Time.time > level2Time) {
+        } else if (Time.time - startTime > level2Time) {
             return 2;
         } else {
             return 1;

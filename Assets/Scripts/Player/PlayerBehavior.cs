@@ -9,7 +9,7 @@ public class PlayerBehavior : MonoBehaviour
 	private CharacterController controller;
 
 	private Vector3 moveDirection = Vector3.zero;
-	public float jumpSpeed = 10.0f;
+	public static float jumpSpeed = 8.0f;
     public float airTime = 2f;
 	public float gravity = 20.0f;
     public float gravityForce = 3.0f;
