@@ -18,7 +18,12 @@ public class TileChunkBridge : MonoBehaviour {
     private ChunkMemory chunkMem;
 
 	void Start () {
-        level = TileManager.currentLevel;
+
+        if (Exporter.condition != 3 || Exporter.condition != 4) {
+            level = 0;
+        } else {
+            level = TileManager.currentLevel;
+        }
 
         // Send information regarding specific game objects to ChunkLog.cs.
         if (gameObject.tag == "Bullet") { // Bullets need to be logged at the drone start-position, therefore we treat them as a special case. 
