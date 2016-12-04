@@ -21,14 +21,10 @@ public class ExplosiveBehavior : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (isDestroyed)
-        {
+        if (isDestroyed) {
             rend.enabled = false;
             GetComponent<Rigidbody>().isKinematic = true;
             gameObject.GetComponent<BoxCollider>().enabled = false;
-
-            if (!particle.IsAlive())
-            Destroy(gameObject);
         }
     }
 
@@ -37,12 +33,12 @@ public class ExplosiveBehavior : MonoBehaviour {
         CameraController.setSlowmotion();
 
         ScoreManager.ChangeScore(+ScoreManager.explosiveHitScore);
-		if (!isDestroyed) {
+        if (!isDestroyed) {
             GetComponent<AudioSource>().Play();
-			particle.Play();
-			isDestroyed = true;
-            
-		}
+            particle.Play();
+            isDestroyed = true;
+
+        }
     }
 
     public void OnBadCollision() {

@@ -9140,8 +9140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraController: {fileID: 1475737813}
   airTime: 2
-  gravity: 20
-  gravityForce: 3
+  gravity: 800
 --- !u!82 &1168706790
 AudioSource:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ public class BulletBehavior : MonoBehaviour {
     public float speed = 5.0f;
     public float acceleration = -2;
     public float startTime;
-    public float lifeTime = 2.0f;
+    public float lifeTime = 5.0f;
     public float normOffset;
     public float offsetPos;
     private bool isDestroyed;

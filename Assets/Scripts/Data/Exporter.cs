@@ -38,45 +38,6 @@ public class Exporter : MonoBehaviour {
     }
 
     // Logs the tile in the current chunk.
-    //public static void LogTile(GameObject tile, GameObject chunk, int instance, int result, Vector3 tilePos) {
-
-    //    if (ChunkMemory.currentChunk) {
-    //        if (tileMemory != null) {
-    //            //tileMemory[(int)tilePos.x, (int)tilePos.y].GetComponent<Renderer>().material.color = new Vector4(0f, 2f, 0f, 0.1f);
-
-    //            // If there is information in the chunks-array, check if the current chunk is contained.
-    //            if (chunks.Count != 0) {
-
-    //                for (int i = 0; i < chunks.Count; i++) {
-
-    //                    // If [true] increment episodes, or if [false] permit a new entry.
-    //                    if (chunks[i] == chunk.name) {
-    //                        episodes[i]++;
-    //                        index = i;
-    //                    } else {
-    //                        addToList = true;
-    //                    }
-    //                }
-    //            }
-
-    //            // If the entry is permitted, add the current chunk to the chunks-array.
-    //            if (addToList || chunks.Count == 0) {
-    //                chunks.Add(chunk.name);
-    //                episodes.Add(1);
-    //                index = 0;
-    //                addToList = false;
-    //            }
-
-    //            /*Put data into a buffer*/
-    //            WriteToMemory(tile, chunk, instance, result, tilePos, GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position - chunk.transform.position);
-
-    //        } else {
-    //            Debug.Log("TileMemory returned a nullpointer exception.");
-    //        }
-    //    }
-    //}
-
-    // Logs the tile in the current chunk.
     public static void Set(GameObject chunk) {
 
         if (chunks.Count != 0) {
@@ -115,39 +76,9 @@ public class Exporter : MonoBehaviour {
                 }
             }
         }
+
+        print(chunk);
     }
-
-    //// Logs the tile in the current chunk.
-    //public static void Set(GameObject child, GameObject parent, int state) {
-
-    //    if (chunks.Count != 0) {
-    //        for (int i = 0; i < chunks.Count; i++) {
-    //            // If [true] increment episodes, or if [false] permit a new entry.
-    //            if (chunks[i] == parent.transform.parent.gameObject.name) {
-    //                addToExisting = true;
-    //                index = i;
-    //            } else {
-    //                addToList = true;
-    //            }
-    //        }
-    //    }
-
-    //    // If the entry is permitted, add the current chunk to the chunks-array.
-    //    if (addToList && !addToExisting || chunks.Count == 0) {
-    //        chunks.Add(parent.name);
-    //        episodes.Add(1);
-    //        index = chunks.Count - 1;
-    //    } else if (addToExisting) {
-    //        episodes[index]++;
-    //    }
-
-    //    addToList = false;
-    //    addToExisting = false;
-
-    //    print(parent);
-    //    Write(child, parent.transform.parent.gameObject, parent.GetComponentInParent<PrefabDescription>().instance, state, parent.GetComponent<TileChunkBridge>().startPos, GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position - parent.transform.position);
-
-    //}
 
     // Write to the chunk memory.
 
