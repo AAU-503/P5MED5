@@ -30,6 +30,8 @@ public class Exporter : MonoBehaviour {
 
     public void Start() {
         condition = _condition;
+        chunks.Clear();
+        episodes.Clear();
     }
 
     // Sets the current chunk where the index corresponds to the position of a tile inside the chunk.

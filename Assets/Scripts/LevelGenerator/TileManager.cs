@@ -11,20 +11,28 @@ public class TileManager : MonoBehaviour {
     public GameObject spacing_prefab;
     public GameObject empty_prefab;
     private GameObject currentTile;
-    
-
+   
     public GameObject[] level1Chunks;
     public GameObject[] level2Chunks;
     public GameObject[] level3Chunks;
 
+    public List<int> lvl1;
+    public List<int> lvl2;
+    public List<int> lvl3;
+
     private PrefabDescription prefabDescription;
 
     public static int currentLevel;
+    public static int lvl1Length = 45;
+    public static int lvl2Length = 70;
+    public static int lvl3Length = 60;
+
 
     private int target;
     private int spacing;
     private int level;
     private int length;
+    private int endCounter;
 
     private float startTime;
 
@@ -53,12 +61,33 @@ public class TileManager : MonoBehaviour {
         spacing = Random.Range(currentTile.GetComponent<PrefabDescription>().spacingMin, currentTile.GetComponent<PrefabDescription>().spacingMax);
         target = 0;
         startTime = Time.time;
+
+        // Put tiles into lists for level 1 and shuffle
+        for (int i = 0; i < lvl1Length; i++) {
+            int id = i % level1Chunks.Length;
+            lvl1.Add(id);
+            Randomizer.Shuffle(lvl1);
+        }
+
+        // Put tiles into lists for level 2 and shuffle
+        for (int i = 0; i < lvl2Length; i++) {
+            int id = i % level2Chunks.Length;
+            lvl2.Add(id);
+            Randomizer.Shuffle(lvl2);
+        }
+
+        // Put tiles into lists for level 3 and shuffle
+        for (int i = 0; i < lvl3Length; i++) {
+            int id = i % level3Chunks.Length;
+            lvl3.Add(id);
+            Randomizer.Shuffle(lvl3);
+        }
+
     }
 
     // Update is called once per frame
     void Update() {
         level = SetLevel();
-        
 
         for (int i = 0; i < tiles.Count; i++) {
             if (tiles[i].transform.position.x + offset < player.transform.position.x) {
@@ -67,40 +96,58 @@ public class TileManager : MonoBehaviour {
 
                     switch (level) {
 
-                        case 4:
-                            Time.timeScale = 0;
+                        case 5:
                             SceneManager.LoadScene(scene);
-                            
+                            break;
+                        case 4:
+                            currentTile = Instantiate(spacing_prefab, new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
+                            endCounter++;   
                             break;
                         case 3:
-                            currentLevel = 3;
 
-                            float k = Random.Range(0f, 1f);
-                            if ( k < 0.50f)
-                            {
-                                currentTile = Instantiate(level3Chunks[Random.Range(0, level3Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
-                            } else if (k > 0.50f && k < 0.85f) {
-                                currentTile = Instantiate(level2Chunks[Random.Range(0, level2Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
+                            float j = Random.Range(0f, 1f);
+                            if (j > 0.30f || lvl2.Count == 0) {
+
+                                if (lvl3.Count != 0) {
+                                    currentTile = Instantiate(level3Chunks[lvl3[0]], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
+                                    lvl3.RemoveAt(0);
+                                }
                             } else {
-                                currentTile = Instantiate(level1Chunks[Random.Range(0, level1Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
+
+                                if (lvl2.Count != 0) {
+                                    currentTile = Instantiate(level2Chunks[lvl2[0]], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
+                                    lvl2.RemoveAt(0);
+                                }
+
                             }
+
                             break;
                         case 2:
-                            currentLevel = 2;
-                            float j = Random.Range(0f, 1f);
-                            if (j > 0.35f) { 
-                                currentTile = Instantiate(level2Chunks[Random.Range(0, level2Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
-                            }
-                            else {
-                                currentTile = Instantiate(level1Chunks[Random.Range(0, level1Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
-                            }
-                            break;
 
-                        case 1:
-                            currentLevel = 1;
-                            currentTile = Instantiate(level1Chunks[Random.Range(0, level1Chunks.Length)], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
+                            float k = Random.Range(0f, 1f);
+                            if (k > 0.30f || lvl1.Count == 0) {
+
+                                if (lvl2.Count != 0) {
+                                    currentTile = Instantiate(level2Chunks[lvl2[0]], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
+                                    lvl2.RemoveAt(0);
+                                }
+                            } else {
+
+                                if (lvl1.Count != 0) {
+                                    currentTile = Instantiate(level1Chunks[lvl1[0]], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
+                                    lvl1.RemoveAt(0);
+                                }
+
+                            }
+
                             break;
-                            Debug.Log("Level out of range");
+                        case 1:
+
+                            if (lvl1.Count != 0) {
+                                currentTile = Instantiate(level1Chunks[lvl1[0]], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
+                                lvl1.RemoveAt(0);
+                            }
+
                             break;
                     }
 
@@ -135,21 +182,27 @@ public class TileManager : MonoBehaviour {
     }
 
     int SetLevel() {
-        if (Time.time - startTime > 160)
-        {
-            print(255);
+
+        if (endCounter >= 40) {
+            return 5;
+        } else if (lvl1.Count + lvl2.Count + lvl3.Count == 0) {
             return 4;
-        }
-        else if (Time.time - startTime > level3Time) {
+        } else if (lvl2.Count < lvl2Length / 3 && lvl1.Count == 0) {
+            currentLevel = 3;
             return 3;
-        } else if (Time.time - startTime > level2Time) {
+        } else if (lvl1.Count < lvl1Length / 2) {
+            currentLevel = 2;
             return 2;
         } else {
+            currentLevel = 1;
             return 1;
         }
+      
+
     }
 
     void ResetCounter() {
         counter = 1;
     }
+
 }
