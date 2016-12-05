@@ -50,10 +50,11 @@ public class ScoreManager : MonoBehaviour {
 
 
     void OnGUI() {
-        if (scoreText != null) {
+        if (scoreText != null)
             scoreText.text = "Score: " + (int)(playerScore);
+
+        if (levelText != null)
             levelText.text = "Level: " + TileManager.currentLevel;
-        }
     }
 }
 

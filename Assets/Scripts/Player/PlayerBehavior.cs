@@ -37,6 +37,10 @@ public class PlayerBehavior : MonoBehaviour
         forceY -= gravity * Time.deltaTime * gravityForce;
         moveDirection.y = forceY;
         controller.Move(moveDirection * Time.deltaTime);
+
+        if (transform.position.y < -1.0) {
+            transform.position = new Vector3(transform.position.x, 1, transform.position.z);
+        }
     }
 
 	void Movement ()

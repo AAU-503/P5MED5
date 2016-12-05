@@ -15,7 +15,7 @@ public class EnemyBehavior : MonoBehaviour {
     float x_speed;
     float y_speed;
 
-    public float offsetPos = 3.0f;
+    public float offsetPos = 5.0f;
 
     private bool shot = false;
     public bool isMovingX = false;

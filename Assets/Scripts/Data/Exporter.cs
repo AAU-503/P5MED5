@@ -92,31 +92,31 @@ public class Exporter : MonoBehaviour {
 
         switch (condition) {
             case 1:
-                if (!File.Exists("Premade1.csv")) {
-                    File.WriteAllText("Premade1.csv", log);
+                if (!File.Exists("Data/Premade1.csv")) {
+                    File.WriteAllText("Data/Premade1.csv", log);
                 } else {
-                    File.AppendAllText("Premade1.csv", log);
+                    File.AppendAllText("Data/Premade1.csv", log);
                 }
                 break;
             case 2:
-                if (!File.Exists("Premade2.csv")) {
-                    File.WriteAllText("Premade2.csv", log);
+                if (!File.Exists("Data/Premade2.csv")) {
+                    File.WriteAllText("Data/Premade2.csv", log);
                 } else {
-                    File.AppendAllText("Premade2.csv", log);
+                    File.AppendAllText("Data/Premade2.csv", log);
                 }
                 break;
             case 3:
-                if (!File.Exists("Controlled.csv")) {
-                    File.WriteAllText("Controlled.csv", log);
+                if (!File.Exists("Data/Controlled.csv")) {
+                    File.WriteAllText("Data/Controlled.csv", log);
                 } else {
-                    File.AppendAllText("Controlled.csv", log);
+                    File.AppendAllText("Data/Controlled.csv", log);
                 }
                 break;
             case 4:
-                if (!File.Exists("Experimental.csv")) {
-                    File.WriteAllText("Experimental.csv", log);
+                if (!File.Exists("Data/Experimental.csv")) {
+                    File.WriteAllText("Data/Experimental.csv", log);
                 } else {
-                    File.AppendAllText("Experimental.csv", log);
+                    File.AppendAllText("Data/Experimental.csv", log);
                 }
                 break;
         }

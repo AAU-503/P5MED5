@@ -672,8 +672,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -230}
-  m_SizeDelta: {x: 0, y: 308}
+  m_AnchoredPosition: {x: 0, y: -231}
+  m_SizeDelta: {x: -128, y: 308}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &787282201
 MonoBehaviour:
@@ -707,9 +707,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Welcome and thank you for participating!  \n\nYour goal in this game is
-    to avoid obstacles: boxes, explosives, drones and lava. \n\nCONTROLS: \n- Press
-    W to attack\n- Press SPACE to jump\n- Hold SPACE to jump higher"
+  m_Text: "Welcome and thank you for participating!  \n\nPLEASE READ THE INSTRUCTIONS
+    CAREFULLY! Your goal in this game is to avoid obstacles: boxes, explosives, drones
+    and lava. \n\nCONTROLS: \n- Press W to attack\n- Press SPACE to jump\n- Hold SPACE
+    to jump longer"
 --- !u!222 &787282202
 CanvasRenderer:
   m_ObjectHideFlags: 0

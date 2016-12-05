@@ -3,7 +3,7 @@ Properties {
 	_EmissionColor ("Emission Color", Color) = (1,1,1,1)
 	_DiffuseColor ("Diffuse Color", Color) = (1, 1, 1, 1)
 	_MainTex ("Diffuse Texture", 2D) = "White" {}
-	_Illum ("Emission Texture", 2D) = "white" {}
+	_Illum("Emission Texture", 2D) = "white" {}
 	_EmissionGain ("Emission Gain", Range(0, 1)) = 0.5
 }
 
