@@ -10,9 +10,9 @@ public class PlayerBehavior : MonoBehaviour
 
 	private Vector3 moveDirection = Vector3.zero;
 	public static float jumpSpeed = 15;
-    public float airTime = 2f;
-	public float gravity = 20.0f;
-    public float gravityForce = 3.0f;
+    public static float airTime = 2f;
+	public static float gravity = 65.0f;
+    public static float gravityForce = 3.0f;
     private bool attacked = true;
     private float forceY = 0;
     private float invertGravity;

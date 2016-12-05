@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 114495166912597436}
   - component: {fileID: 114547891187929916}
   m_Layer: 0
-  m_Name: BBB
+  m_Name: B^BB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -315,8 +315,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   length: 3
-  spacingMax: 5
-  spacingMin: 5
+  spacingMax: 6
+  spacingMin: 6
   spacing: 0
   instance: 0
 --- !u!114 &114547891187929916

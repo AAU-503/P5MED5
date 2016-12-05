@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class TileManagerPremade : MonoBehaviour {
 
     public List<GameObject> tiles = new List<GameObject>();
-    int[] order = new int[42] {1, 6, 0, 12, 9, 3, 2, 8, 11, 5, 13, 4, 7, 10, 13, 2, 8, 11, 7, 9, 6, 5, 10, 1, 3, 4, 0, 12, 0, 2, 4, 1, 11, 13, 6, 8, 7, 5, 10, 9, 3, 12 };
+    int[] order = new int[52] {3, 1, 12, 6, 5, 0, 7, 12, 0, 9, 2, 3, 9, 2, 6, 8, 11, 5, 4, 7, 11, 10, 4, 2, 1, 8, 10, 11, 7, 9, 6, 5, 10, 8, 1, 3, 4, 0, 12, 0, 2, 4, 1, 11, 6, 8, 7, 5, 10, 9, 3, 12};
 
     int index = 0;
     int count = 0;
