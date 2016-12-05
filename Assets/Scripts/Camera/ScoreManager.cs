@@ -7,12 +7,12 @@ public class ScoreManager : MonoBehaviour {
     static public float playerScore = 0;
 
 	static public int coinsScore = 10;
-	static public int boxHitScore = 2;
-	static public int boxFailScore = -5;
+	static public int boxHitScore = 10;
+	static public int boxFailScore = -10;
 	static public int enemyKillScore = 10;
-	static public int enemyFailScore = -5;
+	static public int enemyFailScore = -10;
 	static public int lavaScore = -10;
-	static public int bulletScore = -5;
+	static public int bulletScore = -10;
     static public int explosiveHitScore = -10;
     static public int explosiveFailScore = -10;
 
