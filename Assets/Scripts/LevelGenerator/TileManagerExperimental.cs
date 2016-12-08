@@ -125,17 +125,13 @@ public class TileManagerExperimental : MonoBehaviour {
                             break;
                         case 4:
                             float j = Random.Range(0f, 1f);
-                            if (j > 0.30f || lvl3.Count == 0) {
-
+                                if (lvl3.Count != 0 && j < 0.3f || lvl3.Count != 0 && lvl4.Count < lvl4Length / 1.5) {
+                                    currentTile = Instantiate(level3Chunks[lvl3[0]], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
+                                    lvl3.RemoveAt(0);
+                            } else {
                                 if (lvl4.Count != 0) {
                                     currentTile = Instantiate(level4Chunks[lvl4[0]], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
                                     lvl4.RemoveAt(0);
-                                }
-                            } else {
-
-                                if (lvl3.Count != 0) {
-                                    currentTile = Instantiate(level3Chunks[lvl3[0]], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
-                                    lvl3.RemoveAt(0);
                                 }
                             }
                             break;
@@ -143,7 +139,7 @@ public class TileManagerExperimental : MonoBehaviour {
 
                             float k = Random.Range(0f, 1f);
 
-                                if (lvl2.Count != 0 && k < 0.30f || lvl2.Count != 0 && lvl3.Count < lvl3Length / 1.5) {
+                                if (lvl2.Count != 0 && k < 0.3f || lvl2.Count != 0 && lvl3.Count < lvl3Length / 1.5) {
                                     currentTile = Instantiate(level2Chunks[lvl2[0]], new Vector3((tiles[tiles.Count - 1].transform.position.x + 1), transform.position.y, transform.position.z), Quaternion.identity);
                                     lvl2.RemoveAt(0);
                                 } else {

@@ -91,11 +91,13 @@
      <Compile Include="Assets\Scripts\LevelGenerator\PrefabDescription.cs" />
      <Compile Include="Assets\Scripts\LevelGenerator\PrefabSpawner.cs" />
      <Compile Include="Assets\Scripts\LevelGenerator\TileManager.cs" />
+     <Compile Include="Assets\Scripts\LevelGenerator\TileManagerExperimental.cs" />
      <Compile Include="Assets\Scripts\LevelGenerator\TileManagerPremade.cs" />
      <Compile Include="Assets\Scripts\Player\AttackTrigger.cs" />
      <Compile Include="Assets\Scripts\Player\HazardCollision.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerBehavior.cs" />
+     <Compile Include="Assets\Scripts\Randomizer.cs" />
      <None Include="Assets\Asset Store\EffectExamples\Shared\Shaders\SurfaceShader_VC.shader" />
      <None Include="Assets\Asset Store\2D Platformer Controller\Readme.txt" />
      <None Include="Assets\Asset Store\Sonic Ether\Natural Bloom\Shaders\SENaturalBloomAndDirtyLens.shader" />
