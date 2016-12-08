@@ -20,7 +20,7 @@ public class ScoreManager : MonoBehaviour {
 
     public static int session;
     public Text levelText;
-    public TileManager tileManager;
+    public TileManagerExperimental tileManagerExperimental;
 
     void Awake() {
         // Check For 'TimesLaunched', Set To 0 If Value Isnt Set (First Time Being Launched)
@@ -54,7 +54,7 @@ public class ScoreManager : MonoBehaviour {
             scoreText.text = "Score: " + (int)(playerScore);
 
         if (levelText != null)
-            levelText.text = "Level: " + TileManager.currentLevel;
+            levelText.text = "Level: " + TileManagerExperimental.currentLevel;
     }
 }
 

@@ -106,10 +106,10 @@ public class Exporter : MonoBehaviour {
                 }
                 break;
             case 3:
-                if (!File.Exists("Data/Controlled.csv")) {
-                    File.WriteAllText("Data/Controlled.csv", log);
+                if (!File.Exists("Data/Experimental.csv")) {
+                    File.WriteAllText("Experimental.csv", log);
                 } else {
-                    File.AppendAllText("Data/Controlled.csv", log);
+                    File.AppendAllText("Experimental.csv", log);
                 }
                 break;
             case 4:

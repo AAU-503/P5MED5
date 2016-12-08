@@ -45,7 +45,6 @@ public class TileManagerPremade : MonoBehaviour {
         spacing = Random.Range(currentTile.GetComponent<PrefabDescription>().spacingMin, currentTile.GetComponent<PrefabDescription>().spacingMax);
         target = 0;
         index = 0;
-        currentLevel = 1;
     }
 
     // Update is called once per frame
